@@ -2,7 +2,8 @@ const products = [
   {
     name: "Crispy Fried Mushroom Burger",
     price: 18,
-    image: "",
+    image:
+      "https://res.cloudinary.com/dgwygf5i3/image/upload/v1703094823/nuqcla6oedqpeqfm281r.jpg",
     serving: 342,
     category: "main dish",
     nutrition: {
@@ -18,7 +19,8 @@ const products = [
   {
     name: "Million Dollar Chicken Casserole",
     price: 35,
-    image: "",
+    image:
+      "https://res.cloudinary.com/dgwygf5i3/image/upload/v1703094891/inreoed8twufooq2llkn.jpg",
     serving: 500,
     category: "main dish",
     nutrition: {
@@ -34,7 +36,8 @@ const products = [
   {
     name: "Cast Iron Steak",
     price: 42,
-    image: "",
+    image:
+      "https://res.cloudinary.com/dgwygf5i3/image/upload/v1703094941/ltqjeuhhdtcuwzwf1i09.jpg",
     serving: 320,
     category: "main dish",
     nutrition: {
@@ -50,7 +53,8 @@ const products = [
   {
     name: "BBQ Country Style Ribs",
     price: 48,
-    image: "",
+    image:
+      "https://res.cloudinary.com/dgwygf5i3/image/upload/v1703095074/hv0e33mwujooxmu6kklc.jpg",
     serving: 600,
     category: "main dish",
     nutrition: {
@@ -66,7 +70,8 @@ const products = [
   {
     name: "Instant Pot Pulled Pork",
     price: 34,
-    image: "",
+    image:
+      "https://res.cloudinary.com/dgwygf5i3/image/upload/v1703095353/vys3f0khnr347twvxz1l.avif",
     serving: 415,
     category: "main dish",
     nutrition: {
@@ -82,7 +87,8 @@ const products = [
   {
     name: "Philly Cheesesteak",
     price: 29,
-    image: "",
+    image:
+      "https://res.cloudinary.com/dgwygf5i3/image/upload/v1703095441/adfacoy23zbwfuzkks5j.jpg",
     serving: 430,
     category: "main dish",
     nutrition: {
@@ -98,7 +104,8 @@ const products = [
   {
     name: "Louisiana Creole Gumbo",
     price: 72,
-    image: "",
+    image:
+      "https://res.cloudinary.com/dgwygf5i3/image/upload/v1703095481/gyhv6qzcvj38bofc3zjc.jpg",
     serving: 540,
     category: "main dish",
     nutrition: {
@@ -114,7 +121,8 @@ const products = [
   {
     name: "Juicy Beef and Bacon Burgers",
     price: 89,
-    image: "",
+    image:
+      "https://res.cloudinary.com/dgwygf5i3/image/upload/v1703095538/g9za4umaansl8icgcbsm.jpg",
     serving: 700,
     category: "main dish",
     nutrition: {
@@ -130,7 +138,8 @@ const products = [
   {
     name: "Pastrami Burgers",
     price: 79,
-    image: "",
+    image:
+      "https://res.cloudinary.com/dgwygf5i3/image/upload/v1703095601/pkugvpwkmrprchq1gopx.webp",
     serving: 650,
     category: "main dish",
     nutrition: {
@@ -146,7 +155,8 @@ const products = [
   {
     name: "Grilled Beef and Turkey Burgers With Basil",
     price: 56,
-    image: "",
+    image:
+      "https://res.cloudinary.com/dgwygf5i3/image/upload/v1703095642/srdv86v7exx5whvksjil.jpg",
     serving: 678,
     category: "main dish",
     nutrition: {
@@ -162,7 +172,8 @@ const products = [
   {
     name: "Air Fryer Mac and Cheese Balls",
     price: 18,
-    image: "",
+    image:
+      "https://res.cloudinary.com/dgwygf5i3/image/upload/v1703095691/lonnm4tkpjdj5zyvqnhi.jpg",
     serving: 285,
     category: "appetizer",
     nutrition: {
@@ -176,9 +187,10 @@ const products = [
     available: true,
   },
   {
-    name: "Fried Pickles Recipe",
+    name: "Fried Pickles",
     price: 21,
-    image: "",
+    image:
+      "https://res.cloudinary.com/dgwygf5i3/image/upload/v1703095782/cekspipwhtneek8kzbvc.jpg",
     serving: 320,
     category: "appetizer",
     nutrition: {
@@ -194,7 +206,8 @@ const products = [
   {
     name: "Classic Deviled Eggs",
     price: 27,
-    image: "",
+    image:
+      "https://res.cloudinary.com/dgwygf5i3/image/upload/v1703095829/vmzt8rhtixriok8o9irp.jpg",
     serving: 380,
     category: "appetizer",
     nutrition: {
@@ -210,7 +223,8 @@ const products = [
   {
     name: "Chili Cheese Fries",
     price: 35,
-    image: "",
+    image:
+      "https://res.cloudinary.com/dgwygf5i3/image/upload/v1703095879/epnocshohaxhoq28h680.jpg",
     serving: 480,
     category: "appetizer",
     nutrition: {
@@ -226,7 +240,8 @@ const products = [
   {
     name: "Candied Bacon Cracker Bites",
     price: 38,
-    image: "",
+    image:
+      "https://res.cloudinary.com/dgwygf5i3/image/upload/v1703095924/d7czsl8ecwtbshohieba.jpg",
     serving: 400,
     category: "appetizer",
     nutrition: {
@@ -242,7 +257,8 @@ const products = [
   {
     name: "Crispy Garlic-Parmesan Wings",
     price: 42,
-    image: "",
+    image:
+      "https://res.cloudinary.com/dgwygf5i3/image/upload/v1703095963/ts3wwmsyzomuco2vfnfl.jpg",
     serving: 300,
     category: "appetizer",
     nutrition: {
@@ -258,7 +274,8 @@ const products = [
   {
     name: "Air Fryer Bloomin' Onion",
     price: 22,
-    image: "",
+    image:
+      "https://res.cloudinary.com/dgwygf5i3/image/upload/v1703096008/lahvi4yyy0fuyokh3quq.jpg",
     serving: 312,
     category: "appetizer",
     nutrition: {
@@ -274,7 +291,8 @@ const products = [
   {
     name: "Appalachian Apple Stack Cake",
     price: 36,
-    image: "",
+    image:
+      "https://res.cloudinary.com/dgwygf5i3/image/upload/v1703096048/esrasxtxxpm4bc3gsbfg.jpg",
     serving: 250,
     category: "dessert",
     nutrition: {
@@ -290,7 +308,8 @@ const products = [
   {
     name: "Fresh Peach Crumble",
     price: 24,
-    image: "",
+    image:
+      "https://res.cloudinary.com/dgwygf5i3/image/upload/v1703096094/ju881189av7loh3tpucw.jpg",
     serving: 180,
     category: "dessert",
     nutrition: {
@@ -306,7 +325,8 @@ const products = [
   {
     name: "Blackberry Cobbler",
     price: 31,
-    image: "",
+    image:
+      "https://res.cloudinary.com/dgwygf5i3/image/upload/v1703096134/qm4gev9lfy3eadc290u8.jpg",
     serving: 312,
     category: "dessert",
     nutrition: {
@@ -322,7 +342,8 @@ const products = [
   {
     name: "Fresh Strawberry Pie",
     price: 23,
-    image: "",
+    image:
+      "https://res.cloudinary.com/dgwygf5i3/image/upload/v1703096169/ufy8qyqcqzgtl5b4zaaj.jpg",
     serving: 310,
     category: "dessert",
     nutrition: {
@@ -338,7 +359,8 @@ const products = [
   {
     name: "Butterscotch Cookies",
     price: 16,
-    image: "",
+    image:
+      "https://res.cloudinary.com/dgwygf5i3/image/upload/v1703096201/zb0i4rrrbitfqpxupn1z.jpg",
     serving: 286,
     category: "dessert",
     nutrition: {
@@ -354,7 +376,8 @@ const products = [
   {
     name: "Whiskey Cake With Brown Butter Whiskey Glaze",
     price: 43,
-    image: "",
+    image:
+      "https://res.cloudinary.com/dgwygf5i3/image/upload/v1703096241/ltwh81hgjd2yso4h4srb.jpg",
     serving: 560,
     category: "dessert",
     nutrition: {
@@ -370,7 +393,8 @@ const products = [
   {
     name: "Lava Flow Hawaiian Tropical Drink",
     price: 11,
-    image: "",
+    image:
+      "https://res.cloudinary.com/dgwygf5i3/image/upload/v1703096283/uvkzow5cx5dzmemyqmoc.jpg",
     serving: 200,
     category: "beverage",
     nutrition: {
@@ -386,7 +410,8 @@ const products = [
   {
     name: "Lime Cola",
     price: 8,
-    image: "",
+    image:
+      "https://res.cloudinary.com/dgwygf5i3/image/upload/v1703096371/lxce9i9mkxsbverajzft.jpg",
     serving: 300,
     category: "beverage",
     nutrition: {
@@ -402,7 +427,8 @@ const products = [
   {
     name: "Sweet Sunrise Drink",
     price: 19,
-    image: "",
+    image:
+      "https://res.cloudinary.com/dgwygf5i3/image/upload/v1703096406/rlrwyyvn1q6shjv0mfvj.jpg",
     serving: 290,
     category: "beverage",
     nutrition: {
@@ -418,7 +444,8 @@ const products = [
   {
     name: "Death by Chocolate Cocktail",
     price: 25,
-    image: "",
+    image:
+      "https://res.cloudinary.com/dgwygf5i3/image/upload/v1703096455/ansnyec6dfuxiilhboio.jpg",
     serving: 350,
     category: "beverage",
     nutrition: {
@@ -432,93 +459,90 @@ const products = [
     available: true,
   },
   {
-    name: "",
-    price: 43,
-    image: "",
-    serving: 560,
+    name: "Cajun-Style Corn on the Cob",
+    price: 15,
+    image:
+      "https://res.cloudinary.com/dgwygf5i3/image/upload/v1703096496/aldvpfbfmorhxptkuy2w.jpg",
+    serving: 300,
     category: "side",
     nutrition: {
-      calories: 1028,
-      protein: 11,
-      carbs: 67,
-      fats: 32,
+      calories: 278,
+      protein: 6,
+      carbs: 31,
+      fats: 12,
     },
-    description: "",
+    description:
+      "Immerse your taste buds in a burst of flavors with our Cajun-Style Corn on the Cob. Each succulent ear is grilled to perfection and generously coated with a zesty Cajun spice blend, creating a harmonious marriage of smokiness and heat that will transport you straight to the heart of Louisiana.",
     available: true,
   },
   {
-    name: "",
-    price: 43,
-    image: "",
-    serving: 560,
+    name: "Southern Fried Green Tomatoes",
+    price: 24,
+    image:
+      "https://res.cloudinary.com/dgwygf5i3/image/upload/v1703096534/znkhh6tyh7mldpdrihna.jpg",
+    serving: 254,
     category: "side",
     nutrition: {
-      calories: 1028,
-      protein: 11,
-      carbs: 67,
-      fats: 32,
+      calories: 189,
+      protein: 3,
+      carbs: 24,
+      fats: 8,
     },
-    description: "",
+    description:
+      "Our Southern Fried Green Tomatoes are a delightful twist on a Southern classic. Sliced green tomatoes are delicately coated in a crispy cornmeal crust, then fried to a golden perfection. The result is a tantalizing dish with a crunchy exterior that gives way to the tangy and slightly tart goodness of the green tomatoes inside.",
     available: true,
   },
   {
-    name: "",
-    price: 43,
-    image: "",
-    serving: 560,
+    name: "Butternut Squash Latkes With Caramelized Fennel Jam",
+    price: 32,
+    image:
+      "https://res.cloudinary.com/dgwygf5i3/image/upload/v1703096577/ygvdw2vmzuuzp8wwnemt.jpg",
+    serving: 456,
     category: "side",
     nutrition: {
-      calories: 1028,
-      protein: 11,
-      carbs: 67,
+      calories: 568,
+      protein: 19,
+      carbs: 39,
       fats: 32,
     },
-    description: "",
+    description:
+      "Elevate your palate with our Butternut Squash Latkes paired with Caramelized Fennel Jam. These golden, crispy latkes are crafted from a blend of grated butternut squash and potatoes, creating a delightful medley of sweetness and earthiness. The dish is then crowned with a luscious caramelized fennel jam, adding a touch of sophistication to this classic comfort food.",
     available: true,
   },
   {
-    name: "",
-    price: 43,
-    image: "",
-    serving: 560,
+    name: "Air Fryer French Fries",
+    price: 13,
+    image:
+      "https://res.cloudinary.com/dgwygf5i3/image/upload/v1703096647/zyy6ryboywhcvrgvhfje.jpg",
+    serving: 500,
     category: "side",
     nutrition: {
-      calories: 1028,
-      protein: 11,
-      carbs: 67,
-      fats: 32,
+      calories: 623,
+      protein: 3,
+      carbs: 43,
+      fats: 28,
     },
-    description: "",
+    description:
+      "Savor the guilt-free indulgence of our Air Fryer French Fries, where crispy perfection meets a lighter alternative. These golden fries are air-fried to a delightful crispiness, preserving that beloved potato flavor while minimizing the oil content. A side that satisfies your cravings without compromising on taste.",
     available: true,
   },
   {
-    name: "",
-    price: 43,
-    image: "",
-    serving: 560,
+    name: "Air Fryer Onion Rings",
+    price: 22,
+    image:
+      "https://res.cloudinary.com/dgwygf5i3/image/upload/v1703096699/qekmjnsegdhftdph5djb.jpg",
+    serving: 395,
     category: "side",
     nutrition: {
-      calories: 1028,
-      protein: 11,
-      carbs: 67,
-      fats: 32,
+      calories: 233,
+      protein: 2,
+      carbs: 26,
+      fats: 12,
     },
-    description: "",
-    available: true,
-  },
-  {
-    name: "",
-    price: 43,
-    image: "",
-    serving: 560,
-    category: "side",
-    nutrition: {
-      calories: 1028,
-      protein: 11,
-      carbs: 67,
-      fats: 32,
-    },
-    description: "",
+    description:
+      "Experience the ultimate crunch with our Air Fryer Onion Rings. Each ring boasts a golden, crispy coating achieved through the magic of air frying, revealing the sweet and savory essence of the onion inside. A guilt-free, flavorful indulgence that will have you reaching for more.",
     available: true,
   },
 ];
+
+module.exports = products;
