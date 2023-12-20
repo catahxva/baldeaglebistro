@@ -1,0 +1,24 @@
+const express = require("express");
+
+const orderController = require("../controllers/orderController");
+const authController = require("../controllers/authController");
+
+const router = express.Router();
+
+router.get("/", authController.protect, orderController.getOrders);
+router.get(
+  "/all",
+  authController.protect,
+  authController.protectRole,
+  orderController.getAllOrders
+);
+
+router.get("/one-order/:id", orderController.getOrder);
+
+router.post(
+  `/create-payment`,
+  authController.isLoggedIn,
+  orderController.createPaymentIntent
+);
+
+module.exports = router;
