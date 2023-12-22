@@ -17,10 +17,13 @@ router
     productsController.deleteProduct
   );
 
-router.route("/").get(productsController.getAllProducts).post(
-  // authController.protect,
-  // authController.protectRole,
-  productsController.createProduct
-);
+router
+  .route("/")
+  .get(productsController.getAllProducts)
+  .post(
+    authController.protect,
+    authController.protectRole,
+    productsController.createProduct
+  );
 
 module.exports = router;
