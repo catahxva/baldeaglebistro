@@ -1,0 +1,31 @@
+.offerings__grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 5rem;
+  row-gap: 4rem;
+  margin-bottom: 5rem;
+}
+
+.offerings__card {
+  width: 100%;
+  height: 45rem;
+  background-color: #fff;
+  border-radius: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  overflow: hidden;
+}
+
+.offerings__card__info {
+  width: 100%;
+  height: 16rem;
+  background-color: #ff8c00;
+}
+
+.offerings__container__cta {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}

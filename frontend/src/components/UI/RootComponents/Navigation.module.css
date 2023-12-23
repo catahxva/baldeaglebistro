@@ -1,0 +1,89 @@
+.nav {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  color: #ff8c00;
+  font-family: "Oswald", sans-serif;
+}
+
+.nav__interior {
+  max-width: 120rem;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2rem;
+  border-bottom: 1px solid #ff8c00;
+}
+
+.nav__group {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav__link:link,
+.nav__link:visited {
+  font-family: inherit;
+  text-decoration: none;
+  font-size: 2rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: inherit;
+  transition: all 0.5s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav__link:hover,
+.nav__link:active {
+  color: #f5f5f5;
+}
+
+.nav__link__cart {
+  position: relative;
+}
+
+.nav__logo {
+  font-size: 2.4rem;
+}
+
+.nav__svg {
+  width: 2.5rem;
+  height: 2.5rem;
+  color: #ff8c00;
+  transition: all 0.5s;
+}
+
+.nav__svg:hover {
+  color: #f5f5f5;
+}
+
+.nav__cart__amount {
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  background-color: #f5f5f5;
+  border-radius: 50%;
+  position: absolute;
+  top: -0.8rem;
+  right: -0.8rem;
+}
+
+.nav__cart__amount__span {
+  font-size: 1.2rem;
+  color: #222;
+  display: block;
+  margin-bottom: 0.1rem;
+  margin-left: 0.1rem;
+}
+
+.nav__mobile__btn {
+  display: none;
+  visibility: hidden;
+}

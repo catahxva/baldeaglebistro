@@ -14,4 +14,58 @@ body {
   font-family: "Montserrat", sans-serif;
   overflow-x: hidden;
   background-color: #222;
+  color: #f5f5f5;
+}
+
+section {
+  max-width: 120rem;
+  margin: 0 auto;
+  padding: 2rem;
+  padding-bottom: 8rem;
+}
+
+h2 {
+  font-size: 3rem;
+  font-weight: 700;
+  font-family: "Oswald", sans-serif;
+  margin-bottom: 3rem;
+  text-transform: uppercase;
+  color: #ff8c00;
+}
+
+p {
+  font-size: 1.6rem;
+  line-height: 1.4;
+  font-weight: 300;
+  margin-bottom: 2rem;
+}
+
+.basic__btn__styling {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+}
+
+.big__button {
+  color: #fff;
+  text-decoration: none;
+  padding: 0.8rem 1.2rem;
+  border-radius: 0.5rem;
+  background-color: #ff8c00;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  font-family: "Oswald", sans-serif;
+  font-weight: 700;
+}
+
+.text__button {
+  color: #fff;
+  text-decoration: underline;
+  text-decoration-color: #fff;
+  font-size: 1.8rem;
+  font-weight: 500;
+  font-family: "Oswald", sans-serif;
 }
