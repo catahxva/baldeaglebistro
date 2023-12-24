@@ -3,6 +3,8 @@ import classes from "./Navigation.module.css";
 import { Link } from "react-router-dom";
 
 function Navigation({ openMobileNav }) {
+  const cartAmount = 0;
+
   return (
     <nav className={classes.nav}>
       <div className={classes.nav__interior}>
@@ -46,7 +48,9 @@ function Navigation({ openMobileNav }) {
               />
             </svg>
             <div className={classes.nav__cart__amount}>
-              <span className={classes.nav__cart__amount__span}>10</span>
+              <span className={classes.nav__cart__amount__span}>
+                {cartAmount}
+              </span>
             </div>
           </Link>
           <Link className={classes.nav__link}>Signup</Link>
