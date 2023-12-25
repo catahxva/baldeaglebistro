@@ -1,0 +1,46 @@
+.staff__grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  column-gap: 6rem;
+}
+
+.staff__container__members {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+}
+
+.staff__member {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.staff__member__container__img {
+  width: 22rem;
+  height: 22rem;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.staff__member__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.staff__member__container__text {
+  width: calc(100% - 24rem);
+}
+
+.staff__member__text {
+  font-size: 1.4rem;
+  font-weight: 300;
+}
+
+.staff__member__name {
+  font-size: 1.6rem;
+  font-weight: 500;
+}

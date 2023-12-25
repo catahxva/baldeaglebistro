@@ -1,6 +1,10 @@
 import classes from "./LatestContent.module.css";
 
-import Slider from "../Others/Slider";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Keyboard, A11y } from "swiper/modules";
+import "swiper/css/bundle";
+
+import ProductCard from "../Others/ProductCard";
 
 const SELECTED_DATA = {
   appetizers: {
@@ -27,7 +31,22 @@ function LatestContent({ enabledQuery, products }) {
     <div className={classes.latest__content}>
       <h3 className={classes.latest__content__title}>{title}</h3>
       <p>{description}</p>
-      <Slider />
+      <Swiper
+        className={classes.latest__content__swiper}
+        modules={[Navigation, Keyboard, A11y]}
+        navigation
+        keyboard
+        spaceBetween={30}
+        slidesPerView={3}
+      >
+        {products.map((product) => {
+          return (
+            <SwiperSlide key={product._id}>
+              <ProductCard product={product} />
+            </SwiperSlide>
+          );
+        })}
+      </Swiper>
     </div>
   );
 }

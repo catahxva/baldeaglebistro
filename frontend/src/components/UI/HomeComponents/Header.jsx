@@ -18,7 +18,7 @@ function Header() {
         </p>
         <div className={classes.header__container__btns}>
           <ButtonLink className="big__button">Shop Now</ButtonLink>
-          <ButtonLink className="text__button">Location</ButtonLink>
+          <ButtonLink className="text__button">Register</ButtonLink>
         </div>
       </div>
       <div

@@ -27,4 +27,10 @@
   border: none;
   font-size: 2.8rem;
   font-weight: 700;
+  transition: all 0.5s;
+}
+
+.latest__btn__active {
+  color: #ff8c00;
+  background-color: #fff;
 }

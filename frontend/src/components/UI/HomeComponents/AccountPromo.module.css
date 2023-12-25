@@ -1,0 +1,40 @@
+.account__container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.account__grid {
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 6rem;
+  margin-bottom: 4rem;
+}
+
+.account__card {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.account__card__svg {
+  width: 6rem;
+  height: 6rem;
+  color: #ff8c00;
+}
+
+.account__card__title {
+  font-size: 2.6rem;
+  font-weight: 500;
+  font-family: "Oswald", sans-serif;
+  margin-bottom: 1rem;
+}
+
+.account__card__text {
+  font-size: 1.4rem;
+  font-weight: 300;
+}

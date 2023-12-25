@@ -3,8 +3,15 @@
   width: 100%;
   top: 0;
   left: 0;
+  z-index: 9999;
   color: #ff8c00;
   font-family: "Oswald", sans-serif;
+  transition: all 0.5s;
+}
+
+.nav__scroll {
+  color: #fff;
+  background-color: #ff8c00;
 }
 
 .nav__interior {
@@ -15,6 +22,11 @@
   justify-content: space-between;
   padding: 2rem;
   border-bottom: 1px solid #ff8c00;
+  transition: all 0.5s;
+}
+
+.nav__interior__scroll {
+  border-bottom: 1px solid transparent;
 }
 
 .nav__group {
@@ -31,7 +43,6 @@
   text-transform: uppercase;
   font-weight: 700;
   color: inherit;
-  transition: all 0.5s;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -61,6 +72,10 @@
   color: #f5f5f5;
 }
 
+.nav__svg__scroll {
+  color: #fff;
+}
+
 .nav__cart__amount {
   width: 2rem;
   height: 2rem;
@@ -84,6 +99,12 @@
 }
 
 .nav__mobile__btn {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
   display: none;
   visibility: hidden;
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
 }

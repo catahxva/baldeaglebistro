@@ -15,3 +15,15 @@ export const fetchProducts = async function (signal, queryString) {
 
   return data;
 };
+
+export const fetchProduct = async function (signal, id) {
+  const response = await fetch(`${baseUrl}products/one-product/${id}`, {
+    signal,
+  });
+
+  const data = await response.json();
+
+  if (data.status === "fail") throw new Error(data.message);
+
+  return data;
+};

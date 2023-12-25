@@ -1,19 +1,39 @@
 import classes from "./Navigation.module.css";
 
+import { useState, useEffect } from "react";
+
 import { Link } from "react-router-dom";
 
 function Navigation({ openMobileNav }) {
+  const isAuth = false;
   const cartAmount = 0;
 
+  const [scrollDirection, setScrollDirection] = useState("up");
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 0) setScrollDirection("down");
+    if (window.scrollY === 0) setScrollDirection("up");
+  });
+
   return (
-    <nav className={classes.nav}>
-      <div className={classes.nav__interior}>
+    <nav
+      className={`${classes.nav} ${
+        scrollDirection === "down" ? classes.nav__scroll : ""
+      }`}
+    >
+      <div
+        className={`${classes.nav__interior} ${
+          scrollDirection === "down" ? classes.nav__interior__scroll : ""
+        }`}
+      >
         <Link className={`${classes.nav__link} ${classes.nav__logo}`}>
           Bold Eagle
         </Link>
         <div className={classes.nav__group}>
           <Link className={classes.nav__link}>Products</Link>
-          <Link className={classes.nav__link}>Offerings</Link>
+          <Link to="/categories" className={classes.nav__link}>
+            Offerings
+          </Link>
         </div>
         <div className={classes.nav__group}>
           <Link className={classes.nav__link}>
@@ -23,7 +43,9 @@ function Navigation({ openMobileNav }) {
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
-              className={`w-6 h-6 ${classes.nav__svg}`}
+              className={`w-6 h-6 ${classes.nav__svg} ${
+                scrollDirection === "down" ? classes.nav__svg__scroll : ""
+              }`}
             >
               <path
                 strokeLinecap="round"
@@ -39,7 +61,9 @@ function Navigation({ openMobileNav }) {
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
-              className={`w-6 h-6 ${classes.nav__svg}`}
+              className={`w-6 h-6 ${classes.nav__svg} ${
+                scrollDirection === "down" ? classes.nav__svg__scroll : ""
+              }`}
             >
               <path
                 strokeLinecap="round"
@@ -53,16 +77,45 @@ function Navigation({ openMobileNav }) {
               </span>
             </div>
           </Link>
-          <Link className={classes.nav__link}>Signup</Link>
-          <Link className={classes.nav__link}>Login</Link>
-          <button className={`basic__btn__styling ${classes.nav__mobile__btn}`}>
+          {!isAuth && (
+            <>
+              <Link className={classes.nav__link}>Signup</Link>
+              <Link className={classes.nav__link}>Login</Link>
+            </>
+          )}
+          {isAuth && (
+            <Link className={classes.nav__link}>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className={`w-6 h-6 ${classes.nav__svg} ${
+                  scrollDirection === "down" ? classes.nav__svg__scroll : ""
+                }`}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
+                />
+              </svg>
+            </Link>
+          )}
+          <button
+            className={classes.nav__mobile__btn}
+            onClick={() => openMobileNav(true)}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="currentColor"
-              className={`w-6 h-6 ${classes.nav__svg}`}
+              className={`w-6 h-6 ${classes.nav__svg} ${
+                scrollDirection === "down" ? classes.nav__svg__scroll : ""
+              }`}
             >
               <path
                 strokeLinecap="round"

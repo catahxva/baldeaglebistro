@@ -12,7 +12,10 @@ function Root() {
   return (
     <>
       <Navigation openMobileNav={setMobileNavActive} />
-      <MobileNav closeMobileNav={setMobileNavActive} />
+      <MobileNav
+        mobileNavActive={mobileNavActive}
+        closeMobileNav={setMobileNavActive}
+      />
       <main>
         <Outlet />
       </main>

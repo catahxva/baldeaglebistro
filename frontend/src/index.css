@@ -40,13 +40,18 @@ p {
   margin-bottom: 2rem;
 }
 
-.basic__btn__styling {
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  /* display: flex;
-  align-items: center;
-  justify-content: center; */
+/* .page {
+  margin-top: 10rem;
+  min-height: 100vh;
+} */
+
+.first__section {
+  margin-top: 10rem;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  color: #ff8c00 !important;
 }
 
 .big__button {

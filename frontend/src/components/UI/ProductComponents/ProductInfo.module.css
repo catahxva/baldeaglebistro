@@ -1,0 +1,122 @@
+.product__info__grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 6rem;
+}
+
+.product__info__container__img {
+  width: 100%;
+  height: 40rem;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.product__info__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product__info__category {
+  font-size: 3rem;
+  font-family: "Oswald", sans-serif;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  text-transform: capitalize;
+}
+
+.product__info__container__price {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+.product__info__price {
+  font-size: 2.8rem;
+  font-family: "Oswald", sans-serif;
+  font-weight: 500;
+}
+
+.product__info__span {
+  font-size: 2.2rem;
+}
+
+.product__info__quantity__controller {
+  width: 10rem;
+}
+
+.product__info__quantity__controller__buttons {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.product__info__btn {
+  background-color: #fff;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.product__info__btn:focus {
+  outline: none;
+}
+
+.product__info__svg {
+  width: 1.8rem;
+  height: 1.8rem;
+  color: #ff8c00;
+}
+
+.product__info__quantity {
+  font-size: 2.2rem;
+  font-family: "Oswald", sans-serif;
+  font-weight: 500;
+}
+
+.product__info__btn__add {
+  width: 100%;
+  padding: 0.8rem 1.2rem;
+  text-align: center;
+  font-family: "Oswald", sans-serif;
+  border: none;
+  background-color: #ff8c00;
+  color: #fff;
+  font-weight: 700;
+  border-radius: 0.5rem;
+  text-transform: uppercase;
+}
+
+.product__info__btn__add:focus {
+  outline: none;
+}
+
+.product__info__container__nutrition {
+  margin-bottom: 3.5rem;
+}
+
+.product__info__nutrition__row {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 1rem;
+}
+
+.product__info__nutrition__macro {
+  font-size: 2rem;
+  width: 20rem;
+  font-weight: 500;
+}
+
+.product__info__nutrition__value {
+  font-size: 2rem;
+}

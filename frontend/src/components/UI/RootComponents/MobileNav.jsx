@@ -1,4 +1,4 @@
-function MobileNav({ closeMobileNav }) {
+function MobileNav({ mobileNavActive, closeMobileNav }) {
   return;
 }
 

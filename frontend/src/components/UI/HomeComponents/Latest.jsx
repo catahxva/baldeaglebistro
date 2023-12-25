@@ -60,7 +60,14 @@ function Latest() {
       }
 
       if (appetizers) {
-        content = <LatestContent enabledQuery={enabledQuery} />;
+        const appetizersProducts = appetizers.data.data;
+
+        content = (
+          <LatestContent
+            enabledQuery={enabledQuery}
+            products={appetizersProducts}
+          />
+        );
       }
       break;
 
@@ -70,7 +77,11 @@ function Latest() {
       }
 
       if (main) {
-        content = <LatestContent enabledQuery={enabledQuery} />;
+        const mainProducts = main.data.data;
+
+        content = (
+          <LatestContent enabledQuery={enabledQuery} products={mainProducts} />
+        );
       }
       break;
 
@@ -80,7 +91,11 @@ function Latest() {
       }
 
       if (sides) {
-        content = <LatestContent enabledQuery={enabledQuery} />;
+        const sidesProducts = sides.data.data;
+
+        content = (
+          <LatestContent enabledQuery={enabledQuery} products={sidesProducts} />
+        );
       }
       break;
   }
@@ -92,19 +107,25 @@ function Latest() {
         <div className={classes.latest__container__btns}>
           <button
             onClick={() => setEnabledQuery("appetizers")}
-            className={classes.latest__btn}
+            className={`${classes.latest__btn} ${
+              enabledQuery === "appetizers" ? classes.latest__btn__active : ""
+            }`}
           >
             1
           </button>
           <button
             onClick={() => setEnabledQuery("main")}
-            className={classes.latest__btn}
+            className={`${classes.latest__btn} ${
+              enabledQuery === "main" ? classes.latest__btn__active : ""
+            }`}
           >
             2
           </button>
           <button
             onClick={() => setEnabledQuery("sides")}
-            className={classes.latest__btn}
+            className={`${classes.latest__btn} ${
+              enabledQuery === "sides" ? classes.latest__btn__active : ""
+            }`}
           >
             3
           </button>
