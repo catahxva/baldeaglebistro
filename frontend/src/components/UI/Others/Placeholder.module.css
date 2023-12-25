@@ -8,3 +8,19 @@
 .placeholder__error {
   font-size: 3rem;
 }
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.placeholder__svg {
+  width: 6rem;
+  height: 6rem;
+  color: #fff;
+  animation: spin infinite 3s linear;
+}

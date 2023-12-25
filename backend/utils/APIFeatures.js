@@ -1,10 +1,7 @@
 exports.createFilters = (query) => {
   const filters = {};
 
-  console.log(query);
-
   if (query.category) {
-    console.log(query.category);
     filters.category = query.category;
   }
 

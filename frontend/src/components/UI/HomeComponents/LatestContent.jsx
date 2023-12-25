@@ -1,5 +1,7 @@
 import classes from "./LatestContent.module.css";
 
+import Slider from "../Others/Slider";
+
 const SELECTED_DATA = {
   appetizers: {
     title: "Appetizers",
@@ -25,6 +27,7 @@ function LatestContent({ enabledQuery, products }) {
     <div className={classes.latest__content}>
       <h3 className={classes.latest__content__title}>{title}</h3>
       <p>{description}</p>
+      <Slider />
     </div>
   );
 }

@@ -11,6 +11,8 @@ import Placeholder from "../Others/Placeholder";
 function Latest() {
   const [enabledQuery, setEnabledQuery] = useState("appetizers");
 
+  const createQueryStr = (category) => `?category=${category}&sort=latest`;
+
   const {
     data: appetizers,
     isPending: isPendingAppetizers,
@@ -18,8 +20,7 @@ function Latest() {
     error: appetizersError,
   } = useQuery({
     queryKey: ["appetizers"],
-    queryFn: ({ signal }) =>
-      fetchProducts(signal, "?category=appetizer&sort=latest"),
+    queryFn: ({ signal }) => fetchProducts(signal, createQueryStr("appetizer")),
   });
 
   const {
@@ -29,8 +30,7 @@ function Latest() {
     error: mainError,
   } = useQuery({
     queryKey: ["main"],
-    queryFn: ({ signal }) =>
-      fetchProducts(signal, "?category=main dish&sort=latest"),
+    queryFn: ({ signal }) => fetchProducts(signal, createQueryStr("main dish")),
     enabled: enabledQuery === "main",
   });
 
@@ -41,8 +41,7 @@ function Latest() {
     error: sidesError,
   } = useQuery({
     queryKey: ["sides"],
-    queryFn: ({ signal }) =>
-      fetchProducts(signal, "?category=side&sort=latest"),
+    queryFn: ({ signal }) => fetchProducts(signal, createQueryStr("side")),
     enabled: enabledQuery === "sides",
   });
 
