@@ -1,0 +1,10 @@
+.latest__content {
+  width: 100%;
+}
+
+.latest__content__title {
+  font-size: 3.6rem;
+  font-family: "Oswald", sans-serif;
+  font-weight: 500;
+  margin-bottom: 1.2rem;
+}

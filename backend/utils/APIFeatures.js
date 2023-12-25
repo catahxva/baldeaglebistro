@@ -1,8 +1,11 @@
 exports.createFilters = (query) => {
   const filters = {};
 
+  console.log(query);
+
   if (query.category) {
-    filters.category = gender;
+    console.log(query.category);
+    filters.category = query.category;
   }
 
   if (query.search) {
@@ -32,6 +35,10 @@ exports.createSort = (query) => {
 
   if (query.sort === "ratingDescending") {
     sortCriteria = { rating: -1 };
+  }
+
+  if (query.sort === "latest") {
+    sortCriteria = { createdAt: -1 };
   }
 
   return sortCriteria;

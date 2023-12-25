@@ -1,0 +1,10 @@
+.placeholder {
+  height: 60rem;
+  display: flex;
+  align-items: center;
+  justify-self: center;
+}
+
+.placeholder__error {
+  font-size: 3rem;
+}

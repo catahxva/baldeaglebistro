@@ -5,6 +5,10 @@ const productSchema = new mongoose.Schema({
     type: String,
     required: [true, "Product requires a name"],
   },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
   price: {
     type: Number,
     required: [true, "Product requires a price"],
