@@ -9,11 +9,11 @@ const ratingSchema = new mongoose.Schema(
       max: 5,
       required: [true],
     },
-    user: {
-      type: mongoose.Schema.ObjectId,
-      ref: "User",
-      required: [true, "A rating must belong to an user"],
-    },
+    // user: {
+    //   type: mongoose.Schema.ObjectId,
+    //   ref: "User",
+    //   required: [true, "A rating must belong to an user"],
+    // },
     product: {
       type: mongoose.Schema.ObjectId,
       ref: "Product",

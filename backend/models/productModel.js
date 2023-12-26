@@ -53,6 +53,10 @@ const productSchema = new mongoose.Schema({
     default: 0,
     max: [5, "Rating must be below 5"],
   },
+  orderCount: {
+    type: Number,
+    default: 0,
+  },
   available: {
     type: Boolean,
   },

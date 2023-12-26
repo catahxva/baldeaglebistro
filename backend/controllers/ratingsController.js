@@ -27,7 +27,7 @@ exports.createRating = async function (req, res, next) {
     await Rating.create({
       rating: req.body.rating,
       product: req.body.id,
-      user: req.user?.id,
+      // user: req.user?.id,
     });
 
     res.status(201).json({
@@ -35,6 +35,7 @@ exports.createRating = async function (req, res, next) {
       message: "Your rating has been posted successfully!",
     });
   } catch (err) {
+    console.log(err);
     sendError(
       res,
       400,

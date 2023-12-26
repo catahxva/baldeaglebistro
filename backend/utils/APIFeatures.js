@@ -2,7 +2,9 @@ exports.createFilters = (query) => {
   const filters = {};
 
   if (query.category) {
-    filters.category = query.category;
+    filters.category = {
+      $in: query.category.split(","),
+    };
   }
 
   if (query.search) {
@@ -36,6 +38,10 @@ exports.createSort = (query) => {
 
   if (query.sort === "latest") {
     sortCriteria = { createdAt: -1 };
+  }
+
+  if (query.sort === "popular") {
+    sortCriteria = { orderCount: -1 };
   }
 
   return sortCriteria;

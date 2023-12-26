@@ -7,8 +7,8 @@ const router = express.Router();
 
 router.post(
   "/create-rating",
-  authController.protect,
-  ratingsController.verifyExistingRating,
+  // authController.protect,
+  // ratingsController.verifyExistingRating,
   ratingsController.createRating
 );
 

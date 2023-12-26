@@ -1,0 +1,19 @@
+.product__recommend__grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: calc(100% - 38rem) 35rem;
+  column-gap: 3rem;
+  margin-bottom: 5rem;
+  justify-content: space-between;
+}
+
+.product__recommend__title {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  font-family: "Oswald", sans-serif;
+  font-weight: 500;
+}
+
+.product__recommend__swiper {
+  width: 35rem;
+}

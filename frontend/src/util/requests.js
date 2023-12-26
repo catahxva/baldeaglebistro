@@ -27,3 +27,23 @@ export const fetchProduct = async function (signal, id) {
 
   return data;
 };
+
+export const sendRating = async function ({ id, rating }) {
+  if (!id) throw new Error("An ID must be provided to perform this action");
+  if (!rating)
+    throw new Error("You must provide a rating to perform this action");
+
+  const response = await fetch(`${baseUrl}ratings/create-rating`, {
+    method: "POST",
+    body: JSON.stringify({ id, rating }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  const data = await response.json();
+
+  if (data.status === "fail") throw new Error(data.message);
+
+  return data.message;
+};
