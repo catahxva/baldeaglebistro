@@ -53,6 +53,10 @@ p {
   padding-bottom: 4rem;
 }
 
+.section__min__height {
+  min-height: 80vh;
+}
+
 .swiper-button-next,
 .swiper-button-prev {
   color: #ff8c00 !important;

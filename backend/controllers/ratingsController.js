@@ -27,12 +27,13 @@ exports.createRating = async function (req, res, next) {
     await Rating.create({
       rating: req.body.rating,
       product: req.body.id,
-      // user: req.user?.id,
+      user: req.user.id,
     });
 
     res.status(201).json({
       status: "success",
-      message: "Your rating has been posted successfully!",
+      message:
+        "Your rating has been uploaded successfully and it will be posted soon!",
     });
   } catch (err) {
     console.log(err);

@@ -52,6 +52,7 @@ function RatingModal({ active, closeModal, id }) {
                       : ""
                   } ${hasRated ? classes.rating__modal__star__disabled : ""}`}
                   onClick={() => setActiveIndex(i)}
+                  key={i}
                 >
                   <path
                     fillRule="evenodd"

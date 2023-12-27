@@ -1,6 +1,6 @@
 import classes from "./Navigation.module.css";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 
 import { Link } from "react-router-dom";
@@ -15,10 +15,18 @@ function Navigation({ openMobileNav }) {
 
   const [scrollDirection, setScrollDirection] = useState("up");
 
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 0) setScrollDirection("down");
-    if (window.scrollY === 0) setScrollDirection("up");
-  });
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) setScrollDirection("down");
+      if (window.scrollY === 0) setScrollDirection("up");
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <nav

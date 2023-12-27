@@ -5,15 +5,15 @@ const ratingSchema = new mongoose.Schema(
   {
     rating: {
       type: Number,
-      min: 1,
-      max: 5,
+      min: [1, "Rating cannot be lower than one"],
+      max: [5, "Rating cannot be higher than five"],
       required: [true],
     },
-    // user: {
-    //   type: mongoose.Schema.ObjectId,
-    //   ref: "User",
-    //   required: [true, "A rating must belong to an user"],
-    // },
+    user: {
+      type: mongoose.Schema.ObjectId,
+      ref: "User",
+      required: [true, "A rating must belong to an user"],
+    },
     product: {
       type: mongoose.Schema.ObjectId,
       ref: "Product",

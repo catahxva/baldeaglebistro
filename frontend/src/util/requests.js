@@ -28,6 +28,22 @@ export const fetchProduct = async function (signal, id) {
   return data;
 };
 
+export const obtainCartProducts = async function (cartItems) {
+  const response = await fetch(`${baseUrl}products/cart-items`, {
+    method: "POST",
+    body: JSON.stringify({ products: cartItems }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  const data = await response.json();
+
+  if (data.status === "fail") throw new Error(data.message);
+
+  return data;
+};
+
 export const sendRating = async function ({ id, rating }) {
   if (!id) throw new Error("An ID must be provided to perform this action");
   if (!rating)
