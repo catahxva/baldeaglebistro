@@ -1,7 +1,7 @@
 .product__recommend__grid {
   width: 100%;
   display: grid;
-  grid-template-columns: calc(100% - 38rem) 35rem;
+  grid-template-columns: calc(100% - 73rem) 70rem;
   column-gap: 3rem;
   margin-bottom: 5rem;
   justify-content: space-between;
@@ -15,5 +15,5 @@
 }
 
 .product__recommend__swiper {
-  width: 35rem;
+  width: 70rem;
 }

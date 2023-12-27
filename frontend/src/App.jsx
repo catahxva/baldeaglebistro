@@ -5,6 +5,7 @@ import Root from "./components/pages/Root";
 import Home from "./components/pages/Home";
 import Categories from "./components/pages/Categories";
 import Product from "./components/pages/Product";
+import Cart from "./components/pages/Cart";
 
 import { queryClient } from "./util/queryClient";
 
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
       {
         path: "/product/:id",
         element: <Product />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
     ],
   },

@@ -2,7 +2,12 @@ import classes from "./ProductCard.module.css";
 
 import { Link } from "react-router-dom";
 
+import { useDispatch } from "react-redux";
+import { addProductToCart } from "../../../store/cartActions";
+
 function ProductCard({ product }) {
+  const dispatch = useDispatch();
+
   return (
     <div className={classes.product__card}>
       <Link
@@ -34,7 +39,10 @@ function ProductCard({ product }) {
           >
             Details
           </Link>
-          <button className={classes.product__card__button}>
+          <button
+            className={classes.product__card__button}
+            onClick={() => dispatch(addProductToCart(product._id, 1))}
+          >
             {product.available ? "Add to cart" : "Unavailable"}
           </button>
         </div>

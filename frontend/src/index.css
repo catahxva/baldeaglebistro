@@ -49,6 +49,10 @@ p {
   margin-top: 10rem;
 }
 
+.smaller__padding {
+  padding-bottom: 4rem;
+}
+
 .swiper-button-next,
 .swiper-button-prev {
   color: #ff8c00 !important;

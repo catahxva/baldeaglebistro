@@ -1,12 +1,17 @@
 import classes from "./Navigation.module.css";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { useSelector } from "react-redux";
 
 import { Link } from "react-router-dom";
 
 function Navigation({ openMobileNav }) {
+  const cartItems = useSelector((state) => state.cart.items).reduce(
+    (acc, current) => acc + current.quantity,
+    0
+  );
+
   const isAuth = false;
-  const cartAmount = 0;
 
   const [scrollDirection, setScrollDirection] = useState("up");
 
@@ -54,7 +59,10 @@ function Navigation({ openMobileNav }) {
               />
             </svg>
           </Link>
-          <Link className={`${classes.nav__link} ${classes.nav__link__cart}`}>
+          <Link
+            to="/cart"
+            className={`${classes.nav__link} ${classes.nav__link__cart}`}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -73,7 +81,7 @@ function Navigation({ openMobileNav }) {
             </svg>
             <div className={classes.nav__cart__amount}>
               <span className={classes.nav__cart__amount__span}>
-                {cartAmount}
+                {cartItems}
               </span>
             </div>
           </Link>

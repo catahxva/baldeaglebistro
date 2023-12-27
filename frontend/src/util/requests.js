@@ -1,4 +1,4 @@
-const baseUrl = `http://localhost:3000/api/`;
+export const baseUrl = `http://localhost:3000/api/`;
 
 export const fetchProducts = async function (signal, queryString) {
   const url = queryString
