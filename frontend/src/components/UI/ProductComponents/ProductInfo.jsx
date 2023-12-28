@@ -1,12 +1,17 @@
 import classes from "./ProductInfo.module.css";
 
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+
+import { addProductToCart } from "../../../store/cartActions";
 
 import RatingModal from "./RatingModal";
 
 function ProductInfo({ product }) {
   const [activeModal, setActiveModal] = useState(false);
   const [quantity, setQuantity] = useState(1);
+
+  const dispatch = useDispatch();
 
   const price = product.price * quantity;
   const servings = product.serving * quantity;
@@ -159,6 +164,9 @@ function ProductInfo({ product }) {
                 </div>
                 <button
                   className={`${classes.product__info__big__btn} ${classes.product__info__btn__add}`}
+                  onClick={() =>
+                    dispatch(addProductToCart(product._id, quantity))
+                  }
                 >
                   Add To Cart
                 </button>

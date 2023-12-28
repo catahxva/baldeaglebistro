@@ -1,8 +1,14 @@
 import classes from "./Placeholder.module.css";
 
-function Placeholder({ message, type }) {
+function Placeholder({ message, type, size }) {
+  let additionalClass;
+
+  if (size === "small") additionalClass = classes.placeholder__smaller__height;
+
+  if (size === "big") additionalClass = classes.placeholder__bigger__height;
+
   return (
-    <div className={classes.placeholder}>
+    <div className={`${classes.placeholder} ${additionalClass}`}>
       {type === "error" ? (
         <span className={classes.placeholder__error}>{message}</span>
       ) : (

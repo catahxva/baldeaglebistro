@@ -1,0 +1,78 @@
+.cart__item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #ff8c00;
+}
+
+.cart__item:last-child {
+  border-bottom: none;
+}
+
+.cart__item__container__info {
+  width: 25rem;
+}
+
+.cart__item__name {
+  text-decoration: none;
+  color: #ff8c00;
+  font-family: "Oswald", sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+.cart__item__category {
+  font-size: 1.4rem;
+  text-transform: capitalize;
+}
+
+.cart__item__container {
+  width: 4rem;
+  display: flex;
+  justify-content: center;
+}
+
+.cart__item__span {
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+
+.cart__item__container__big {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+
+.cart__item__container__quantity__controller {
+  width: 10rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.cart__item__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  background-color: transparent;
+}
+
+.cart__item__btn__quantity {
+  background-color: #ff8c00;
+  border-radius: 0.8rem;
+}
+
+.cart__item__svg {
+  width: 1.6rem;
+  height: 1.6rem;
+  color: #fff;
+}

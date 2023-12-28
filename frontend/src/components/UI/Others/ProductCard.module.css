@@ -77,3 +77,8 @@
   border: none;
   cursor: pointer;
 }
+
+.product__card__button:disabled {
+  background-color: #777;
+  cursor: default;
+}

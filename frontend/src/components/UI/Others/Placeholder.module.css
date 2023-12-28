@@ -6,6 +6,14 @@
   justify-content: center;
 }
 
+.placeholder__bigger__height {
+  height: 80vh;
+}
+
+.placeholder__smaller__height {
+  height: 20rem;
+}
+
 .placeholder__error {
   font-size: 3rem;
 }

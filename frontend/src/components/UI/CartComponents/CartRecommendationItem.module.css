@@ -1,0 +1,66 @@
+.cart__rec__item {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.cart__rec__item__container {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.cart__rec__item__container__img {
+  width: 10rem;
+  height: 10rem;
+  display: block;
+  text-decoration: none;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.cart__rec__item__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cart__rec__item__container__info {
+  width: 20rem;
+}
+
+.cart__rec__item__name {
+  font-size: 1.6rem;
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+.cart__rec__item__calories {
+  font-size: 1.2rem;
+  display: block;
+  margin-bottom: 0.6rem;
+}
+
+.cart__rec__item__price {
+  font-size: 1.6rem;
+  font-weight: 500;
+}
+
+.cart__rec__item__btn {
+  font-size: 1.6rem;
+  font-family: "Oswald";
+  font-weight: 700;
+  padding: 0.4rem 0.8rem;
+  text-transform: uppercase;
+  background-color: #ff8c00;
+  color: #fff;
+  border: none;
+  border-radius: 0.4rem;
+  cursor: pointer;
+}
+
+.cart__rec__item__btn:disabled {
+  background-color: #777;
+  cursor: default;
+}

@@ -41,6 +41,7 @@ function ProductCard({ product }) {
           </Link>
           <button
             className={classes.product__card__button}
+            disabled={!product.available}
             onClick={() => dispatch(addProductToCart(product._id, 1))}
           >
             {product.available ? "Add to cart" : "Unavailable"}

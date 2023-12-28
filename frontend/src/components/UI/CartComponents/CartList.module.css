@@ -1,0 +1,29 @@
+.cart__list__grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 6rem;
+}
+
+.cart__list__message {
+  font-size: 2rem;
+  font-weight: 500;
+  display: block;
+  margin-bottom: 2rem;
+}
+
+.cart__list__container__items {
+  margin-bottom: 2rem;
+}
+
+.cart__list__total {
+  font-size: 2.2rem;
+  font-family: "Oswald", sans-serif;
+  font-weight: 700;
+}
+
+.cart__list__container__total {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

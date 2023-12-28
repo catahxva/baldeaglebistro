@@ -4,6 +4,7 @@ const cartItemsLocalStorage = JSON.parse(localStorage.getItem("cartItems"));
 
 const initialCartState = {
   items: cartItemsLocalStorage || [],
+  unavailableItems: [],
 };
 
 export const cartSlice = createSlice({
@@ -63,6 +64,11 @@ export const cartSlice = createSlice({
     },
     clearCart(state) {
       state.items = [];
+    },
+    addProductToUnavailableList(state, action) {
+      action.payload.unavailableItems.forEach((item) => {
+        state.unavailableItems.push(item);
+      });
     },
   },
 });

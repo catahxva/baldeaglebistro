@@ -1,0 +1,6 @@
+.checkout__content__grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  column-gap: 6rem;
+}
