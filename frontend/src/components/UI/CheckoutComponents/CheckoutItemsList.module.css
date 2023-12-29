@@ -12,7 +12,13 @@
 .checkout__container__total {
   width: 100%;
   display: flex;
-  justify-content: flex-end;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: flex-end;
+}
+
+.checkout__delivery__fee {
+  font-size: 1.6rem;
 }
 
 .checkout__total {

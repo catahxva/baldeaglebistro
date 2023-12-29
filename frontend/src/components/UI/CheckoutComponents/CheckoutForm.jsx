@@ -137,7 +137,17 @@ function CheckoutForm() {
             <div
               onClick={() => {
                 setDeliveryValue((prevState) => {
-                  if (prevState === "deliveryStandard") return "";
+                  if (prevState === "deliveryStandard") {
+                    dispatch(
+                      addressActions.setCarrier({ delivery: undefined })
+                    );
+
+                    return "";
+                  }
+
+                  dispatch(
+                    addressActions.setCarrier({ delivery: "deliveryStandard" })
+                  );
 
                   return "deliveryStandard";
                 });
@@ -160,7 +170,17 @@ function CheckoutForm() {
             <div
               onClick={() => {
                 setDeliveryValue((prevState) => {
-                  if (prevState === "deliveryExpress") return "";
+                  if (prevState === "deliveryExpress") {
+                    dispatch(
+                      addressActions.setCarrier({ delivery: undefined })
+                    );
+
+                    return "";
+                  }
+
+                  dispatch(
+                    addressActions.setCarrier({ delivery: "deliveryExpress" })
+                  );
 
                   return "deliveryExpress";
                 });

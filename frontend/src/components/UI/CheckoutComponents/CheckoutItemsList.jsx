@@ -9,6 +9,12 @@ import Placeholder from "../Others/Placeholder";
 
 function CheckoutItemsList() {
   const cartItems = useSelector((state) => state.cart.items);
+  const deliveryType = useSelector((state) => state.address.carrier);
+
+  let deliveryPrice;
+
+  if (deliveryType === "deliveryStandard") deliveryPrice = 5;
+  if (deliveryType === "deliveryExpress") deliveryPrice = 10;
 
   const { data, isPending, isError, error } = useQuery({
     queryKey: ["checkoutItems", cartItems],
@@ -45,7 +51,14 @@ function CheckoutItemsList() {
           })}
         </div>
         <div className={classes.checkout__container__total}>
-          <span className={classes.checkout__total}>Total: {totalPrice}$</span>
+          {deliveryType && (
+            <span className={classes.checkout__delivery__fee}>
+              Delivery: {deliveryPrice}$
+            </span>
+          )}
+          <span className={classes.checkout__total}>
+            Total: {deliveryType ? totalPrice + deliveryPrice : totalPrice}$
+          </span>
         </div>
       </>
     );

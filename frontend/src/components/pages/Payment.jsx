@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import CheckoutProcessProgress from "../UI/Others/CheckoutProcessProgress";
+import PaymentContent from "../UI/PaymentComponents/PaymentContent";
 
 function Payment() {
   const navigate = useNavigate();
@@ -15,9 +16,14 @@ function Payment() {
     if (cartItems.length > 0 && !currentAddress) navigate("/checkout");
   }, []);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <>
       <CheckoutProcessProgress stage="payment" />
+      <PaymentContent />
     </>
   );
 }
