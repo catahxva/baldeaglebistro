@@ -1,0 +1,81 @@
+.checkout__form {
+  width: 100%;
+}
+
+.checkout__form__group {
+  margin-bottom: 3rem;
+}
+
+.checkout__form__group__big__margin {
+  margin-bottom: 4.5rem;
+}
+
+.checkout__form__label {
+  display: block;
+  font-size: 2.2rem;
+  font-family: "Oswald", sans-serif;
+  color: #ff8c00;
+  margin-bottom: 0.4rem;
+  font-weight: 700;
+}
+
+.checkout__form__label__big__margin {
+  margin-bottom: 1rem;
+}
+
+.checkout__form__container__delivery__big {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 5rem;
+  margin-bottom: 2rem;
+}
+
+.checkout__form__container__delivery__small {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.checkout__form__custom__checkbox {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 0.2rem;
+  background-color: #fff;
+  transition: all 0.2s;
+}
+
+.checkout__form__custom__checkbox:hover {
+  cursor: pointer;
+}
+
+.checkout__form__custom__checkbox__active {
+  background-color: #ff8c00;
+}
+
+.checkout__form__custom__checkbox__disabled {
+  pointer-events: none;
+}
+
+.checkout__form__label__checkbox {
+  font-size: 1.6rem;
+}
+
+.checkout__form__button {
+  font-size: 1.8rem;
+  padding: 0.6rem 1rem;
+  background-color: #ff8c00;
+  color: #fff;
+  font-weight: 700;
+  font-family: "Oswald", sans-serif;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.checkout__form__button:disabled {
+  background-color: #888;
+  cursor: default;
+}

@@ -1,0 +1,50 @@
+.checkout__form__group {
+  margin-bottom: 3rem;
+}
+
+.checkout__form__group__big__margin {
+  margin-bottom: 4.5rem;
+}
+
+.checkout__form__label {
+  display: block;
+  font-size: 2.2rem;
+  font-family: "Oswald", sans-serif;
+  color: #ff8c00;
+  margin-bottom: 0.4rem;
+  font-weight: 700;
+}
+
+.checkout__form__label__big__margin {
+  margin-bottom: 1rem;
+}
+
+.checkout__form__input {
+  font-size: 1.6rem;
+  width: 100%;
+  padding: 0.8rem 1rem;
+  font-family: inherit;
+  background-color: transparent;
+  border: 1px solid #ff8c00;
+  border-radius: 1rem;
+  color: #fff;
+  transition: all 0.5s;
+  background-color: #222;
+  display: block;
+  margin-bottom: 1.5rem;
+}
+
+.checkout__form__input__active {
+  color: #222;
+  background-color: #fff;
+}
+
+.checkout__form__input:focus {
+  outline: none;
+  border: 1px solid #fff;
+}
+
+.checkout__form__span__error {
+  font-size: 1.8rem;
+  font-weight: 500;
+}

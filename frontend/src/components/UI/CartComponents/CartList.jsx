@@ -38,7 +38,8 @@ function CartList() {
   if (isPending && isInitialLoad.current)
     content = <Placeholder type="loading" size="big" />;
 
-  if (isError) content = <Placeholder type="error" message={error.message} />;
+  if (isError)
+    content = <Placeholder type="error" message={error.message} size="big" />;
 
   if (data && data.data.data.length <= 0) {
     content = (

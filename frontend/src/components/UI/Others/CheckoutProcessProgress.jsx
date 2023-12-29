@@ -1,10 +1,13 @@
 import classes from "./CheckoutProcessProgress.module.css";
 
+import { Link } from "react-router-dom";
+
 function CheckoutProcessProgress({ stage }) {
   return (
     <section className="first__section smaller__padding">
       <div className={classes.progress__container}>
-        <div
+        <Link
+          to="/cart"
           className={`${classes.progress__step} ${
             stage === "cart" || stage === "checkout" || stage === "payment"
               ? classes.progress__step__active
@@ -12,7 +15,7 @@ function CheckoutProcessProgress({ stage }) {
           }`}
         >
           <span className={classes.progress__step__span}>1</span>
-        </div>
+        </Link>
         <div
           className={`${classes.progress__filler} ${
             stage === "checkout" || stage === "payment"
@@ -20,7 +23,8 @@ function CheckoutProcessProgress({ stage }) {
               : ""
           }`}
         ></div>
-        <div
+        <Link
+          to="/checkout"
           className={`${classes.progress__step} ${
             stage === "checkout" || stage === "payment"
               ? classes.progress__step__active
@@ -28,19 +32,20 @@ function CheckoutProcessProgress({ stage }) {
           }`}
         >
           <span className={classes.progress__step__span}>2</span>
-        </div>
+        </Link>
         <div
           className={`${classes.progress__filler} ${
             stage === "payment" ? classes.progress__filler__active : ""
           }`}
         ></div>
-        <div
+        <Link
+          to="/payment"
           className={`${classes.progress__step} ${
             stage === "payment" ? classes.progress__step__active : ""
           }`}
         >
           <span className={classes.progress__step__span}>3</span>
-        </div>
+        </Link>
       </div>
     </section>
   );

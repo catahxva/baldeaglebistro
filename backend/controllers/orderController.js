@@ -9,6 +9,29 @@ exports.createPaymentIntent = async function (req, res, next) {
   try {
     const { shipping: deliveryAddress, products } = req.body;
 
+    if (
+      !deliveryAddress ||
+      !deliveryAddress.name ||
+      !deliveryAddress.phone ||
+      !deliveryAddress.street ||
+      !deliveryAddress.streetNumber ||
+      !deliveryAddress.carrier
+    ) {
+      return sendError(
+        res,
+        400,
+        "The delivery address which you have provided is invalid. You will be redirected to the previous page."
+      );
+    }
+
+    if (!products || products.length <= 0) {
+      return sendError(
+        res,
+        400,
+        "You have no products inside your cart. You will be redirected to another page."
+      );
+    }
+
     const itemsPromises = products.map(async (product) => {
       try {
         const itemDB = await Product.findById(product.id);
@@ -74,8 +97,8 @@ exports.createPaymentIntent = async function (req, res, next) {
 
     let deliveryPrice;
 
-    if (deliveryAddress.carrier === "normal") deliveryPrice = 5;
-    if (deliveryAddress.carrier === "fast") deliveryPrice = 10;
+    if (deliveryAddress.carrier === "deliveryStandard") deliveryPrice = 5;
+    if (deliveryAddress.carrier === "deliveryExpress") deliveryPrice = 10;
 
     const total =
       finalPaymentItems.reduce((acc, current) => {

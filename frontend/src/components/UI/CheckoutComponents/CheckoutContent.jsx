@@ -5,9 +5,12 @@ import CheckoutItemsList from "./CheckoutItemsList";
 
 function CheckoutContent() {
   return (
-    <section className={classes.checkout__content__grid}>
-      <CheckoutForm />
-      <CheckoutItemsList />
+    <section>
+      <h2>Checkout</h2>
+      <div className={classes.checkout__content__grid}>
+        <CheckoutForm />
+        <CheckoutItemsList />
+      </div>
     </section>
   );
 }

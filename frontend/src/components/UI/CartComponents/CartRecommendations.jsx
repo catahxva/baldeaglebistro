@@ -20,7 +20,8 @@ function CartRecommendations({ typeOfProduct }) {
 
   if (isPending) content = <Placeholder type="loading" size="small" />;
 
-  if (isError) content = <Placeholder type="error" message={error.message} />;
+  if (isError)
+    content = <Placeholder type="error" message={error.message} size="small" />;
 
   if (data) {
     const items = data.data.data;
