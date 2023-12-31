@@ -1,14 +1,21 @@
-import classes from "./CheckoutItemsList.module.css";
+import classes from "./ItemsList.module.css";
 
 import { useSelector } from "react-redux";
 import { useQuery } from "@tanstack/react-query";
+import { useDispatch } from "react-redux";
+
 import { obtainCartProducts } from "../../../util/requests";
+import { processCartData } from "../../../util/otherFunctions";
 
-import CheckoutItem from "./CheckoutItem";
-import Placeholder from "../Others/Placeholder";
+import Item from "./Item";
+import Placeholder from "./Placeholder";
 
-function CheckoutItemsList() {
+function ItemsList() {
+  const dispatch = useDispatch();
+
   const cartItems = useSelector((state) => state.cart.items);
+  const unavailableItems = useSelector((state) => state.cart.unavailableItems);
+
   const deliveryType = useSelector((state) => state.address.carrier);
 
   let deliveryPrice;
@@ -29,34 +36,28 @@ function CheckoutItemsList() {
     content = <Placeholder type="error" message={error.message} size="small" />;
 
   if (data) {
-    const items = data.data.data;
-
-    const availableItems = items.filter(
-      (item) =>
-        item.notFound === undefined &&
-        item.notAvailable === undefined &&
-        item.error === undefined
-    );
-
-    const totalPrice = availableItems.reduce(
-      (acc, current) => acc + current.price,
-      0
-    );
+    const { availableItems, totalPrice, unavailableItemsMessage } =
+      processCartData(data.data.data, unavailableItems, dispatch);
 
     content = (
       <>
-        <div className={classes.checkout__list}>
+        {unavailableItemsMessage && (
+          <span className={classes.unavailable__span}>
+            {unavailableItemsMessage}
+          </span>
+        )}
+        <div className={classes.list}>
           {availableItems.map((item) => {
-            return <CheckoutItem key={item.id} item={item} />;
+            return <Item key={item.id} item={item} />;
           })}
         </div>
-        <div className={classes.checkout__container__total}>
+        <div className={classes.container__total}>
           {deliveryType && (
-            <span className={classes.checkout__delivery__fee}>
+            <span className={classes.delivery__fee}>
               Delivery: {deliveryPrice}$
             </span>
           )}
-          <span className={classes.checkout__total}>
+          <span className={classes.total}>
             Total: {deliveryType ? totalPrice + deliveryPrice : totalPrice}$
           </span>
         </div>
@@ -67,4 +68,4 @@ function CheckoutItemsList() {
   return <div>{content}</div>;
 }
 
-export default CheckoutItemsList;
+export default ItemsList;

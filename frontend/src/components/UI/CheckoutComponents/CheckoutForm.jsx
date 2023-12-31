@@ -7,7 +7,7 @@ import { addressActions } from "../../../store/addressSlice";
 
 import { useInput } from "../../../hooks/useInput";
 
-import CheckoutFormGroup from "./CheckoutFormGroup";
+import FormGroup from "../Others/FormGroup";
 
 function CheckoutForm() {
   const navigate = useNavigate();
@@ -30,7 +30,7 @@ function CheckoutForm() {
   } = useInput(nameDefaultValue, (value) => {
     if (value.length <= 0) return "Name is required";
 
-    if (value.length < 5) return "Name must be at least 5 characters long";
+    if (value.length < 6) return "Name must be at least 6 characters long";
   });
   const {
     value: phoneValue,
@@ -47,9 +47,6 @@ function CheckoutForm() {
     error: streetNameError,
   } = useInput(streetNameDefaultValue, (value) => {
     if (value.length <= 0) return "Street name is required";
-
-    if (value.length < 5)
-      return "Street name must be at least 5 characters long";
   });
   const {
     value: streetNumberValue,
@@ -88,7 +85,7 @@ function CheckoutForm() {
 
   return (
     <form className={classes.checkout__form} onSubmit={submitHandler}>
-      <CheckoutFormGroup
+      <FormGroup
         nameProp="name"
         labelText="Name"
         placeholderText="Your full name"
@@ -97,7 +94,7 @@ function CheckoutForm() {
         onBlur={nameBlurHandler}
         error={nameError}
       />
-      <CheckoutFormGroup
+      <FormGroup
         nameProp="phone"
         labelText="Phone Number"
         placeholderText="Your phone number"
@@ -106,7 +103,7 @@ function CheckoutForm() {
         onBlur={phoneBlurHandler}
         error={phoneError}
       />
-      <CheckoutFormGroup
+      <FormGroup
         nameProp="street"
         labelText="Street Name"
         placeholderText="Your street name"
@@ -115,7 +112,7 @@ function CheckoutForm() {
         onBlur={streetNameBlurHandler}
         error={streetNameError}
       />
-      <CheckoutFormGroup
+      <FormGroup
         nameProp="streetNumber"
         labelText="Street Number"
         placeholderText="Your street number"

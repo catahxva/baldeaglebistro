@@ -1,12 +1,12 @@
-.checkout__form__group {
+.form__group {
   margin-bottom: 3rem;
 }
 
-.checkout__form__group__big__margin {
+.form__group__big__margin {
   margin-bottom: 4.5rem;
 }
 
-.checkout__form__label {
+.form__label {
   display: block;
   font-size: 2.2rem;
   font-family: "Oswald", sans-serif;
@@ -15,11 +15,11 @@
   font-weight: 700;
 }
 
-.checkout__form__label__big__margin {
+.form__label__big__margin {
   margin-bottom: 1rem;
 }
 
-.checkout__form__input {
+.form__input {
   font-size: 1.6rem;
   width: 100%;
   padding: 0.8rem 1rem;
@@ -34,17 +34,17 @@
   margin-bottom: 1.5rem;
 }
 
-.checkout__form__input__active {
+.form__input__active {
   color: #222;
   background-color: #fff;
 }
 
-.checkout__form__input:focus {
+.form__input:focus {
   outline: none;
   border: 1px solid #fff;
 }
 
-.checkout__form__span__error {
-  font-size: 1.8rem;
+.form__span__error {
+  font-size: 1.6rem;
   font-weight: 500;
 }

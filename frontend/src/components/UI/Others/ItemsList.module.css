@@ -1,4 +1,11 @@
-.checkout__list {
+.unavailable__span {
+  font-size: 1.8rem;
+  font-weight: 500;
+  display: block;
+  margin-bottom: 2rem;
+}
+
+.list {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -9,7 +16,7 @@
   border-bottom: 1px solid #ff8c00;
 }
 
-.checkout__container__total {
+.container__total {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -17,11 +24,11 @@
   align-items: flex-end;
 }
 
-.checkout__delivery__fee {
+.delivery__fee {
   font-size: 1.6rem;
 }
 
-.checkout__total {
+.total {
   font-size: 2.2rem;
   font-weight: 500;
   color: #ff8c00;

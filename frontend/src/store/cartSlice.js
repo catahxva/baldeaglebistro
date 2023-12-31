@@ -65,7 +65,7 @@ export const cartSlice = createSlice({
     clearCart(state) {
       state.items = [];
     },
-    addProductToUnavailableList(state, action) {
+    addUnavailableItems(state, action) {
       action.payload.unavailableItems.forEach((item) => {
         state.unavailableItems.push(item);
       });

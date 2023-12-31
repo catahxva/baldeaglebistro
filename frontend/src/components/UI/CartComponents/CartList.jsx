@@ -6,8 +6,7 @@ import { useDispatch } from "react-redux";
 import { useQuery } from "@tanstack/react-query";
 
 import { obtainCartProducts } from "../../../util/requests";
-
-import { cartActions } from "../../../store/cartSlice";
+import { processCartData } from "../../../util/otherFunctions";
 
 import CartListItem from "./CartListItem";
 import CartRecommendations from "./CartRecommendations";
@@ -24,9 +23,7 @@ function CartList() {
   const dispatch = useDispatch();
 
   const cartItems = useSelector((state) => state.cart.items);
-  const unavailableCartItems = useSelector(
-    (state) => state.cart.unavailableItems
-  );
+  const unavailableItems = useSelector((state) => state.cart.unavailableItems);
 
   const { data, isPending, isError, error } = useQuery({
     queryKey: ["cartItems", cartItems],
@@ -52,43 +49,13 @@ function CartList() {
   }
 
   if (data && data.data.data.length > 0) {
-    const cartItemsDB = data.data.data;
-
-    const availableItems = cartItemsDB.filter(
-      (item) =>
-        item.notFound === undefined &&
-        item.notAvailable === undefined &&
-        item.error === undefined
-    );
-
-    const totalPrice = availableItems.reduce(
-      (acc, current) => acc + current.price,
-      0
-    );
-
-    const noDrink =
-      availableItems.filter((item) => item.category === "beverage").length <= 0;
-
-    const noDessert =
-      availableItems.filter((item) => item.category === "dessert").length <= 0;
-
-    const unavailableItems = cartItemsDB.filter(
-      (item) =>
-        item.notFound === true ||
-        item.notAvailable === true ||
-        item.error === true
-    );
-
-    dispatch(cartActions.addProductToUnavailableList({ unavailableItems }));
-
-    const unavailableItemsMessage =
-      unavailableCartItems.length > 0
-        ? "Some of the items inside your cart are unavailable so they have been removed"
-        : "";
-
-    unavailableItems.forEach((item) => {
-      dispatch(cartActions.removeProduct({ id: item.itemId }));
-    });
+    const {
+      availableItems,
+      totalPrice,
+      noDrink,
+      noDessert,
+      unavailableItemsMessage,
+    } = processCartData(data.data.data, unavailableItems, dispatch);
 
     content = (
       <div className={classes.cart__list__grid}>
