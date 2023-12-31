@@ -8,6 +8,7 @@ import Product from "./components/pages/Product";
 import Cart from "./components/pages/Cart";
 import Checkout from "./components/pages/Checkout";
 import Payment from "./components/pages/Payment";
+import OrderSuccess from "./components/pages/OrderSuccess";
 
 import { queryClient } from "./util/queryClient";
 
@@ -39,6 +40,10 @@ const router = createBrowserRouter([
       {
         path: "/payment",
         element: <Payment />,
+      },
+      {
+        path: "/order-success",
+        element: <OrderSuccess />,
       },
     ],
   },

@@ -61,20 +61,6 @@ exports.createPaymentIntent = async function (req, res, next) {
 
     const itemsDB = await Promise.all(itemsPromises);
 
-    const unavailableItems = itemsDB.filter((item) => {
-      return (
-        item.notFound === true ||
-        item.notAvailable === true ||
-        item.error === true
-      );
-    });
-
-    let messageUnavailable;
-
-    if (unavailableItems.length > 0)
-      messageUnavailable =
-        "Some products inside your cart are currently unavailable, so they have been removed.";
-
     const availableItems = itemsDB.filter((item) => {
       return (
         item.notFound === undefined ||
@@ -133,7 +119,7 @@ exports.createPaymentIntent = async function (req, res, next) {
     res.status(200).json({
       status: "success",
       clientSecret: paymentIntent.client_secret,
-      messageUnavailable,
+      totalAmount: total,
     });
   } catch (err) {
     console.log(err);

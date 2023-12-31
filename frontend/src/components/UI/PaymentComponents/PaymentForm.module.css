@@ -1,0 +1,49 @@
+.payment__form {
+  width: 100%;
+  padding: 2rem;
+  background-color: #fff;
+  color: #ff8c00;
+  border-radius: 1rem;
+}
+
+.payment__form__container {
+  width: 100%;
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+.payment__form__total {
+  font-size: 2rem;
+  font-weight: 700;
+  font-family: "Oswald", sans-serif;
+}
+
+.payment__form__button {
+  font-family: "Oswald", sans-serif;
+  font-size: 1.8rem;
+  background-color: #ff8c00;
+  color: #fff;
+  padding: 0.6rem 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.payment__form__button:disabled {
+  cursor: default;
+  background-color: #777;
+}
+
+.payment__form__error {
+  font-size: 2rem;
+  font-weight: 700;
+  font-family: "Oswald", sans-serif;
+  color: #222;
+}

@@ -1,0 +1,9 @@
+.payment__content__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 6rem;
+}
+
+.payment__content__grid__container {
+  width: 100%;
+}

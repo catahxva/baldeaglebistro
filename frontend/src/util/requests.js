@@ -44,6 +44,29 @@ export const obtainCartProducts = async function (cartItems) {
   return data;
 };
 
+export const obtainPaymentIntent = async function (signal, shipping, products) {
+  if (!shipping) throw new Error("You must provide a shipping address");
+  if (!products)
+    throw new Error(
+      "You must have products inside your cart to perform a payment"
+    );
+
+  const response = await fetch(`${baseUrl}orders/create-payment`, {
+    signal,
+    method: "POST",
+    body: JSON.stringify({ shipping, products }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  const data = await response.json();
+
+  if (data.status === "fail") throw new Error(data.message);
+
+  return data;
+};
+
 export const sendRating = async function ({ id, rating }) {
   if (!id) throw new Error("An ID must be provided to perform this action");
   if (!rating)
