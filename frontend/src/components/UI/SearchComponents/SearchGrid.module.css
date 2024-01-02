@@ -1,0 +1,14 @@
+.search__grid__container {
+  width: 100%;
+}
+
+.search__grid__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(31.5rem, 1fr));
+  column-gap: 5rem;
+  row-gap: 5rem;
+}
+
+.search__grid__message {
+  font-size: 1.8rem;
+}

@@ -1,10 +1,14 @@
 .product__card {
-  width: 28rem;
+  width: 31.5rem;
   height: 40rem;
   margin: 0 auto;
   border-radius: 1rem;
   border: 1px solid #ff8c00;
   overflow: hidden;
+}
+
+.product__card__slider__width {
+  width: 28rem !important;
 }
 
 .product__card__container__img {

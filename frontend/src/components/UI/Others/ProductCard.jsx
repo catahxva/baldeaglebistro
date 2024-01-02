@@ -5,11 +5,15 @@ import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { addProductToCart } from "../../../store/cartActions";
 
-function ProductCard({ product }) {
+function ProductCard({ product, productType }) {
   const dispatch = useDispatch();
 
   return (
-    <div className={classes.product__card}>
+    <div
+      className={`${classes.product__card} ${
+        productType === "slider" ? classes.product__card__slider__width : ""
+      }`}
+    >
       <Link
         to={`/product/${product._id}`}
         className={classes.product__card__container__img}

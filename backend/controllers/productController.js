@@ -30,6 +30,13 @@ exports.getAllProducts = async function (req, res, next) {
   }
 };
 
+exports.getFilters = async function (req, res, next) {
+  try {
+  } catch (err) {
+    sendError(res, 400, "There was an error with getting the data");
+  }
+};
+
 exports.getProduct = async function (req, res, next) {
   try {
     const product = await Product.findById(req.params.id);

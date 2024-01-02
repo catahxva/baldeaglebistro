@@ -39,17 +39,19 @@ function Navigation({ openMobileNav }) {
           scrollDirection === "down" ? classes.nav__interior__scroll : ""
         }`}
       >
-        <Link className={`${classes.nav__link} ${classes.nav__logo}`}>
+        <Link to="/" className={`${classes.nav__link} ${classes.nav__logo}`}>
           Bold Eagle
         </Link>
         <div className={classes.nav__group}>
-          <Link className={classes.nav__link}>Products</Link>
+          <Link to="/products" className={classes.nav__link}>
+            Products
+          </Link>
           <Link to="/categories" className={classes.nav__link}>
             Offerings
           </Link>
         </div>
         <div className={classes.nav__group}>
-          <Link className={classes.nav__link}>
+          <Link to="/search" className={classes.nav__link}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"

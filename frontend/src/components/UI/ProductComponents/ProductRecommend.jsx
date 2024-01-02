@@ -154,7 +154,7 @@ function ProductRecommend({ category }) {
             {queryOneProducts.map((product) => {
               return (
                 <SwiperSlide key={product._id}>
-                  <ProductCard product={product} />
+                  <ProductCard product={product} productType="slider" />
                 </SwiperSlide>
               );
             })}
@@ -174,7 +174,7 @@ function ProductRecommend({ category }) {
             {queryTwoProducts.map((product) => {
               return (
                 <SwiperSlide key={product._id}>
-                  <ProductCard product={product} />
+                  <ProductCard product={product} productType="slider" />
                 </SwiperSlide>
               );
             })}
