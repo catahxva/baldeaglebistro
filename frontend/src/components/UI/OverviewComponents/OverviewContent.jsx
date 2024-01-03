@@ -1,6 +1,6 @@
 import classes from "./OverviewContent.module.css";
 
-import { useCallback } from "react";
+import { useCallback, useEffect } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { fetchProducts, fetchFilters } from "../../../util/requests";
@@ -12,6 +12,11 @@ import OverviewSort from "./OverviewSort";
 
 function OverviewContent() {
   const [searchParams, setSearchParams] = useSearchParams();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [searchParams]);
+
   const { category } = useParams();
 
   const searchParamsObject = Object.fromEntries(searchParams);
@@ -69,6 +74,12 @@ function OverviewContent() {
 
       return prevParams;
     });
+  };
+
+  const sortHandler = function (e) {
+    const value = e.target.value;
+
+    setSearchParams((prevParams) => {});
   };
 
   const priceFilterHandler = useCallback(function (arr) {
@@ -142,7 +153,7 @@ function OverviewContent() {
               removeLimitHandler={removePriceFilterHandler}
             />
           )}
-          <OverviewSort />
+          <OverviewSort onChange={sortHandler} />
         </div>
       </div>
     </section>

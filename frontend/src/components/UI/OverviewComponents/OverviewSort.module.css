@@ -1,0 +1,22 @@
+.overview__sort__form {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.overview__sort__form__label {
+  font-size: 1.8rem;
+  font-family: inherit;
+}
+
+.overview__sort__form__select {
+  font-family: inherit;
+  color: #ff8c00;
+  background-color: #222;
+  padding: 0.8rem 1.2rem;
+  border: 1px solid #ff8c00;
+  font-size: 1.6rem;
+  font-weight: 400;
+  border-radius: 0.5rem;
+}
