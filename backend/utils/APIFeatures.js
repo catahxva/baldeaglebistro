@@ -14,6 +14,13 @@ exports.createFilters = (query) => {
     ];
   }
 
+  if (query.minPrice && query.maxPrice) {
+    filters.price = {
+      $gte: minPrice,
+      $lte: maxPrice,
+    };
+  }
+
   return filters;
 };
 
@@ -26,14 +33,6 @@ exports.createSort = (query) => {
 
   if (query.sort === "priceDescending") {
     sortCriteria = { price: -1 };
-  }
-
-  if (query.sort === "ratingAscending") {
-    sortCriteria = { rating: 1 };
-  }
-
-  if (query.sort === "ratingDescending") {
-    sortCriteria = { rating: -1 };
   }
 
   if (query.sort === "latest") {

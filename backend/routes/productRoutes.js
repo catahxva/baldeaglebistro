@@ -9,6 +9,8 @@ router.route("/cart-items").post(productsController.obtainCartProducts);
 
 router.route("/one-product/:id").get(productsController.getProduct);
 
+router.route("/get-filters/:category?").get(productsController.getFilters);
+
 router
   .route("/delete-product/:id")
   .delete(

@@ -32,7 +32,46 @@ exports.getAllProducts = async function (req, res, next) {
 
 exports.getFilters = async function (req, res, next) {
   try {
+    const { category } = req.params;
+
+    const categoryValues = await Product.distinct("category");
+
+    const { maxPrice, minPrice } = (
+      await Product.aggregate([
+        {
+          $group: {
+            _id: null,
+            maxPrice: { $max: "$price" },
+            minPrice: { $min: "$price" },
+          },
+        },
+      ])
+    )[0];
+
+    let data;
+
+    if (!category) {
+      data = {
+        data: { categoryValues, maxPrice, minPrice },
+      };
+    }
+
+    if (category) {
+      data = {
+        data: {
+          maxPrice,
+          minPrice,
+        },
+      };
+    }
+
+    res.status(200).json({
+      status: "success",
+      data,
+    });
   } catch (err) {
+    console.log(err);
+
     sendError(res, 400, "There was an error with getting the data");
   }
 };

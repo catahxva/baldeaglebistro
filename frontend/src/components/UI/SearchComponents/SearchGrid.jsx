@@ -31,7 +31,7 @@ function SearchGrid({ query }) {
     const products = data.data.data;
 
     content = (
-      <div className={classes.search__grid__grid}>
+      <div className="general__grid">
         {products.map((product) => {
           return <ProductCard key={product._id} product={product} />;
         })}

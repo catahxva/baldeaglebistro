@@ -94,3 +94,11 @@ p {
   font-weight: 500;
   font-family: "Oswald", sans-serif;
 }
+
+.general__grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(31.5rem, 1fr));
+  column-gap: 5rem;
+  row-gap: 5rem;
+}
