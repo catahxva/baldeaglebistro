@@ -11,6 +11,8 @@ exports.getAllProducts = async function (req, res, next) {
 
     if (req.query.limit) limit = req.query.limit;
 
+    const totalProducts = (await Product.find(filters)).length;
+
     const products = await Product.find(filters)
       .sort(sortCriteria)
       .limit(limit);
@@ -23,6 +25,7 @@ exports.getAllProducts = async function (req, res, next) {
       status: "success",
       data: {
         data: products,
+        totalProducts,
       },
     });
   } catch (err) {

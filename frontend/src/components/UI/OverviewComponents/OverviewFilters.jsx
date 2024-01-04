@@ -60,6 +60,7 @@ function OverviewFilters({
 
     const timer = setTimeout(() => {
       priceFilterHandler(sliderValue);
+      console.log("finished timer");
     }, 1000);
 
     return () => {

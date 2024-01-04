@@ -3,6 +3,7 @@
   align-items: center;
   gap: 2rem;
   flex-wrap: wrap;
+  margin-bottom: 2.5rem;
 }
 
 .overview__sort__form__label {

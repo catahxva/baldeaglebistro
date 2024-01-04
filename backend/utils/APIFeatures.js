@@ -16,8 +16,8 @@ exports.createFilters = (query) => {
 
   if (query.minPrice && query.maxPrice) {
     filters.price = {
-      $gte: minPrice,
-      $lte: maxPrice,
+      $gte: query.minPrice,
+      $lte: query.maxPrice,
     };
   }
 

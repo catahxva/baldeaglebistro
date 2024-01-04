@@ -5,8 +5,6 @@ function OverviewAppliedFilters({
   filterHandler,
   removeLimitHandler,
 }) {
-  console.log(appliedFilters);
-
   const filteredAppliedFilters = appliedFilters.filter((filter) => {
     if (filter[0] !== "minPrice" && filter[0] !== "maxPrice") return filter;
   });
