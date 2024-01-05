@@ -1,0 +1,9 @@
+.overview__content__grid {
+  display: grid;
+  grid-template-columns: 0.6fr 1.4fr;
+  column-gap: 6rem;
+}
+
+.overview__content__grid__container {
+  width: 100%;
+}

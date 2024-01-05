@@ -13,6 +13,8 @@ exports.getAllProducts = async function (req, res, next) {
 
     const totalProducts = (await Product.find(filters)).length;
 
+    const maxPages = Math.ceil(totalProducts / 8);
+
     const products = await Product.find(filters)
       .sort(sortCriteria)
       .limit(limit);
@@ -26,6 +28,7 @@ exports.getAllProducts = async function (req, res, next) {
       data: {
         data: products,
         totalProducts,
+        maxPages,
       },
     });
   } catch (err) {

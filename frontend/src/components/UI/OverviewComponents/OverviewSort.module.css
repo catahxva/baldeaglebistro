@@ -1,0 +1,21 @@
+.overview__sort {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.overview__sort__label {
+  font-size: 1.8rem;
+  display: block;
+  width: 15rem;
+}
+
+.overview__sort__select {
+  font-size: 1.6rem;
+  padding: 0.6rem 1rem;
+  border: 1px solid #ff8c00;
+  font-family: inherit;
+  background-color: #222;
+  color: #ff8c00;
+}

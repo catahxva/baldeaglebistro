@@ -1,0 +1,44 @@
+.overview__applied {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.overview__applied__span {
+  display: block;
+  width: 15rem;
+  font-size: 1.8rem;
+}
+
+.overview__applied__container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+}
+
+.overview__applied__button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1.2rem;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: #ff8c00;
+  font-family: inherit;
+  color: #fff;
+  cursor: pointer;
+}
+
+.overview__applied__button__svg {
+  width: 1.6rem;
+  height: 1.6rem;
+  color: #fff;
+}
+
+.overview__applied__button__span {
+  font-size: 1.6rem;
+  font-weight: 500;
+}
