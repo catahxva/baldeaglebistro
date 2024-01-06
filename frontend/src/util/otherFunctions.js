@@ -35,8 +35,6 @@ export const processCartData = function (items, unavailableItems, dispatchFn) {
       ? "Some of the items inside your cart are unavailable so they have been removed"
       : "";
 
-  console.log(unavailableCartItems);
-
   unavailableCartItems.forEach((item) => {
     dispatchFn(cartActions.removeProduct({ id: item.itemId }));
   });

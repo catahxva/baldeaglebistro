@@ -36,12 +36,10 @@ exports.createRating = async function (req, res, next) {
         "Your rating has been uploaded successfully and it will be posted soon!",
     });
   } catch (err) {
-    console.log(err);
     sendError(
       res,
       400,
-      "There has been an error with posting your rating. Please try again later",
-      err
+      "There has been an error with posting your rating. Please try again later"
     );
   }
 };

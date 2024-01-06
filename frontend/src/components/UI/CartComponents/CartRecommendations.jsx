@@ -8,8 +8,6 @@ import Placeholder from "../Others/Placeholder";
 import CartRecommendationItem from "./CartRecommendationItem";
 
 function CartRecommendations({ typeOfProduct }) {
-  console.log(typeOfProduct);
-
   const { data, isPending, isError, error } = useQuery({
     queryKey: ["recommendedProducts", typeOfProduct],
     queryFn: ({ signal }) =>

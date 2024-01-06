@@ -19,7 +19,9 @@ function OfferingsSection() {
               dishes, featuring juicy grilled options, slow-cooked delights, and
               savory cuts that capture the essence of culinary excellence.
             </p>
-            <ButtonLink className="small__button">See More</ButtonLink>
+            <ButtonLink path="/products/main dish" className="small__button">
+              See More
+            </ButtonLink>
           </div>
         </div>
         <div className={classes.offerings__card}>
@@ -31,7 +33,9 @@ function OfferingsSection() {
               fries to creamy mac 'n' cheese, each enhancing your dining
               experience with a burst of flavor and texture.
             </p>
-            <ButtonLink className="small__button">See More</ButtonLink>
+            <ButtonLink path="/products/side" className="small__button">
+              See More
+            </ButtonLink>
           </div>
         </div>
         <div className={classes.offerings__card}>
@@ -46,12 +50,16 @@ function OfferingsSection() {
               including a comforting apple-infused creation and rich chocolate
               delights that encapsulate the essence of American indulgence.
             </p>
-            <ButtonLink className="small__button">See More</ButtonLink>
+            <ButtonLink path="/products/dessert" className="small__button">
+              See More
+            </ButtonLink>
           </div>
         </div>
       </div>
       <div className={classes.offerings__container__cta}>
-        <ButtonLink className="big__button">All Offerings</ButtonLink>
+        <ButtonLink path="/categories" className="big__button">
+          All Offerings
+        </ButtonLink>
       </div>
     </section>
   );

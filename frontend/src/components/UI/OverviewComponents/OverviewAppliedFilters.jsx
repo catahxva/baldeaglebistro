@@ -13,8 +13,6 @@ function OverviewAppliedFilters({
     .filter((entry) => entry[0] === "minPrice" || entry[0] === "maxPrice")
     .map((entry) => entry[1]);
 
-  console.log(priceFilterValues);
-
   let appliedPriceFilterBtn;
 
   if (priceFilterValues.length === 2) {

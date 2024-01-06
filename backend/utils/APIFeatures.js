@@ -45,3 +45,18 @@ exports.createSort = (query) => {
 
   return sortCriteria;
 };
+
+exports.createPagination = (query) => {
+  let skip = 0;
+  let limit = 8;
+
+  if (query.limit) {
+    limit = query.limit;
+  }
+
+  if (query.page) {
+    skip = query.page * limit - limit;
+  }
+
+  return [skip, limit];
+};

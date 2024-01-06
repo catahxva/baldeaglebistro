@@ -1,5 +1,6 @@
 import classes from "./OverviewContent.module.css";
 
+import { useEffect } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { fetchFilters, fetchProducts } from "../../../util/requests";
@@ -17,6 +18,10 @@ function OverviewContent() {
 
   // get search params.
   const [searchParams, setSearchParams] = useSearchParams();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [searchParams]);
 
   const searchParamsObject = Object.fromEntries(searchParams);
   const searchParamsValues = Object.values(searchParamsObject)
@@ -48,6 +53,8 @@ function OverviewContent() {
       const valueExists = currentFilterValues?.find(
         (existingValue) => existingValue === value
       );
+
+      delete prevParamsObject.page;
 
       if (filterExists && !valueExists) {
         return {
@@ -95,6 +102,8 @@ function OverviewContent() {
     setSearchParams((prevParams) => {
       const prevParamsObject = Object.fromEntries(prevParams);
 
+      delete prevParamsObject.page;
+
       return {
         ...prevParamsObject,
         minPrice: priceValues[0],
@@ -109,6 +118,7 @@ function OverviewContent() {
 
       delete prevParamsObject.minPrice;
       delete prevParamsObject.maxPrice;
+      delete prevParamsObject.page;
 
       return {
         ...prevParamsObject,
@@ -122,6 +132,8 @@ function OverviewContent() {
     setSearchParams((prevParams) => {
       const prevParamsObject = Object.fromEntries(prevParams);
 
+      delete prevParamsObject.page;
+
       if (value === "default") {
         delete prevParamsObject.sort;
 
@@ -133,6 +145,25 @@ function OverviewContent() {
       return {
         ...prevParamsObject,
         sort: value,
+      };
+    });
+  };
+
+  const paginationHandler = function (page) {
+    setSearchParams((prevParams) => {
+      const prevParamsObject = Object.fromEntries(prevParams);
+
+      if (page === 1) {
+        delete prevParamsObject.page;
+
+        return {
+          ...prevParamsObject,
+        };
+      }
+
+      return {
+        ...prevParamsObject,
+        page: page,
       };
     });
   };
@@ -181,9 +212,12 @@ function OverviewContent() {
 
   // get products based on a query string which is based on the search
   // params
-  const queryString = `?${searchParamsEntriesAll
-    .map((entry) => entry.join("="))
-    .join("&")}`;
+  const queryString = !category
+    ? `?${searchParamsEntriesAll.map((entry) => entry.join("=")).join("&")}`
+    : `?category=${category}&${searchParamsEntriesAll
+        .map((entry) => entry.join("="))
+        .join("&")}
+    `;
 
   const {
     data: products,
@@ -205,13 +239,13 @@ function OverviewContent() {
     );
 
   if (products) {
-    console.log(products);
     productsContent = (
       <>
         <OverviewGrid products={products.data.data} />
         <OverviewPagination
           maxPage={products.data.maxPages}
-          currentPage={Number(pageQuery) ?? 1}
+          currentPage={pageQuery ?? 1}
+          paginationHandler={paginationHandler}
         />
       </>
     );

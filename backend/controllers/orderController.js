@@ -4,6 +4,8 @@ const stripe = require("stripe")(
   `sk_test_51OOl2QJARixY9PYyhHDU37eMphdq2DFnNj0N6UZA7HPVZ5Wvt34D9aYrVQ8smzlOOmtwUvOb0FpVfh7ERbtYvzrl008q7hGqRi`
 );
 const sendError = require("../utils/sendError");
+const sendEmail = require("../utils/email");
+const emailTemplate = require("../utils/emailTemplate");
 
 exports.createPaymentIntent = async function (req, res, next) {
   try {
@@ -11,6 +13,7 @@ exports.createPaymentIntent = async function (req, res, next) {
 
     if (
       !deliveryAddress ||
+      !deliveryAddress.email ||
       !deliveryAddress.name ||
       !deliveryAddress.phone ||
       !deliveryAddress.street ||
@@ -99,6 +102,7 @@ exports.createPaymentIntent = async function (req, res, next) {
       },
       metadata: {
         carrier: deliveryAddress.carrier,
+        email: deliveryAddress.email,
       },
       shipping: {
         name: deliveryAddress.name,
@@ -109,11 +113,25 @@ exports.createPaymentIntent = async function (req, res, next) {
       },
     });
 
-    await Order.create({
+    const newOrder = await Order.create({
       user: req.user?.id,
       products: finalPaymentItems,
       address: deliveryAddress,
       total,
+    });
+
+    const preheaderText = "Order confirmation";
+    const message =
+      "Your order has been registered and we are going to deliver it to you as soon as possible. Click on the button below to see your order!";
+    const ctaText = "See order";
+    const ctaLink = ``;
+
+    const emailHTML = emailTemplate(preheaderText, message, ctaText, ctaLink);
+
+    await sendEmail({
+      email: deliveryAddress.email,
+      subject: "Order confirmation",
+      emailHTML,
     });
 
     res.status(200).json({
@@ -122,7 +140,6 @@ exports.createPaymentIntent = async function (req, res, next) {
       totalAmount: total,
     });
   } catch (err) {
-    console.log(err);
     sendError(res, 400, "Could not generate payment, please try again later");
   }
 };

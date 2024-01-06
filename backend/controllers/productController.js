@@ -1,4 +1,8 @@
-const { createFilters, createSort } = require("../utils/APIFeatures");
+const {
+  createFilters,
+  createSort,
+  createPagination,
+} = require("../utils/APIFeatures");
 const Product = require("../models/productModel");
 const sendError = require("../utils/sendError");
 
@@ -6,10 +10,9 @@ exports.getAllProducts = async function (req, res, next) {
   try {
     const filters = createFilters(req.query);
     const sortCriteria = createSort(req.query);
+    const [skip, limit] = createPagination(req.query);
 
-    let limit = 8;
-
-    if (req.query.limit) limit = req.query.limit;
+    // if (req.query.limit) limit = req.query.limit;
 
     const totalProducts = (await Product.find(filters)).length;
 
@@ -17,6 +20,7 @@ exports.getAllProducts = async function (req, res, next) {
 
     const products = await Product.find(filters)
       .sort(sortCriteria)
+      .skip(skip)
       .limit(limit);
 
     if (products.length <= 0 || !products) {
@@ -76,8 +80,6 @@ exports.getFilters = async function (req, res, next) {
       data,
     });
   } catch (err) {
-    console.log(err);
-
     sendError(res, 400, "There was an error with getting the data");
   }
 };

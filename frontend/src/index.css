@@ -45,6 +45,10 @@ p {
   min-height: 100vh;
 } */
 
+.title__no__border {
+  margin-bottom: 0rem;
+}
+
 .first__section {
   margin-top: 10rem;
 }

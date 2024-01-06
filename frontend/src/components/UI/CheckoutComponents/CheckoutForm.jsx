@@ -14,13 +14,23 @@ function CheckoutForm() {
   const dispatch = useDispatch();
   const currentAddress = useSelector((state) => state.address.address);
 
+  const emailDefaultValue = currentAddress?.email ?? "";
   const nameDefaultValue = currentAddress?.name ?? "";
   const phoneDefaultValue = currentAddress?.phone ?? "";
   const streetNameDefaultValue = currentAddress?.street ?? "";
   const streetNumberDefaultValue = currentAddress?.streetNumber ?? "";
   const deliveryDefaultValue = currentAddress?.carrier ?? "";
 
-  console.log(nameDefaultValue);
+  const {
+    value: emailValue,
+    inputChangeHandler: emailChangeHandler,
+    inputBlurHandler: emailBlurHandler,
+    error: emailError,
+  } = useInput(emailDefaultValue, (value) => {
+    if (!value) return "Email is required";
+
+    if (!value.includes("@")) return "Please use a valid email address";
+  });
 
   const {
     value: nameValue,
@@ -28,7 +38,7 @@ function CheckoutForm() {
     inputBlurHandler: nameBlurHandler,
     error: nameError,
   } = useInput(nameDefaultValue, (value) => {
-    if (value.length <= 0) return "Name is required";
+    if (!value) return "Name is required";
 
     if (value.length < 6) return "Name must be at least 6 characters long";
   });
@@ -38,7 +48,7 @@ function CheckoutForm() {
     inputBlurHandler: phoneBlurHandler,
     error: phoneError,
   } = useInput(phoneDefaultValue, (value) => {
-    if (value.length <= 0) return "Phone number is required";
+    if (!value) return "Phone number is required";
   });
   const {
     value: streetNameValue,
@@ -46,7 +56,7 @@ function CheckoutForm() {
     inputBlurHandler: streetNameBlurHandler,
     error: streetNameError,
   } = useInput(streetNameDefaultValue, (value) => {
-    if (value.length <= 0) return "Street name is required";
+    if (!value) return "Street name is required";
   });
   const {
     value: streetNumberValue,
@@ -54,7 +64,7 @@ function CheckoutForm() {
     inputBlurHandler: streetNumberBlurHandler,
     error: streetNumberError,
   } = useInput(streetNumberDefaultValue, (value) => {
-    if (value.length <= 0) return "Street number is required";
+    if (!value) return "Street number is required";
   });
 
   const [deliveryValue, setDeliveryValue] = useState(deliveryDefaultValue);
@@ -63,6 +73,7 @@ function CheckoutForm() {
     e.preventDefault();
 
     if (
+      !emailError &&
       !nameError &&
       !phoneError &&
       !streetNameError &&
@@ -71,6 +82,7 @@ function CheckoutForm() {
     ) {
       dispatch(
         addressActions.setAddress({
+          email: emailValue,
           name: nameValue,
           phone: phoneValue,
           street: streetNameValue,
@@ -85,6 +97,16 @@ function CheckoutForm() {
 
   return (
     <form className={classes.checkout__form} onSubmit={submitHandler}>
+      <FormGroup
+        nameProp="email"
+        type="email"
+        labelText="Email"
+        placeholderText="Your email"
+        value={emailValue}
+        onChange={emailChangeHandler}
+        onBlur={emailBlurHandler}
+        error={emailError}
+      />
       <FormGroup
         nameProp="name"
         labelText="Name"

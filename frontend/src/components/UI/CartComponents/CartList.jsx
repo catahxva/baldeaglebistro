@@ -1,6 +1,5 @@
 import classes from "./CartList.module.css";
 
-import { useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { useQuery } from "@tanstack/react-query";
@@ -14,12 +13,6 @@ import Placeholder from "../Others/Placeholder";
 import ButtonLink from "../Others/ButtonLink";
 
 function CartList() {
-  const isInitialLoad = useRef(true);
-
-  useEffect(() => {
-    isInitialLoad.current = false;
-  }, []);
-
   const dispatch = useDispatch();
 
   const cartItems = useSelector((state) => state.cart.items);
@@ -32,8 +25,7 @@ function CartList() {
 
   let content;
 
-  if (isPending && isInitialLoad.current)
-    content = <Placeholder type="loading" size="big" />;
+  if (isPending) content = <Placeholder type="loading" size="big" />;
 
   if (isError)
     content = <Placeholder type="error" message={error.message} size="big" />;

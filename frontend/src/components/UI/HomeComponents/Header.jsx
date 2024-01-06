@@ -17,7 +17,9 @@ function Header() {
           passion.
         </p>
         <div className={classes.header__container__btns}>
-          <ButtonLink className="big__button">Shop Now</ButtonLink>
+          <ButtonLink path="/products" className="big__button">
+            Shop Now
+          </ButtonLink>
           <ButtonLink className="text__button">Register</ButtonLink>
         </div>
       </div>

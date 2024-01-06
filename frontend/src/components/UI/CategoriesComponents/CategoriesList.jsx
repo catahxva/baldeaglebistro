@@ -31,7 +31,9 @@ function CategoriesList() {
               culinary craftsmanship, inviting you to savor each bite in a warm
               and inviting atmosphere at Bald Eagle Bistro.
             </p>
-            <ButtonLink className="big__button">See all</ButtonLink>
+            <ButtonLink path="/products/main dish" className="big__button">
+              See all
+            </ButtonLink>
           </div>
         </div>
         <div className={classes.categories__item}>
@@ -54,7 +56,9 @@ function CategoriesList() {
               into a harmonious blend of flavors, turning your meal into a
               memorable culinary journey.
             </p>
-            <ButtonLink className="big__button">See all</ButtonLink>
+            <ButtonLink path="/products/side" className="big__button">
+              See all
+            </ButtonLink>
           </div>
         </div>
         <div className={classes.categories__item}>
@@ -76,7 +80,9 @@ function CategoriesList() {
               every bite is a celebration of the artistry and passion that
               defines our dessert offerings.
             </p>
-            <ButtonLink className="big__button">See all</ButtonLink>
+            <ButtonLink path="/products/dessert" className="big__button">
+              See all
+            </ButtonLink>
           </div>
         </div>
         <div className={classes.categories__item}>
@@ -100,7 +106,9 @@ function CategoriesList() {
               selection promises to awaken your palate and set the tone for an
               exceptional dining experience.
             </p>
-            <ButtonLink className="big__button">See all</ButtonLink>
+            <ButtonLink path="/products/appetizer" className="big__button">
+              See all
+            </ButtonLink>
           </div>
         </div>
         <div className={classes.categories__item}>
@@ -122,7 +130,9 @@ function CategoriesList() {
               designed to complement the diverse flavors of our cuisine,
               promising a refreshing and enjoyable experience with every sip.
             </p>
-            <ButtonLink className="big__button">See all</ButtonLink>
+            <ButtonLink path="/products/beverage" className="big__button">
+              See all
+            </ButtonLink>
           </div>
         </div>
       </div>

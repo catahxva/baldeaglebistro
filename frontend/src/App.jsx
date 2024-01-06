@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { QueryClientProvider } from "@tanstack/react-query";
 
 import Root from "./components/pages/Root";
+import RootAuth from "./components/pages/RootAuth";
 import Home from "./components/pages/Home";
 import Categories from "./components/pages/Categories";
 import Product from "./components/pages/Product";
@@ -9,10 +10,11 @@ import Cart from "./components/pages/Cart";
 import Checkout from "./components/pages/Checkout";
 import Payment from "./components/pages/Payment";
 import OrderSuccess from "./components/pages/OrderSuccess";
+import Overview from "./components/pages/Overview";
 import Search from "./components/pages/Search";
+import Signup from "./components/pages/Signup";
 
 import { queryClient } from "./util/queryClient";
-import Overview from "./components/pages/Overview";
 
 const router = createBrowserRouter([
   {
@@ -54,6 +56,16 @@ const router = createBrowserRouter([
       {
         path: "/search",
         element: <Search />,
+      },
+    ],
+  },
+  {
+    path: "/auth",
+    element: <RootAuth />,
+    children: [
+      {
+        path: "signup",
+        element: <Signup />,
       },
     ],
   },

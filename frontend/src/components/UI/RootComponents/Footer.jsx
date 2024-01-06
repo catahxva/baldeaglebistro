@@ -13,7 +13,9 @@ function Footer() {
           <Link to="/categories" className={classes.footer__link}>
             Offerings
           </Link>
-          <Link className={classes.footer__link}>Products</Link>
+          <Link to="/products" className={classes.footer__link}>
+            Products
+          </Link>
           <Link className={classes.footer__link}>Register</Link>
         </div>
       </div>
