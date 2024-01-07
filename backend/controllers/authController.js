@@ -55,12 +55,17 @@ exports.signup = async function (req, res, next) {
       status: "success",
     });
   } catch (err) {
-    sendError(
-      res,
-      400,
-      "There has been a problem with creating your account, please try again later.",
-      err
-    );
+    console.log(err);
+
+    if (err.name === "ValidationError") {
+      sendError(res, 400, "Validation error", err);
+    } else {
+      sendError(
+        res,
+        400,
+        "There has been a problem with creating your account, please try again later."
+      );
+    }
   }
 };
 

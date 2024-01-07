@@ -1,7 +1,6 @@
 import classes from "./OverviewPagination.module.css";
 
 function OverviewPagination({ maxPage, currentPage, paginationHandler }) {
-  console.log(maxPage, currentPage);
   const currentPageNumber = Number(currentPage);
   const multiplePages = maxPage > 1;
 
@@ -9,7 +8,6 @@ function OverviewPagination({ maxPage, currentPage, paginationHandler }) {
 
   // case 1: currently on page one, only 2 pages
   if (currentPageNumber === 1 && multiplePages && maxPage === 2) {
-    console.log("CASE 1 APPLIED");
     buttons = (
       <>
         <button
@@ -34,7 +32,6 @@ function OverviewPagination({ maxPage, currentPage, paginationHandler }) {
 
   // case 2: currently on page one, 3 or more pages
   if (currentPageNumber === 1 && multiplePages && maxPage >= 3) {
-    console.log("CASE 2 APPLIED");
 
     buttons = (
       <>
@@ -70,7 +67,6 @@ function OverviewPagination({ maxPage, currentPage, paginationHandler }) {
   // case 3: multiple pages, we are on one of the pages in between
   // the first and last one
   if (currentPageNumber !== 1 && multiplePages && currentPageNumber < maxPage) {
-    console.log("CASE 3 APPLIED");
     buttons = (
       <>
         <button
@@ -103,7 +99,6 @@ function OverviewPagination({ maxPage, currentPage, paginationHandler }) {
 
   // case 4: we got 2 pages, the current page is the last one
   if (currentPageNumber === maxPage && multiplePages && maxPage === 2) {
-    console.log("CASE 4 APPLIED");
 
     buttons = (
       <>
@@ -129,7 +124,6 @@ function OverviewPagination({ maxPage, currentPage, paginationHandler }) {
 
   // case 5: we got 3 or more pages, we are on the last page
   if (currentPageNumber === maxPage && multiplePages && maxPage >= 3) {
-    console.log("CASE 5 APPLIED");
 
     buttons = (
       <>
@@ -162,7 +156,6 @@ function OverviewPagination({ maxPage, currentPage, paginationHandler }) {
   }
 
   if (!multiplePages) {
-    console.log("CASE 6 APPLIED");
 
     buttons = <></>;
   }

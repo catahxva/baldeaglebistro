@@ -9,6 +9,7 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: [true, "Please provide an username"],
       minlength: [6, "Please provide an username of over 6 characters"],
+      unique: [true, "Username is already in use"],
     },
     role: {
       type: String,

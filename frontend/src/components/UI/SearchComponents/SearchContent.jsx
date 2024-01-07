@@ -8,7 +8,6 @@ import SearchGrid from "./SearchGrid";
 function SearchContent() {
   const [query, setQuery] = useState();
 
-  console.log(query);
 
   return (
     <section className="first__section section__min__height">

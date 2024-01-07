@@ -102,3 +102,5 @@ export const sendRating = async function ({ id, rating }) {
 
   return data.message;
 };
+
+// export const signup = async function(id, )

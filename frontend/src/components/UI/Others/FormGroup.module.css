@@ -19,6 +19,10 @@
   margin-bottom: 1rem;
 }
 
+.form__container__input {
+  position: relative;
+}
+
 .form__input {
   font-size: 1.6rem;
   width: 100%;
@@ -42,6 +46,30 @@
 .form__input:focus {
   outline: none;
   border: 1px solid #fff;
+}
+
+.form__password__button {
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+  background-color: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.form__password__button__svg {
+  width: 2.2rem;
+  height: 2.2rem;
+  color: #ff8c00;
+  transition: all 0.5s;
+}
+
+.form__password__button__svg__active {
+  color: #222;
 }
 
 .form__span__error {

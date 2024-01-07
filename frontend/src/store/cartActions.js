@@ -32,7 +32,6 @@ export const addProductToCart = function (id, quantity) {
         })
       );
     } catch (err) {
-      console.log(err);
       dispatch(
         uiActions.showNotification({
           status: "error",

@@ -44,6 +44,13 @@ function SignupContent() {
     if (value !== passwordValue) return "Passwords must match";
   });
 
+  const submitHandler = function (e) {
+    e.preventDefault();
+
+    if (usernameError || emailError || passwordError || passwordConfirmError)
+      return;
+  };
+
   return (
     <div className={classes.signup}>
       <div className={classes.signup__container}>
@@ -56,7 +63,7 @@ function SignupContent() {
         Create an account now and get all the benefits it offers: order history,
         a faster checkout and the order re-do feature.
       </p>
-      <form className={classes.signup__form}>
+      <form className={classes.signup__form} onSubmit={submitHandler}>
         <FormGroup
           nameProp="username"
           labelText="User Name"
@@ -96,6 +103,20 @@ function SignupContent() {
           onBlur={passwordConfirmBlurHandler}
           error={passwordConfirmError}
         />
+        <div className={classes.signup__form__container__buttons}>
+          <button
+            disabled={
+              usernameError ||
+              emailError ||
+              passwordError ||
+              passwordConfirmError
+            }
+            className={classes.signup__form__button}
+          >
+            Signup
+          </button>
+          <Link className={classes.signup__form__link}>Login</Link>
+        </div>
       </form>
     </div>
   );

@@ -97,7 +97,9 @@ function Navigation({ openMobileNav }) {
           </Link>
           {!isAuth && (
             <>
-              <Link className={classes.nav__link}>Signup</Link>
+              <Link to="/auth/signup" className={classes.nav__link}>
+                Signup
+              </Link>
               <Link className={classes.nav__link}>Login</Link>
             </>
           )}
