@@ -1,3 +1,5 @@
+import CustomError from "./customError";
+
 export const baseUrl = `http://localhost:3000/api/`;
 
 export const fetchProducts = async function (signal, queryString) {
@@ -103,4 +105,27 @@ export const sendRating = async function ({ id, rating }) {
   return data.message;
 };
 
-// export const signup = async function(id, )
+export const signup = async function ({
+  username,
+  email,
+  password,
+  passwordConfirm,
+}) {
+  const response = await fetch(`${baseUrl}users/signup`, {
+    method: "POST",
+    body: JSON.stringify({ username, email, password, passwordConfirm }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  const data = await response.json();
+
+  if (data.status === "fail" && data.message === "Validation error")
+    throw new CustomError(data.message, data.error);
+
+  if (data.status === "fail" && data.message === "MongoServerError")
+    throw new CustomError(data.message, data.error);
+
+  if (data.status === "fail") throw new Error(data.message);
+};

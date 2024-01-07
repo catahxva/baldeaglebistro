@@ -1,10 +1,10 @@
 import { useState } from "react";
 
-export const useInput = function (defaultValue, validationFn) {
+export const useInput = function (defaultValue, validationFn, backendError) {
   const [enteredValue, setEnteredValue] = useState(defaultValue);
   const [didEdit, setDidEdit] = useState(false);
 
-  const errorMessage = validationFn(enteredValue);
+  const errorMessage = backendError || validationFn(enteredValue);
 
   const inputChangeHandler = function (e) {
     setEnteredValue(e.target.value);
@@ -20,6 +20,6 @@ export const useInput = function (defaultValue, validationFn) {
     value: enteredValue,
     inputChangeHandler,
     inputBlurHandler,
-    error: didEdit && errorMessage,
+    error: (didEdit || backendError) && errorMessage,
   };
 };

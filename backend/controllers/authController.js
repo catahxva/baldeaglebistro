@@ -28,7 +28,7 @@ exports.signup = async function (req, res, next) {
   try {
     const newUser = await User.create({
       username: req.body.username,
-      role: req.body.role && "user",
+      // role: req.body.role && "user",
       email: req.body.email,
       password: req.body.password,
       passwordConfirm: req.body.passwordConfirm,
@@ -55,12 +55,36 @@ exports.signup = async function (req, res, next) {
       status: "success",
     });
   } catch (err) {
-    console.log(err);
+    if (err.name === "MongoServerError") {
+      const errorObject = err;
+
+      const formattedErrorObject = {};
+
+      Object.keys(errorObject.keyValue).forEach((key) => {
+        if (key === "email")
+          formattedErrorObject[key] =
+            "Email is already in use. Please try using another email";
+
+        if (key === "username")
+          formattedErrorObject[key] =
+            "Username is already in use. Please try using another username";
+      });
+
+      return sendError(res, 400, "MongoServerError", formattedErrorObject);
+    }
 
     if (err.name === "ValidationError") {
-      sendError(res, 400, "Validation error", err);
+      const errorObject = err.errors;
+
+      const formattedErrorObject = {};
+
+      Object.keys(errorObject).forEach((key) => {
+        formattedErrorObject[key] = errorObject[key]?.properties?.message;
+      });
+
+      return sendError(res, 400, "Validation error", formattedErrorObject);
     } else {
-      sendError(
+      return sendError(
         res,
         400,
         "There has been a problem with creating your account, please try again later."

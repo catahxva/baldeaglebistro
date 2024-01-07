@@ -17,13 +17,19 @@
   margin-bottom: 3rem;
 }
 
-.signup__link {
+.signup__form__link {
   font-size: 1.8rem;
   font-weight: 500;
   font-family: "Oswald", sans-serif;
   text-transform: uppercase;
   color: #fff;
   text-decoration-color: #fff;
+}
+
+.signup__form__span__general__error {
+  display: block;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
 }
 
 .signup__form__container__buttons {
@@ -35,7 +41,7 @@
 }
 
 .signup__form__button {
-  width: 10rem;
+  min-width: 10rem;
   background-color: #ff8c00;
   color: #fff;
   padding: 0.8rem 1.2rem;
@@ -69,4 +75,29 @@
   font-size: 2rem;
   border-radius: 0.5rem;
   text-decoration: none;
+}
+
+.signup__container__message {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  text-align: center;
+  padding: 2rem;
+}
+
+.signup__message {
+  font-size: 2.4rem;
+  font-weight: 700;
+  font-family: "Oswald", sans-serif;
+  text-transform: uppercase;
+}
+
+.signup__link {
+  font-size: 2.2rem;
+  color: #fff;
+  color: #ff8c00;
+  font-family: "Oswald", sans-serif;
 }
