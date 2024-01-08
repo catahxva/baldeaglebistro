@@ -41,14 +41,14 @@ exports.signup = async function (req, res, next) {
     const preheaderText = "Verify your account";
     const message = `This email was sent to you to verify your newly created account at Bald Eagle Bistro. Please click the button below to proceed, or use the link if there are any problems with the buton.`;
     const ctaText = `Verify`;
-    const ctaLink = `${verificationToken}`;
+    const ctaLink = `http://localhost:5173/auth/verify/${verificationToken}`;
 
-    const html = emailTemplate(preheaderText, message, ctaText, ctaLink);
+    const emailHTML = emailTemplate(preheaderText, message, ctaText, ctaLink);
 
     await sendEmail({
       email: newUser.email,
       subject: "Verify Account",
-      html,
+      emailHTML,
     });
 
     res.status(200).json({
@@ -95,12 +95,14 @@ exports.signup = async function (req, res, next) {
 
 exports.verifyEmail = async function (req, res, next) {
   try {
+    if (!req.body.token) return sendError(res, 400, "No token found");
+
     const user = await User.findOne({
       verifyEmailToken: req.body.token,
     });
 
     if (!user) {
-      return sendError(res, 404, "No user found");
+      return sendError(res, 404, "No user found for this token");
     }
 
     user.verified = true;
@@ -166,14 +168,14 @@ exports.forgotPassword = async function (req, res, next) {
     const preheaderText = "Reset your password";
     const message = `Click on the button below to reset the password for your account on Scent Haven. If you did not try to reset your password, please ignore this email. If the button below did not work, please access this link: `;
     const ctaText = "Reset password";
-    const ctaLink = `${resetToken}`;
+    const ctaLink = `http://localhost:5173/auth/reset-forgot/${resetToken}`;
 
-    const html = emailTemplate(preheaderText, message, ctaText, ctaLink);
+    const emailHTML = emailTemplate(preheaderText, message, ctaText, ctaLink);
 
     await sendEmail({
       email: user.email,
       subject: "Password Reset",
-      html,
+      emailHTML,
     });
 
     res.status(200).json({

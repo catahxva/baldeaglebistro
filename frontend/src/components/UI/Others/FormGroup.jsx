@@ -32,7 +32,7 @@ function FormGroup({
           className={`${classes.form__input} ${
             value.length > 0 ? classes.form__input__active : ""
           }`}
-          // required
+          required
         />
         {type === "password" && (
           <button

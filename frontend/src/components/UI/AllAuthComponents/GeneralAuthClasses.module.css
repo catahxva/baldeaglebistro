@@ -1,4 +1,4 @@
-.signup {
+.auth__box {
   width: 55rem;
   padding: 2rem;
   border-radius: 1rem;
@@ -9,7 +9,7 @@
   box-shadow: 0px 0px 65px 6px rgba(0, 0, 0, 0.32);
 }
 
-.signup__container {
+.auth__container {
   width: 100%;
   display: flex;
   align-items: center;
@@ -17,30 +17,29 @@
   margin-bottom: 3rem;
 }
 
-.signup__form__link {
-  font-size: 1.8rem;
-  font-weight: 500;
-  font-family: "Oswald", sans-serif;
-  text-transform: uppercase;
+.auth__link {
+  font-size: 2.2rem;
   color: #fff;
-  text-decoration-color: #fff;
+  color: #ff8c00;
+  font-family: "Oswald", sans-serif;
 }
 
-.signup__form__span__general__error {
+.auth__span__error {
   display: block;
   margin-bottom: 1.5rem;
   font-size: 2rem;
 }
 
-.signup__form__container__buttons {
+.auth__form__container__buttons {
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 3rem;
   gap: 2rem;
 }
 
-.signup__form__button {
+.auth__form__button {
   min-width: 10rem;
   background-color: #ff8c00;
   color: #fff;
@@ -56,14 +55,14 @@
   transition: all 0.5s;
 }
 
-.signup__form__button:disabled {
+.auth__form__button:disabled {
   cursor: default;
   background-color: #777;
   color: #fff;
 }
 
-.signup__form__link {
-  width: 10rem;
+.auth__form__link {
+  min-width: 10rem;
   text-align: center;
   color: #222;
   background-color: #fff;
@@ -77,7 +76,7 @@
   text-decoration: none;
 }
 
-.signup__container__message {
+.auth__container__message {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -88,16 +87,8 @@
   padding: 2rem;
 }
 
-.signup__message {
+.auth__message {
   font-size: 2.4rem;
-  font-weight: 700;
-  font-family: "Oswald", sans-serif;
-  text-transform: uppercase;
-}
-
-.signup__link {
-  font-size: 2.2rem;
-  color: #fff;
-  color: #ff8c00;
+  font-weight: 500;
   font-family: "Oswald", sans-serif;
 }

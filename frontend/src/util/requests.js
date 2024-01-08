@@ -129,3 +129,51 @@ export const signup = async function ({
 
   if (data.status === "fail") throw new Error(data.message);
 };
+
+export const verifyAccount = async function ({ token }) {
+  const response = await fetch(`${baseUrl}users/verify-account`, {
+    method: "POST",
+    body: JSON.stringify({ token }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  const data = await response.json();
+
+  if (data.status === "fail") throw new Error(data.message);
+
+  console.log(data);
+
+  return data;
+};
+
+export const login = async function ({ email, password }) {
+  const response = await fetch(`${baseUrl}users/login`, {
+    method: "POST",
+    body: JSON.stringify({ email, password }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  const data = await response.json();
+
+  if (data.status === "fail") throw new Error(data.message);
+
+  return data;
+};
+
+export const forgotPassword = async function ({ email }) {
+  const response = await fetch(`${baseUrl}users/forgot`, {
+    method: "POST",
+    body: JSON.stringify({ email }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  const data = await response.json();
+
+  if (data.status === "fail") throw new Error(data.message);
+};

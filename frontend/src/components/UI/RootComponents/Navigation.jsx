@@ -11,7 +11,7 @@ function Navigation({ openMobileNav }) {
     0
   );
 
-  const isAuth = false;
+  const isAuth = useSelector((state) => state.auth.token) || false;
 
   const [scrollDirection, setScrollDirection] = useState("up");
 
@@ -100,7 +100,9 @@ function Navigation({ openMobileNav }) {
               <Link to="/auth/signup" className={classes.nav__link}>
                 Signup
               </Link>
-              <Link className={classes.nav__link}>Login</Link>
+              <Link to="/auth/login" className={classes.nav__link}>
+                Login
+              </Link>
             </>
           )}
           {isAuth && (

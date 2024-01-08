@@ -13,6 +13,10 @@ import OrderSuccess from "./components/pages/OrderSuccess";
 import Overview from "./components/pages/Overview";
 import Search from "./components/pages/Search";
 import Signup from "./components/pages/Signup";
+import VerifyAccount from "./components/pages/VerifyAccount";
+import Login from "./components/pages/Login";
+import ForgotPassword from "./components/pages/ForgotPassword";
+import ResetForgotPass from "./components/pages/ResetForgotPass";
 
 import { queryClient } from "./util/queryClient";
 
@@ -66,6 +70,22 @@ const router = createBrowserRouter([
       {
         path: "signup",
         element: <Signup />,
+      },
+      {
+        path: "verify/:token",
+        element: <VerifyAccount />,
+      },
+      {
+        path: "login",
+        element: <Login />,
+      },
+      {
+        path: "forgot",
+        element: <ForgotPassword />,
+      },
+      {
+        path: "reset-forgot/:token",
+        element: <ResetForgotPass />,
       },
     ],
   },

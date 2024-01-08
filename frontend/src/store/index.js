@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 
 import { cartSlice, cartMiddleware } from "./cartSlice";
-import { authSlice } from "./authSlice";
+import { authSlice, authMiddleware } from "./authSlice";
 import { addressSlice } from "./addressSlice";
 import { uiSlice } from "./uiSlice";
 
@@ -13,7 +13,7 @@ const store = configureStore({
     ui: uiSlice.reducer,
   },
   middleware: (getDefaultMiddleware) => {
-    return getDefaultMiddleware().concat(cartMiddleware);
+    return getDefaultMiddleware().concat(cartMiddleware).concat(authMiddleware);
   },
 });
 

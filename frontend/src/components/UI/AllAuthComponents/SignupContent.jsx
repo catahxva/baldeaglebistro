@@ -1,4 +1,4 @@
-import classes from "./SignupContent.module.css";
+import generalClasses from "./GeneralAuthClasses.module.css";
 
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -83,12 +83,11 @@ function SignupContent() {
     },
     onSuccess: () => {
       setButtonText("Success");
+      setSubmitting(false);
 
       setSuccessfulSignup(true);
     },
     onError: (error) => {
-      console.log(error);
-
       if (error.message) setGeneralError(error.message);
 
       if (error.errorName === "Validation error")
@@ -98,6 +97,7 @@ function SignupContent() {
         setDbErrors(error.errorObject);
 
       setButtonText("Signup");
+      setSubmitting(false);
     },
     onSettled: () => {
       setSubmitting(false);
@@ -107,7 +107,16 @@ function SignupContent() {
   const submitHandler = function (e) {
     e.preventDefault();
 
-    if (usernameError || emailError || passwordError || passwordConfirmError)
+    if (
+      !usernameValue ||
+      !emailValue ||
+      !passwordValue ||
+      !passwordConfirmValue ||
+      usernameError ||
+      emailError ||
+      passwordError ||
+      passwordConfirmError
+    )
       return;
 
     mutate({
@@ -119,12 +128,12 @@ function SignupContent() {
   };
 
   return (
-    <div className={classes.signup}>
+    <div className={generalClasses.auth__box}>
       {!successfulSignup && (
         <>
-          <div className={classes.signup__container}>
-            <h2 className="title__no__border">Signup</h2>
-            <Link to="/" className={classes.signup__link}>
+          <div className={generalClasses.auth__container}>
+            <h2 className="title__no__margin">Signup</h2>
+            <Link to="/" className={generalClasses.auth__link}>
               Home page
             </Link>
           </div>
@@ -132,7 +141,7 @@ function SignupContent() {
             Create an account now and get all the benefits it offers: order
             history, a faster checkout and the order re-do feature.
           </p>
-          <form className={classes.signup__form} onSubmit={submitHandler}>
+          <form onSubmit={submitHandler}>
             <FormGroup
               nameProp="username"
               labelText="User Name"
@@ -223,11 +232,11 @@ function SignupContent() {
               error={passwordConfirmError}
             />
             {generalError && (
-              <span className={classes.signup__form__span__general__error}>
+              <span className={generalClasses.auth__span__error}>
                 {generalError}
               </span>
             )}
-            <div className={classes.signup__form__container__buttons}>
+            <div className={generalClasses.auth__form__container__buttons}>
               <button
                 disabled={
                   !usernameValue ||
@@ -240,22 +249,27 @@ function SignupContent() {
                   passwordConfirmError ||
                   submitting
                 }
-                className={classes.signup__form__button}
+                className={generalClasses.auth__form__button}
               >
                 {buttonText}
               </button>
-              <Link className={classes.signup__form__link}>Login</Link>
+              <Link
+                to="/auth/login"
+                className={generalClasses.auth__form__link}
+              >
+                Login
+              </Link>
             </div>
           </form>
         </>
       )}
       {successfulSignup && (
-        <div className={classes.signup__container__message}>
-          <span className={classes.signup__message}>
+        <div className={generalClasses.auth__container__message}>
+          <span className={generalClasses.auth__message}>
             Signup successful! You will soon receive an email to verify your
             account.
           </span>
-          <Link to="/" className={classes.signup__link}>
+          <Link to="/" className={generalClasses.auth__link}>
             Home page
           </Link>
         </div>

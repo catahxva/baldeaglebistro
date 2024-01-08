@@ -12,7 +12,7 @@ router.post(
 
 router.post("/signup", authController.signup);
 router.post("/login", authController.login);
-router.post("/verify-email", authController.verifyEmail);
+router.post("/verify-account", authController.verifyEmail);
 router.post("/reset", authController.protect, authController.resetPassword);
 router.post("/forgot", authController.forgotPassword);
 router.post("/forgot-reset", authController.resetForgotPassword);
