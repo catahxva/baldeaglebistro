@@ -106,7 +106,7 @@ function Navigation({ openMobileNav }) {
             </>
           )}
           {isAuth && (
-            <Link className={classes.nav__link}>
+            <Link to="/account" className={classes.nav__link}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"

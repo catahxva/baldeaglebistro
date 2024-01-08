@@ -20,7 +20,9 @@ function Header() {
           <ButtonLink path="/products" className="big__button">
             Shop Now
           </ButtonLink>
-          <ButtonLink className="text__button">Register</ButtonLink>
+          <ButtonLink path="/auth/signup" className="text__button">
+            Register
+          </ButtonLink>
         </div>
       </div>
       <div

@@ -23,7 +23,6 @@ function VerifyAccountContent() {
     onError: (error) => {
       setVerifyText(error.message);
       setVisibleLink(true);
-      console.log(error);
     },
     onSuccess: (data) => {
       setVerifyText("Verification successful. You will soon be redirected.");

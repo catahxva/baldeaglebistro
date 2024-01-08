@@ -17,6 +17,7 @@ import VerifyAccount from "./components/pages/VerifyAccount";
 import Login from "./components/pages/Login";
 import ForgotPassword from "./components/pages/ForgotPassword";
 import ResetForgotPass from "./components/pages/ResetForgotPass";
+import Account from "./components/pages/Account";
 
 import { queryClient } from "./util/queryClient";
 
@@ -60,6 +61,10 @@ const router = createBrowserRouter([
       {
         path: "/search",
         element: <Search />,
+      },
+      {
+        path: "/account",
+        element: <Account />,
       },
     ],
   },

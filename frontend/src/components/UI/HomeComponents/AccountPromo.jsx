@@ -88,7 +88,9 @@ function AccountPromo() {
         </div>
       </div>
       <div className={classes.account__container}>
-        <ButtonLink className="big__button">Register</ButtonLink>
+        <ButtonLink path="/auth/signup" className="big__button">
+          Register
+        </ButtonLink>
       </div>
     </section>
   );

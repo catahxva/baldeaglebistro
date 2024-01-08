@@ -1,11 +1,11 @@
 import SignupContent from "../UI/AllAuthComponents/SignupContent";
 
+import { useAuthRedirect } from "../../hooks/useAuthRedirect";
+
 function Signup() {
-  return (
-    <>
-      <SignupContent />
-    </>
-  );
+  useAuthRedirect();
+
+  return <SignupContent />;
 }
 
 export default Signup;

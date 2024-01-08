@@ -1,12 +1,29 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const token = JSON.parse(localStorage.getItem(`token`));
-const tokenExpirationDate = JSON.parse(
-  localStorage.getItem("tokenExpirationDate")
+const tokenLocalStorage = localStorage.getItem(`token`);
+const tokenExpirationDateLocalStorage = localStorage.getItem(
+  "tokenExpirationDate"
 );
-const email = JSON.parse(localStorage.getItem(`email`));
-const username = JSON.parse(localStorage.getItem("username"));
-const address = JSON.parse(localStorage.getItem("address"));
+const emailLocalStorage = localStorage.getItem(`email`);
+const usernameLocalStorage = localStorage.getItem("username");
+const addressLocalStorage = localStorage.getItem("address");
+
+const token =
+  tokenLocalStorage !== "undefined" ? JSON.parse(tokenLocalStorage) : undefined;
+const tokenExpirationDate =
+  tokenExpirationDateLocalStorage !== "undefined"
+    ? JSON.parse(tokenExpirationDateLocalStorage)
+    : undefined;
+const email =
+  emailLocalStorage !== "undefined" ? JSON.parse(emailLocalStorage) : undefined;
+const username =
+  usernameLocalStorage !== "undefined"
+    ? JSON.parse(usernameLocalStorage)
+    : undefined;
+const address =
+  addressLocalStorage !== "undefined"
+    ? JSON.parse(addressLocalStorage)
+    : undefined;
 
 const initialAuthState = {
   token,
@@ -50,10 +67,7 @@ export const authMiddleware = (store) => (next) => (action) => {
       `tokenExpirationDate`,
       JSON.stringify(store.getState().auth.tokenExpirationDate)
     );
-    localStorage.setItem(
-      `email`,
-      JSON.stringify(`email`, store.getState().auth.email)
-    );
+    localStorage.setItem(`email`, JSON.stringify(store.getState().auth.email));
     localStorage.setItem(
       `username`,
       JSON.stringify(store.getState().auth.username)

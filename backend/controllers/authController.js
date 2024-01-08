@@ -205,7 +205,9 @@ exports.resetForgotPassword = async function (req, res, next) {
 
     await user.save({ validateBeforeSave: false });
 
-    createSendToken(user, 200, res);
+    res.status(200).json({
+      status: "success",
+    });
   } catch (err) {
     sendError(
       res,

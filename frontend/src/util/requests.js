@@ -177,3 +177,21 @@ export const forgotPassword = async function ({ email }) {
 
   if (data.status === "fail") throw new Error(data.message);
 };
+
+export const resetForgotPassword = async function ({
+  token,
+  newPassword,
+  newPasswordConfirm,
+}) {
+  const response = await fetch(`${baseUrl}users/forgot-reset`, {
+    method: "POST",
+    body: JSON.stringify({ token, newPassword, newPasswordConfirm }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  const data = await response.json();
+
+  if (data.status === "fail") throw new Error(data.message);
+};
