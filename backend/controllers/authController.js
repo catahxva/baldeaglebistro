@@ -344,9 +344,18 @@ exports.protectRole = async function (req, res, next) {
 exports.updateUserAddress = async function (req, res, next) {
   try {
     const user = req.user;
-    const { name, phone, street, streetNumber } = req.body;
+    const { email, name, phone, street, streetNumber } = req.body;
+
+    if (!email || !name || !phone || !street || !streetNumber) {
+      return sendError(
+        res,
+        400,
+        "The data that you sent is not valid, please try again later."
+      );
+    }
 
     user.address = {
+      email,
       name,
       phone,
       street,

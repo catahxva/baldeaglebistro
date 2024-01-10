@@ -195,3 +195,25 @@ export const resetForgotPassword = async function ({
 
   if (data.status === "fail") throw new Error(data.message);
 };
+
+export const updateAddress = async function ({
+  email,
+  name,
+  phone,
+  street,
+  streetNumber,
+}) {
+  const response = await fetch(`${baseUrl}users/`, {
+    method: "POST",
+    body: JSON.stringify({ email, name, phone, street, streetNumber }),
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  const data = await response.json();
+
+  if (data.status === "fail") throw new Error(data.message);
+
+  return data;
+};

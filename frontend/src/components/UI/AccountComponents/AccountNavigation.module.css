@@ -1,0 +1,75 @@
+.account__navigation {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.account__navigation__button {
+  width: 100%;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.8rem 0.5rem;
+  border-radius: 0.5rem;
+  transition: all 0.5s;
+  border: none;
+  font-family: inherit;
+  color: #fff;
+  cursor: pointer;
+}
+
+.account__navigation__button:hover {
+  background-color: #ff8c00;
+}
+
+.account__navigation__button__active {
+  background-color: #ff8c00;
+}
+
+.account__navigation__button__span {
+  font-size: 2.2rem;
+  font-family: "Oswald", sans-serif;
+  font-weight: 400;
+  display: block;
+  margin-top: -0.3rem;
+}
+
+.account__navigation__button__svg {
+  width: 2.5rem;
+  height: 2.5rem;
+  color: #fff;
+}
+
+.account__navigation__link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.8rem 0.5rem;
+  border-radius: 0.5rem;
+  background-color: transparent;
+  color: #fff;
+  text-decoration: none;
+  width: 100%;
+  transition: all 0.5s;
+}
+
+.account__navigation__link:hover {
+  background-color: #ff8c00;
+}
+
+.account__navigation__link__svg {
+  width: 2.5rem;
+  height: 2.5rem;
+  color: #fff;
+}
+
+.account__navigation__link__span {
+  font-size: 2.2rem;
+  font-family: "Oswald", sans-serif;
+  font-weight: 400;
+  display: block;
+  margin-top: -0.3rem;
+}

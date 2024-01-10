@@ -1,0 +1,7 @@
+.account__grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 0.5fr 1.5fr;
+  column-gap: 6rem;
+  align-items: start;
+}

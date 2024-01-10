@@ -53,6 +53,9 @@ export const authSlice = createSlice({
       state.username = undefined;
       state.address = undefined;
     },
+    updateUserAddress(state, action) {
+      state.address = action.payload.address;
+    },
   },
 });
 
@@ -84,6 +87,13 @@ export const authMiddleware = (store) => (next) => (action) => {
     localStorage.removeItem(`email`);
     localStorage.removeItem(`username`);
     localStorage.removeItem(`address`);
+  }
+
+  if (authActions.updateUserAddress.match(action)) {
+    localStorage.setItem(
+      `address`,
+      JSON.stringify(store.getState().auth.address)
+    );
   }
 
   return result;

@@ -13,13 +13,41 @@ function CheckoutForm() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const currentAddress = useSelector((state) => state.address.address);
+  const userAddress = useSelector((state) => state.auth.address);
 
-  const emailDefaultValue = currentAddress?.email ?? "";
-  const nameDefaultValue = currentAddress?.name ?? "";
-  const phoneDefaultValue = currentAddress?.phone ?? "";
-  const streetNameDefaultValue = currentAddress?.street ?? "";
-  const streetNumberDefaultValue = currentAddress?.streetNumber ?? "";
-  const deliveryDefaultValue = currentAddress?.carrier ?? "";
+  let emailDefaultValue;
+  let nameDefaultValue;
+  let phoneDefaultValue;
+  let streetNameDefaultValue;
+  let streetNumberDefaultValue;
+  let deliveryDefaultValue;
+
+  if ((currentAddress && userAddress) || (currentAddress && !userAddress)) {
+    emailDefaultValue = currentAddress.email;
+    nameDefaultValue = currentAddress.name;
+    phoneDefaultValue = currentAddress.phone;
+    streetNameDefaultValue = currentAddress.street;
+    streetNumberDefaultValue = currentAddress.streetNumber;
+    deliveryDefaultValue = currentAddress.carrier;
+  }
+
+  if (!currentAddress && userAddress) {
+    emailDefaultValue = userAddress.email;
+    nameDefaultValue = userAddress.name;
+    phoneDefaultValue = userAddress.phone;
+    streetNameDefaultValue = userAddress.street;
+    streetNumberDefaultValue = userAddress.streetNumber;
+    deliveryDefaultValue = "";
+  }
+
+  if (!currentAddress && !userAddress) {
+    emailDefaultValue = "";
+    nameDefaultValue = "";
+    phoneDefaultValue = "";
+    streetNameDefaultValue = "";
+    streetNumberDefaultValue = "";
+    deliveryDefaultValue = "";
+  }
 
   const {
     value: emailValue,

@@ -1,0 +1,87 @@
+.account__data {
+  width: 100%;
+}
+
+.account__data__title {
+  font-size: 3.2rem;
+  font-weight: 700;
+  font-family: "Oswald", sans-serif;
+  color: #ff8c00;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.account__data__container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-bottom: 3.5rem;
+}
+
+.account__data__span {
+  display: block;
+  font-size: 2rem;
+}
+
+.account__data__address__list {
+  margin-top: 1rem;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.account__data__address__list__item {
+  font-size: 1.8rem;
+}
+
+.account__data__no__address {
+  display: block;
+  margin-bottom: 1.5rem;
+  font-size: 2rem;
+  font-style: italic;
+}
+
+.account__data__button {
+  font-size: 2rem;
+  font-family: "Oswald", sans-serif;
+  font-weight: 500;
+  color: #fff;
+  text-decoration: underline;
+  text-decoration-color: #fff;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+  margin-bottom: 1.5rem;
+  transition: all 0.5s;
+}
+
+.account__data__button:hover {
+  color: #ff8c00;
+  text-decoration-color: #ff8c00;
+}
+
+.account__data__form {
+  width: 55%;
+}
+
+.account__data__form__button {
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  font-family: "Oswald", sans-serif;
+  font-weight: 700;
+  color: #fff;
+  background-color: #ff8c00;
+  padding: 0.8rem 1.2rem;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.account__data__form__button:disabled {
+  background-color: #777;
+}
