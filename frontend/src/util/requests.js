@@ -197,17 +197,21 @@ export const resetForgotPassword = async function ({
 };
 
 export const updateAddress = async function ({
+  token,
   email,
   name,
   phone,
   street,
   streetNumber,
 }) {
-  const response = await fetch(`${baseUrl}users/`, {
+  console.log(updateAddress);
+
+  const response = await fetch(`${baseUrl}users/change-address`, {
     method: "POST",
     body: JSON.stringify({ email, name, phone, street, streetNumber }),
     headers: {
       "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
     },
   });
 

@@ -19,11 +19,10 @@ function AccountData() {
   const [submitting, setSubmitting] = useState();
   const [generalError, setGeneralError] = useState();
 
+  const token = useSelector((state) => state.auth.token);
   const email = useSelector((state) => state.auth.email);
   const username = useSelector((state) => state.auth.username);
   const address = useSelector((state) => state.auth.address);
-
-  console.log(email, username, address);
 
   const emailDefaultValue = address?.email ?? "";
   const nameDefaultValue = address?.name ?? "";
@@ -81,14 +80,34 @@ function AccountData() {
     },
     onError: (error) => {
       setGeneralError(error.message);
+      console.log(error);
     },
     onSuccess: (data) => {
       setSubmitting(false);
+      console.log(data);
+
+      const addressDB = data.data;
+
+      dispatch(
+        authActions.updateUserAddress({
+          address: {
+            email: addressDB.email,
+            name: addressDB.name,
+            phone: addressDB.phone,
+            street: addressDB.street,
+            streetNumber: addressDB.streetNumber,
+          },
+        })
+      );
+
+      setShowForm(false);
     },
   });
 
   const submitHandler = function (e) {
     e.preventDefault();
+
+    console.log("wtf?");
 
     if (
       !emailValue ||
@@ -99,10 +118,20 @@ function AccountData() {
       emailError ||
       nameError ||
       phoneError ||
-      streetNameValue ||
-      streetNumberValue
-    )
+      streetNameError ||
+      streetNumberError
+    ) {
       return;
+    }
+
+    mutate({
+      token,
+      email: emailValue,
+      name: nameValue,
+      phone: phoneValue,
+      street: streetNameValue,
+      streetNumber: streetNumberValue,
+    });
   };
 
   return (
@@ -195,6 +224,7 @@ function AccountData() {
             </span>
           )}
           <button
+            type="submit"
             disabled={
               !emailValue ||
               !nameValue ||
@@ -204,8 +234,8 @@ function AccountData() {
               emailError ||
               nameError ||
               phoneError ||
-              streetNameValue ||
-              streetNumberValue ||
+              streetNameError ||
+              streetNumberError ||
               submitting
             }
             className={classes.account__data__form__button}
