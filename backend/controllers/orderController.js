@@ -169,8 +169,10 @@ exports.getAllOrders = async function (req, res, next) {
 
 exports.getOrders = async function (req, res, next) {
   try {
+    console.log(req.user);
+
     const orders = await Order.find({
-      user: req.user.id,
+      user: req.user._id,
     });
 
     if (!orders) {

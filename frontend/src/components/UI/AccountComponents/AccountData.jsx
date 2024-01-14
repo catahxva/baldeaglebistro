@@ -3,6 +3,7 @@ import classes from "./AccountData.module.css";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { authActions } from "../../../store/authSlice";
+import { uiActions } from "../../../store/uiSlice";
 import { useMutation } from "@tanstack/react-query";
 import { updateAddress } from "../../../util/requests";
 
@@ -17,12 +18,16 @@ function AccountData() {
   let buttonText = !showForm ? "Address Form" : "Hide Address Form";
 
   const [submitting, setSubmitting] = useState();
+  const btnText = !submitting ? "Update Address" : "Submitting...";
+
   const [generalError, setGeneralError] = useState();
 
   const token = useSelector((state) => state.auth.token);
   const email = useSelector((state) => state.auth.email);
   const username = useSelector((state) => state.auth.username);
   const address = useSelector((state) => state.auth.address);
+
+  console.log(address);
 
   const emailDefaultValue = address?.email ?? "";
   const nameDefaultValue = address?.name ?? "";
@@ -86,7 +91,9 @@ function AccountData() {
       setSubmitting(false);
       console.log(data);
 
-      const addressDB = data.data;
+      const addressDB = data.data.data;
+
+      console.log(addressDB);
 
       dispatch(
         authActions.updateUserAddress({
@@ -100,14 +107,26 @@ function AccountData() {
         })
       );
 
-      setShowForm(false);
+      dispatch(
+        uiActions.showNotification({
+          status: "success",
+          message: "Address updated successfully!",
+        })
+      );
+
+      setTimeout(() => {
+        dispatch(uiActions.hideNotification());
+      }, 2000);
+
+      // setShowForm(false);
+    },
+    onSettled: () => {
+      setSubmitting(false);
     },
   });
 
   const submitHandler = function (e) {
     e.preventDefault();
-
-    console.log("wtf?");
 
     if (
       !emailValue ||
@@ -153,9 +172,22 @@ function AccountData() {
         <div className={classes.account__data__address}>
           <span className={classes.account__data__span}>Address Info</span>
           <ul className={classes.account__data__address__list}>
-            <li className={classes.account__data__address__list__item}>
-              Name: Cata Hava
-            </li>
+            {Object.entries(address).map((entry, i) => {
+              console.log(entry[0].split(/(?=[A-Z])/));
+
+              return (
+                <li
+                  key={i}
+                  className={classes.account__data__address__list__item}
+                >
+                  {entry[0]
+                    .split(/(?=[A-Z])/)
+                    .map((string) => string[0].toUpperCase() + string.slice(1))
+                    .join(" ")}
+                  : {entry[1]}
+                </li>
+              );
+            })}
           </ul>
         </div>
       )}
@@ -240,7 +272,7 @@ function AccountData() {
             }
             className={classes.account__data__form__button}
           >
-            Update Address
+            {btnText}
           </button>
         </form>
       )}

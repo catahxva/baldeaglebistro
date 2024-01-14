@@ -62,7 +62,12 @@ export const obtainCartProducts = async function (cartItems) {
   return data;
 };
 
-export const obtainPaymentIntent = async function (signal, shipping, products) {
+export const obtainPaymentIntent = async function (
+  signal,
+  shipping,
+  products,
+  token
+) {
   if (!shipping) throw new Error("You must provide a shipping address");
   if (!products)
     throw new Error(
@@ -72,7 +77,7 @@ export const obtainPaymentIntent = async function (signal, shipping, products) {
   const response = await fetch(`${baseUrl}orders/create-payment`, {
     signal,
     method: "POST",
-    body: JSON.stringify({ shipping, products }),
+    body: JSON.stringify({ shipping, products, token }),
     headers: {
       "Content-Type": "application/json",
     },
@@ -204,11 +209,25 @@ export const updateAddress = async function ({
   street,
   streetNumber,
 }) {
-  console.log(updateAddress);
-
   const response = await fetch(`${baseUrl}users/change-address`, {
     method: "POST",
     body: JSON.stringify({ email, name, phone, street, streetNumber }),
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  const data = await response.json();
+
+  if (data.status === "fail") throw new Error(data.message);
+
+  return data;
+};
+
+export const getUserOrders = async function (signal, token) {
+  const response = await fetch(`${baseUrl}orders`, {
+    signal,
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,

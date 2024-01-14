@@ -30,7 +30,7 @@ function FormGroup({
           onBlur={onBlur}
           onFocus={onFocus}
           className={`${classes.form__input} ${
-            value.length > 0 ? classes.form__input__active : ""
+            value?.length > 0 ? classes.form__input__active : ""
           }`}
           required
         />
@@ -54,7 +54,7 @@ function FormGroup({
                 strokeWidth={1.5}
                 stroke="currentColor"
                 className={`w-6 h-6 ${classes.form__password__button__svg} ${
-                  value.length > 0
+                  value?.length > 0
                     ? classes.form__password__button__svg__active
                     : ""
                 }`}
@@ -80,7 +80,7 @@ function FormGroup({
                 strokeWidth={1.5}
                 stroke="currentColor"
                 className={`w-6 h-6 ${classes.form__password__button__svg} ${
-                  value.length > 0
+                  value?.length > 0
                     ? classes.form__password__button__svg__active
                     : ""
                 }`}

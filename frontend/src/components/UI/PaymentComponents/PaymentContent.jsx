@@ -13,6 +13,7 @@ import PaymentForm from "./PaymentForm";
 import ItemsList from "../Others/ItemsList";
 
 function PaymentContent() {
+  const userToken = useSelector((state) => state.auth.token);
   const currentAddress = useSelector((state) => state.address.address);
   const items = useSelector((state) => state.cart.items);
 
@@ -24,7 +25,8 @@ function PaymentContent() {
 
   const { data, isPending, isError, error } = useQuery({
     queryKey: ["paymentIntent", { currentAddress, items }],
-    queryFn: ({ signal }) => obtainPaymentIntent(signal, currentAddress, items),
+    queryFn: ({ signal }) =>
+      obtainPaymentIntent(signal, currentAddress, items, userToken),
   });
 
   useEffect(() => {
