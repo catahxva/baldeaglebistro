@@ -221,6 +221,17 @@ exports.resetPassword = async function (req, res, next) {
   try {
     const user = req.user;
 
+    const userWithPass = await User.findById(user._id).select("+password");
+
+    if (
+      !(await user.correctPassword(
+        req.body.currentPassword,
+        userWithPass.password
+      ))
+    ) {
+      return sendError(res, 400, "Provided password is not correct");
+    }
+
     if (!user) {
       return sendError(res, 404, "No user found");
     }
@@ -232,6 +243,7 @@ exports.resetPassword = async function (req, res, next) {
 
     createSendToken(user, 200, res);
   } catch (err) {
+    console.log(err);
     sendError(
       res,
       400,
@@ -319,6 +331,7 @@ exports.protect = async function (req, res, next) {
 
     return next();
   } catch (err) {
+    console.log(err);
     return sendError(
       res,
       400,

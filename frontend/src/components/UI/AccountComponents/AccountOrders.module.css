@@ -21,12 +21,37 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
+  /* gap: 2rem; */
 }
 
 .account__order {
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  padding: 2.5rem 0rem;
+}
+
+.account__order:not(:last-child) {
+  border-bottom: 1px solid #ff8c00;
+}
+
+.account__order__title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ff8c00;
+  display: block;
+  margin-bottom: 0.4rem;
+}
+
+.account__order__date {
+  font-size: 1.6rem;
+  font-style: italic;
+  display: block;
+}
+
+.account__order__span {
+  font-size: 1.6rem;
+  display: block;
+  margin-bottom: 0.4rem;
 }

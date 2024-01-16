@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 export const useInput = function (defaultValue, validationFn, backendError) {
-  const [enteredValue, setEnteredValue] = useState(defaultValue);
+  const [enteredValue, setEnteredValue] = useState(defaultValue || "");
   const [didEdit, setDidEdit] = useState(false);
 
   const errorMessage = backendError || validationFn(enteredValue);

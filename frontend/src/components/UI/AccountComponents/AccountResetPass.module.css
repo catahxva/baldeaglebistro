@@ -1,0 +1,40 @@
+.account__reset__container {
+  width: 100%;
+}
+
+.account__reset__title {
+  font-size: 3.2rem;
+  font-weight: 700;
+  font-family: "Oswald", sans-serif;
+  color: #ff8c00;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.account__reset__form {
+  width: 55%;
+}
+
+.account__reset__form__btn {
+  font-size: 1.8rem;
+  font-weight: 700;
+  font-family: "Oswald", sans-serif;
+  background-color: #ff8c00;
+  color: #fff;
+  padding: 0.8rem 1.2rem;
+  border-radius: 0.5rem;
+  border: none;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.account__reset__form__btn:disabled {
+  background-color: #777;
+}
+
+.account__reset__error {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 2rem;
+}

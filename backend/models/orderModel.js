@@ -7,6 +7,10 @@ const orderSchema = new mongoose.Schema(
       type: Date,
       default: Date.now,
     },
+    status: {
+      type: String,
+      default: "Pending",
+    },
     user: {
       type: mongoose.Schema.ObjectId,
       ref: "Users",

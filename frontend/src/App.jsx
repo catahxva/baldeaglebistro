@@ -15,6 +15,7 @@ import Search from "./components/pages/Search";
 import Signup from "./components/pages/Signup";
 import VerifyAccount from "./components/pages/VerifyAccount";
 import Login from "./components/pages/Login";
+import Logout from "./components/pages/Logout";
 import ForgotPassword from "./components/pages/ForgotPassword";
 import ResetForgotPass from "./components/pages/ResetForgotPass";
 import Account from "./components/pages/Account";
@@ -93,6 +94,10 @@ const router = createBrowserRouter([
         element: <ResetForgotPass />,
       },
     ],
+  },
+  {
+    path: "/logout",
+    element: <Logout />,
   },
 ]);
 

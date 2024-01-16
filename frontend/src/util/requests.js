@@ -201,6 +201,28 @@ export const resetForgotPassword = async function ({
   if (data.status === "fail") throw new Error(data.message);
 };
 
+export const updatePassword = async function ({
+  token,
+  currentPassword,
+  newPassword,
+  newPasswordConfirm,
+}) {
+  const response = await fetch(`${baseUrl}users/reset`, {
+    method: "POST",
+    body: JSON.stringify({ currentPassword, newPassword, newPasswordConfirm }),
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  const data = await response.json();
+
+  if (data.status === "fail") throw new Error(data.message);
+
+  return data;
+};
+
 export const updateAddress = async function ({
   token,
   email,

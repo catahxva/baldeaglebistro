@@ -5,11 +5,10 @@ import { useQuery } from "@tanstack/react-query";
 import { getUserOrders } from "../../../util/requests";
 
 import Placeholder from "../Others/Placeholder";
+import ButtonLink from "../Others/ButtonLink";
 
 function AccountOrders() {
   const userToken = useSelector((state) => state.auth.token);
-
-  console.log(userToken);
 
   const { data, isPending, isError, error } = useQuery({
     queryKey: ["userOrders", userToken],
@@ -34,21 +33,47 @@ function AccountOrders() {
   if (data && data.data.data.length > 0) {
     const orders = data.data.data;
 
+    console.log(orders);
+
     content = (
       <div className={classes.account__orders__list}>
-        <div className={classes.account__order}>
-          <div>
-            <span className={classes.account__order__title}>Order #934BFA</span>
-            <span className={classes.account__order__date}>
-              14 January, 2024
-            </span>
-          </div>
-          <div>
-            <span className={classes.account__order__span}>Products: 3</span>
-            <span className={classes.account__order__span}>Paid: 130$</span>
-          </div>
-          <span>See order</span>
-        </div>
+        {orders.map((order) => {
+          return (
+            <div className={classes.account__order}>
+              <div>
+                <span className={classes.account__order__title}>
+                  Order #{order._id.slice(-6).toUpperCase()}
+                </span>
+                <span className={classes.account__order__date}>
+                  {new Date(order.timeStamp).toLocaleDateString("en-US", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  })}
+                </span>
+              </div>
+              <div>
+                <span className={classes.account__order__span}>
+                  Products:{" "}
+                  {order.products.reduce(
+                    (acc, product) => acc + product.productQuantity,
+                    0
+                  )}
+                </span>
+                <span className={classes.account__order__span}>
+                  Paid: {order.total}$
+                </span>
+              </div>
+              <div>
+                <span className={classes.account__order__span}>Pending</span>
+              </div>
+              <button className={classes.account__order__btn}>Re-do</button>
+              <ButtonLink path={`/order/${order._id}`} classNames="big__button">
+                See Order
+              </ButtonLink>
+            </div>
+          );
+        })}
       </div>
     );
   }

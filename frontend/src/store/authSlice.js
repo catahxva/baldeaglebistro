@@ -4,6 +4,7 @@ const tokenLocalStorage = localStorage.getItem(`token`);
 const tokenExpirationDateLocalStorage = localStorage.getItem(
   "tokenExpirationDate"
 );
+const roleLocalStorage = localStorage.getItem(`token`);
 const emailLocalStorage = localStorage.getItem(`email`);
 const usernameLocalStorage = localStorage.getItem("username");
 const addressLocalStorage = localStorage.getItem("address");
@@ -14,6 +15,8 @@ const tokenExpirationDate =
   tokenExpirationDateLocalStorage !== "undefined"
     ? JSON.parse(tokenExpirationDateLocalStorage)
     : undefined;
+const role =
+  roleLocalStorage !== "undefined" ? JSON.parse(roleLocalStorage) : undefined;
 const email =
   emailLocalStorage !== "undefined" ? JSON.parse(emailLocalStorage) : undefined;
 const username =
@@ -28,6 +31,7 @@ const address =
 const initialAuthState = {
   token,
   tokenExpirationDate,
+  role,
   email,
   username,
   address,
@@ -42,6 +46,7 @@ export const authSlice = createSlice({
       state.tokenExpirationDate = new Date(
         new Date().getTime() + 90 * 86400
       ).toISOString();
+      state.role = action.payload.role;
       state.email = action.payload.email;
       state.username = action.payload.username;
       state.address = action.payload.address;
@@ -49,12 +54,12 @@ export const authSlice = createSlice({
     deauthenticate(state) {
       state.token = undefined;
       state.tokenExpirationDate = undefined;
+      state.role = undefined;
       state.email = undefined;
       state.username = undefined;
       state.address = undefined;
     },
     updateUserAddress(state, action) {
-      console.log(action.payload.address);
       state.address = action.payload.address;
     },
   },
@@ -71,6 +76,7 @@ export const authMiddleware = (store) => (next) => (action) => {
       `tokenExpirationDate`,
       JSON.stringify(store.getState().auth.tokenExpirationDate)
     );
+    localStorage.setItem(`role`, JSON.stringify(store.getState().auth.role));
     localStorage.setItem(`email`, JSON.stringify(store.getState().auth.email));
     localStorage.setItem(
       `username`,
@@ -85,6 +91,7 @@ export const authMiddleware = (store) => (next) => (action) => {
   if (authActions.deauthenticate.match(action)) {
     localStorage.removeItem(`token`);
     localStorage.removeItem(`tokenExpirationDate`);
+    localStorage.removeItem(`role`);
     localStorage.removeItem(`email`);
     localStorage.removeItem(`username`);
     localStorage.removeItem(`address`);

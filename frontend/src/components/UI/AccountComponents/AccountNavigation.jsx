@@ -1,6 +1,7 @@
 import classes from "./AccountNavigation.module.css";
 
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 import AccountButton from "./AccountButton";
 
@@ -65,7 +66,9 @@ const BUTTONS_DATA_LIST = [
 ];
 
 function AccountNavigation({ activeTab, onClick }) {
-  const helperArray = new Array(3).fill(0);
+  const userRole = useSelector((state) => state.auth.role);
+
+  const helperArray = new Array(!userRole ? 3 : 6).fill(0);
 
   return (
     <div className={classes.account__navigation}>
@@ -84,7 +87,7 @@ function AccountNavigation({ activeTab, onClick }) {
           </AccountButton>
         );
       })}
-      <Link className={classes.account__navigation__link}>
+      <Link to="/logout" className={classes.account__navigation__link}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
