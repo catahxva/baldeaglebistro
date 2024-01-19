@@ -90,7 +90,7 @@ export const obtainPaymentIntent = async function (
   return data;
 };
 
-export const sendRating = async function ({ id, rating }) {
+export const sendRating = async function ({ token, id, rating }) {
   if (!id) throw new Error("An ID must be provided to perform this action");
   if (!rating)
     throw new Error("You must provide a rating to perform this action");
@@ -100,6 +100,7 @@ export const sendRating = async function ({ id, rating }) {
     body: JSON.stringify({ id, rating }),
     headers: {
       "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
     },
   });
 
@@ -249,6 +250,22 @@ export const updateAddress = async function ({
 
 export const getUserOrders = async function (signal, token) {
   const response = await fetch(`${baseUrl}orders`, {
+    signal,
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  const data = await response.json();
+
+  if (data.status === "fail") throw new Error(data.message);
+
+  return data;
+};
+
+export const getAllOrders = async function (signal, token) {
+  const response = await fetch(`${baseUrl}`, {
     signal,
     headers: {
       "Content-Type": "application/json",

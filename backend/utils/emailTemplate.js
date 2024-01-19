@@ -278,7 +278,7 @@ const emailTemplate = function (preheaderText, message, ctaText, ctaLink) {
                   <tr>
                     <td class="wrapper">
                       <p>Hi there</p>
-                      <p>${message} <a href="${ctaLink}" >${ctaLink}</a></p>
+                      <p>${message}</p>
                       <table role="presentation" border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
                         <tbody>
                           <tr>

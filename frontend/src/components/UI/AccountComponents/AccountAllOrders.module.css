@@ -1,0 +1,12 @@
+.account__all__orders__container {
+  width: 100%;
+}
+
+.account__all__orders__title {
+  font-size: 3.2rem;
+  font-weight: 700;
+  font-family: "Oswald", sans-serif;
+  color: #ff8c00;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}

@@ -54,6 +54,7 @@ function LoginContent() {
       dispatch(
         authActions.authenticate({
           token: data.token,
+          role: data.user.role,
           email: data.user.email,
           username: data.user.username,
           address: data.user.address,

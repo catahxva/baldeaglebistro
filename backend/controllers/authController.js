@@ -28,7 +28,6 @@ exports.signup = async function (req, res, next) {
   try {
     const newUser = await User.create({
       username: req.body.username,
-      // role: req.body.role && "user",
       email: req.body.email,
       password: req.body.password,
       passwordConfirm: req.body.passwordConfirm,
@@ -39,7 +38,7 @@ exports.signup = async function (req, res, next) {
     await newUser.save({ validateBeforeSave: false });
 
     const preheaderText = "Verify your account";
-    const message = `This email was sent to you to verify your newly created account at Bald Eagle Bistro. Please click the button below to proceed, or use the link if there are any problems with the buton.`;
+    const message = `This email was sent to you to verify your newly created account at Bald Eagle Bistro. Please click the button below to proceed.`;
     const ctaText = `Verify`;
     const ctaLink = `http://localhost:5173/auth/verify/${verificationToken}`;
 
@@ -166,7 +165,7 @@ exports.forgotPassword = async function (req, res, next) {
     await user.save({ validateBeforeSave: false });
 
     const preheaderText = "Reset your password";
-    const message = `Click on the button below to reset the password for your account on Scent Haven. If you did not try to reset your password, please ignore this email. If the button below did not work, please access this link: `;
+    const message = `Click on the button below to reset the password for your account on Scent Haven. If you did not try to reset your password, please ignore this email.`;
     const ctaText = "Reset password";
     const ctaLink = `http://localhost:5173/auth/reset-forgot/${resetToken}`;
 

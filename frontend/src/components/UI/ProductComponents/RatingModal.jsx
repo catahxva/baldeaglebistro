@@ -1,11 +1,16 @@
 import classes from "./RatingModal.module.css";
 
 import { useState } from "react";
-
+import { useSelector } from "react-redux";
 import { useMutation } from "@tanstack/react-query";
 import { sendRating } from "../../../util/requests";
 
 function RatingModal({ active, closeModal, id }) {
+  const userToken = useSelector((state) => state.auth.token);
+
+  const [submitting, setSubmitting] = useState();
+  const btnText = !submitting ? "Rate" : "Submitting...";
+
   const [message, setMessage] = useState();
   const [messageType, setMessageType] = useState();
 
@@ -16,12 +21,18 @@ function RatingModal({ active, closeModal, id }) {
 
   const { mutate } = useMutation({
     mutationFn: sendRating,
+    onMutate: () => {
+      setSubmitting(true);
+    },
     onSuccess: (message) => {
       setMessage(message);
       setMessageType("sucess");
     },
     onError: (error) => {
       setMessage(error.message);
+    },
+    onSettled: () => {
+      setSubmitting(false);
     },
   });
 
@@ -85,11 +96,12 @@ function RatingModal({ active, closeModal, id }) {
             </button>
             <button
               className={`${classes.rating__modal__big__btn} ${classes.rating__modal__big__btn__rating}`}
+              disabled={submitting}
               onClick={() => {
-                mutate({ id, rating: activeIndex + 1 });
+                mutate({ token: userToken, id, rating: activeIndex + 1 });
               }}
             >
-              Rate
+              {btnText}
             </button>
           </div>
           <button

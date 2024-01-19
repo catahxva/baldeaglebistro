@@ -1,13 +1,15 @@
 import classes from "./AccountOrders.module.css";
 
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useQuery } from "@tanstack/react-query";
 import { getUserOrders } from "../../../util/requests";
+import { redoOrder } from "../../../store/cartActions";
 
 import Placeholder from "../Others/Placeholder";
 import ButtonLink from "../Others/ButtonLink";
 
 function AccountOrders() {
+  const dispatch = useDispatch();
   const userToken = useSelector((state) => state.auth.token);
 
   const { data, isPending, isError, error } = useQuery({
@@ -38,8 +40,10 @@ function AccountOrders() {
     content = (
       <div className={classes.account__orders__list}>
         {orders.map((order) => {
+          console.log(order);
+
           return (
-            <div className={classes.account__order}>
+            <div className={classes.account__order} key={order._id}>
               <div>
                 <span className={classes.account__order__title}>
                   Order #{order._id.slice(-6).toUpperCase()}
@@ -65,12 +69,26 @@ function AccountOrders() {
                 </span>
               </div>
               <div>
-                <span className={classes.account__order__span}>Pending</span>
+                <span className={classes.account__order__span}>
+                  {order.status}
+                </span>
               </div>
-              <button className={classes.account__order__btn}>Re-do</button>
-              <ButtonLink path={`/order/${order._id}`} classNames="big__button">
-                See Order
-              </ButtonLink>
+              <div className={classes.account__order__container__btns}>
+                <button
+                  onClick={() => {
+                    dispatch(redoOrder(order.products));
+                  }}
+                  className={classes.account__order__btn}
+                >
+                  Re-do
+                </button>
+                <ButtonLink
+                  path={`/order/${order._id}`}
+                  className="big__button"
+                >
+                  See Order
+                </ButtonLink>
+              </div>
             </div>
           );
         })}

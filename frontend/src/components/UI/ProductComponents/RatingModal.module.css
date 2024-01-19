@@ -107,6 +107,11 @@
 .rating__modal__big__btn__rating {
   background-color: #ff8c00;
   color: #fff;
+  transition: all 0.5s;
+}
+
+.rating__modal__big__btn__rating:disabled {
+  background-color: #777;
 }
 
 .rating__modal__close__btn {
