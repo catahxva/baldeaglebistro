@@ -146,7 +146,7 @@ exports.createPaymentIntent = async function (req, res, next) {
 
 exports.getAllOrders = async function (req, res, next) {
   try {
-    const orders = await Order.find();
+    const orders = await Order.find().sort({ timeStamp: -1 });
 
     if (!orders || orders.length <= 0) {
       return sendError(res, 404, "No orders found");
@@ -169,11 +169,9 @@ exports.getAllOrders = async function (req, res, next) {
 
 exports.getOrders = async function (req, res, next) {
   try {
-    console.log(req.user);
-
     const orders = await Order.find({
       user: req.user._id,
-    });
+    }).sort({ timeStamp: -1 });
 
     if (!orders) {
       return sendError(res, 404, "No orders found for this user.");
