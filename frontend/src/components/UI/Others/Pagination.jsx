@@ -1,8 +1,11 @@
-import classes from "./OverviewPagination.module.css";
+import classes from "./Pagination.module.css";
 
-function OverviewPagination({ maxPage, currentPage, paginationHandler }) {
+function Pagination({ maxPage, currentPage, paginationHandler }) {
   const currentPageNumber = Number(currentPage);
   const multiplePages = maxPage > 1;
+
+  console.log("MAX PAGE:", maxPage);
+  console.log("CURRENT PAGE", currentPage);
 
   let buttons;
 
@@ -12,17 +15,17 @@ function OverviewPagination({ maxPage, currentPage, paginationHandler }) {
       <>
         <button
           onClick={() => paginationHandler(currentPageNumber)}
-          className={`${classes.overview__pagination__btn} ${classes.overview__pagination__btn__active}`}
+          className={`${classes.pagination__btn} ${classes.pagination__btn__active}`}
         >
-          <span className={classes.overview__pagination__btn__span}>
+          <span className={classes.pagination__btn__span}>
             {currentPageNumber}
           </span>
         </button>
         <button
           onClick={() => paginationHandler(currentPageNumber + 1)}
-          className={classes.overview__pagination__btn}
+          className={classes.pagination__btn}
         >
-          <span className={classes.overview__pagination__btn__span}>
+          <span className={classes.pagination__btn__span}>
             {currentPageNumber + 1}
           </span>
         </button>
@@ -32,31 +35,30 @@ function OverviewPagination({ maxPage, currentPage, paginationHandler }) {
 
   // case 2: currently on page one, 3 or more pages
   if (currentPageNumber === 1 && multiplePages && maxPage >= 3) {
-
     buttons = (
       <>
         <button
           onClick={() => paginationHandler(currentPageNumber)}
-          className={`${classes.overview__pagination__btn} ${classes.overview__pagination__btn__active}`}
+          className={`${classes.pagination__btn} ${classes.pagination__btn__active}`}
         >
-          <span className={classes.overview__pagination__btn__span}>
+          <span className={classes.pagination__btn__span}>
             {currentPageNumber}
           </span>
         </button>
         <button
           onClick={() => paginationHandler(currentPageNumber + 1)}
-          className={classes.overview__pagination__btn}
+          className={classes.pagination__btn}
         >
-          <span className={classes.overview__pagination__btn__span}>
+          <span className={classes.pagination__btn__span}>
             {currentPageNumber + 1}
           </span>
         </button>
 
         <button
           onClick={() => paginationHandler(currentPageNumber + 2)}
-          className={classes.overview__pagination__btn}
+          className={classes.pagination__btn}
         >
-          <span className={classes.overview__pagination__btn__span}>
+          <span className={classes.pagination__btn__span}>
             {currentPageNumber + 2}
           </span>
         </button>
@@ -71,25 +73,25 @@ function OverviewPagination({ maxPage, currentPage, paginationHandler }) {
       <>
         <button
           onClick={() => paginationHandler(currentPageNumber - 1)}
-          className={classes.overview__pagination__btn}
+          className={classes.pagination__btn}
         >
-          <span className={classes.overview__pagination__btn__span}>
+          <span className={classes.pagination__btn__span}>
             {currentPageNumber - 1}
           </span>
         </button>
         <button
           onClick={() => paginationHandler(currentPageNumber)}
-          className={`${classes.overview__pagination__btn} ${classes.overview__pagination__btn__active}`}
+          className={`${classes.pagination__btn} ${classes.pagination__btn__active}`}
         >
-          <span className={classes.overview__pagination__btn__span}>
+          <span className={classes.pagination__btn__span}>
             {currentPageNumber}
           </span>
         </button>
         <button
           onClick={() => paginationHandler(currentPageNumber + 1)}
-          className={classes.overview__pagination__btn}
+          className={classes.pagination__btn}
         >
-          <span className={classes.overview__pagination__btn__span}>
+          <span className={classes.pagination__btn__span}>
             {currentPageNumber + 1}
           </span>
         </button>
@@ -99,22 +101,21 @@ function OverviewPagination({ maxPage, currentPage, paginationHandler }) {
 
   // case 4: we got 2 pages, the current page is the last one
   if (currentPageNumber === maxPage && multiplePages && maxPage === 2) {
-
     buttons = (
       <>
         <button
           onClick={() => paginationHandler(currentPageNumber - 1)}
-          className={classes.overview__pagination__btn}
+          className={classes.pagination__btn}
         >
-          <span className={classes.overview__pagination__btn__span}>
+          <span className={classes.pagination__btn__span}>
             {currentPageNumber - 1}
           </span>
         </button>
         <button
           onClick={() => paginationHandler(currentPageNumber)}
-          className={`${classes.overview__pagination__btn} ${classes.overview__pagination__btn__active}`}
+          className={`${classes.pagination__btn} ${classes.pagination__btn__active}`}
         >
-          <span className={classes.overview__pagination__btn__span}>
+          <span className={classes.pagination__btn__span}>
             {currentPageNumber}
           </span>
         </button>
@@ -124,30 +125,29 @@ function OverviewPagination({ maxPage, currentPage, paginationHandler }) {
 
   // case 5: we got 3 or more pages, we are on the last page
   if (currentPageNumber === maxPage && multiplePages && maxPage >= 3) {
-
     buttons = (
       <>
         <button
           onClick={() => paginationHandler(currentPageNumber - 2)}
-          className={classes.overview__pagination__btn}
+          className={classes.pagination__btn}
         >
-          <span className={classes.overview__pagination__btn__span}>
+          <span className={classes.pagination__btn__span}>
             {currentPageNumber - 2}
           </span>
         </button>
         <button
           onClick={() => paginationHandler(currentPageNumber - 1)}
-          className={classes.overview__pagination__btn}
+          className={classes.pagination__btn}
         >
-          <span className={classes.overview__pagination__btn__span}>
+          <span className={classes.pagination__btn__span}>
             {currentPageNumber - 1}
           </span>
         </button>
         <button
           onClick={() => paginationHandler(currentPageNumber)}
-          className={`${classes.overview__pagination__btn} ${classes.overview__pagination__btn__active}`}
+          className={`${classes.pagination__btn} ${classes.pagination__btn__active}`}
         >
-          <span className={classes.overview__pagination__btn__span}>
+          <span className={classes.pagination__btn__span}>
             {currentPageNumber}
           </span>
         </button>
@@ -156,15 +156,14 @@ function OverviewPagination({ maxPage, currentPage, paginationHandler }) {
   }
 
   if (!multiplePages) {
-
     buttons = <></>;
   }
 
   return (
-    <div className={classes.overview__pagination}>
-      <div className={classes.overview__pagination__container}>{buttons}</div>
+    <div className={classes.pagination}>
+      <div className={classes.pagination__container}>{buttons}</div>
     </div>
   );
 }
 
-export default OverviewPagination;
+export default Pagination;

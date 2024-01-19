@@ -1,5 +1,6 @@
 const Order = require("../models/orderModel");
 const Product = require("../models/productModel");
+const { createPagination } = require("../utils/APIFeatures");
 const stripe = require("stripe")(
   `sk_test_51OOl2QJARixY9PYyhHDU37eMphdq2DFnNj0N6UZA7HPVZ5Wvt34D9aYrVQ8smzlOOmtwUvOb0FpVfh7ERbtYvzrl008q7hGqRi`
 );
@@ -146,7 +147,16 @@ exports.createPaymentIntent = async function (req, res, next) {
 
 exports.getAllOrders = async function (req, res, next) {
   try {
-    const orders = await Order.find().sort({ timeStamp: -1 });
+    const [skip, limit] = createPagination(req.query);
+
+    const numberOfOrders = (await Order.find()).length;
+
+    const maxPages = Math.ceil(numberOfOrders / limit);
+
+    const orders = await Order.find()
+      .sort({ timeStamp: -1 })
+      .skip(skip)
+      .limit(limit);
 
     if (!orders || orders.length <= 0) {
       return sendError(res, 404, "No orders found");
@@ -156,6 +166,8 @@ exports.getAllOrders = async function (req, res, next) {
       status: "success",
       data: {
         data: orders,
+        numberOfOrders,
+        maxPages,
       },
     });
   } catch (err) {

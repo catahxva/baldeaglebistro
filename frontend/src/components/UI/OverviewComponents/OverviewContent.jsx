@@ -10,7 +10,7 @@ import OverviewFilters from "./OverviewFilters";
 import OverviewAppliedFilters from "./OverviewAppliedFilters";
 import OverviewSort from "./OverviewSort";
 import OverviewGrid from "./OverviewGrid";
-import OverviewPagination from "./OverviewPagination";
+import Pagination from "../Others/Pagination";
 
 function OverviewContent() {
   // get category param
@@ -242,7 +242,7 @@ function OverviewContent() {
     productsContent = (
       <>
         <OverviewGrid products={products.data.data} />
-        <OverviewPagination
+        <Pagination
           maxPage={products.data.maxPages}
           currentPage={pageQuery ?? 1}
           paginationHandler={paginationHandler}

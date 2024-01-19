@@ -70,6 +70,22 @@ orderSchema.pre(/^find/, function (next) {
   next();
 });
 
+orderSchema.statics.increaseOrderCount = async function (productId) {};
+
+orderSchema.post("save", function () {
+  const products = this.products;
+
+  products.forEach(async (product) => {
+    const productDB = await Product.findById(product.productId);
+
+    if (!productDB) return;
+
+    productDB.orderCount++;
+
+    productDB.save({ validateBeforeSave: false });
+  });
+});
+
 const Order = mongoose.model("Order", orderSchema);
 
 module.exports = Order;

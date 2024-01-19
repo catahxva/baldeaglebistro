@@ -46,6 +46,22 @@ export const fetchProduct = async function (signal, id) {
   return data;
 };
 
+export const deleteProduct = async function ({ id, token }) {
+  const response = await fetch(`${baseUrl}products/delete-product/${id}`, {
+    signal,
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  const data = await response.json();
+
+  if (data.status === "fail") throw new Error(data.message);
+
+  return data;
+};
+
 export const obtainCartProducts = async function (cartItems) {
   const response = await fetch(`${baseUrl}products/cart-items`, {
     method: "POST",
@@ -264,8 +280,12 @@ export const getUserOrders = async function (signal, token) {
   return data;
 };
 
-export const getAllOrders = async function (signal, token) {
-  const response = await fetch(`${baseUrl}orders/all`, {
+export const getAllOrders = async function (signal, token, queryString) {
+  const urlString = queryString
+    ? `${baseUrl}orders/all${queryString}`
+    : `${baseUrl}orders/all`;
+
+  const response = await fetch(urlString, {
     signal,
     headers: {
       "Content-Type": "application/json",

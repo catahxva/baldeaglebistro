@@ -6,9 +6,9 @@ import { useQuery } from "@tanstack/react-query";
 import { fetchProducts } from "../../../util/requests";
 
 import AccountProductCard from "./AccountProductCard";
-import AccountAllProductsPagination from "./AccountAllProductsPagination";
 
 import Placeholder from "../Others/Placeholder";
+import Pagination from "../Others/Pagination";
 
 function AccountAllProducts() {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -16,6 +16,11 @@ function AccountAllProducts() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [searchParams]);
+
+  const searchParamsObject = Object.fromEntries(searchParams);
+  const searchParamsEntriesAll = Object.entries(searchParamsObject);
+
+  const { page: pageQuery } = searchParamsObject;
 
   const paginationHandler = function (page) {
     setSearchParams((prevParams) => {
@@ -36,18 +41,40 @@ function AccountAllProducts() {
     });
   };
 
+  const queryString = `?${searchParamsEntriesAll
+    .map((entry) => entry.join("="))
+    .join("&")}`;
+
   const { data, isPending, isError, error } = useQuery({
-    queryKey: ["adminProducts"],
-    queryFn: ({ signal }) => fetchProducts(signal),
+    queryKey: ["adminProducts", queryString],
+    queryFn: ({ signal }) => fetchProducts(signal, queryString),
   });
 
   let content;
 
-  if (isPending) content = <Placeholder type="loading" />;
+  if (isPending) {
+    console.log("PENDING");
+    content = <Placeholder type="loading" />;
+  }
 
   if (isError) content = <Placeholder type="error" message={error.message} />;
 
-  if (data) console.log(data);
+  if (data) {
+    content = (
+      <>
+        <div className={classes.account__all__products__list}>
+          {data.data.data.map((product) => {
+            return <AccountProductCard product={product} key={product._id} />;
+          })}
+        </div>
+        <Pagination
+          maxPage={data.data.maxPages}
+          currentPage={pageQuery ?? 1}
+          paginationHandler={paginationHandler}
+        />
+      </>
+    );
+  }
 
   return (
     <div className={classes.account__all__products__container}>

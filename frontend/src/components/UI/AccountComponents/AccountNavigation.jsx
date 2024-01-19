@@ -1,6 +1,6 @@
 import classes from "./AccountNavigation.module.css";
 
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import AccountButton from "./AccountButton";
@@ -123,6 +123,8 @@ const BUTTONS_DATA_LIST = [
 ];
 
 function AccountNavigation({ activeTab, onClick }) {
+  const [searchParams, setSearchParams] = useSearchParams();
+
   const userRole = useSelector((state) => state.auth.role);
 
   const helperArray = new Array(userRole === "admin" ? 6 : 3).fill(0);
@@ -133,7 +135,10 @@ function AccountNavigation({ activeTab, onClick }) {
         return (
           <AccountButton
             key={Math.random()}
-            onClick={() => onClick(i + 1)}
+            onClick={() => {
+              onClick(i + 1);
+              setSearchParams({});
+            }}
             className={`${classes.account__navigation__button} ${
               activeTab === i + 1
                 ? classes.account__navigation__button__active
