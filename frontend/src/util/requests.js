@@ -265,7 +265,7 @@ export const getUserOrders = async function (signal, token) {
 };
 
 export const getAllOrders = async function (signal, token) {
-  const response = await fetch(`${baseUrl}`, {
+  const response = await fetch(`${baseUrl}orders/all`, {
     signal,
     headers: {
       "Content-Type": "application/json",

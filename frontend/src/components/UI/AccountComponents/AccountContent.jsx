@@ -8,6 +8,7 @@ import AccountData from "./AccountData";
 import AccountOrders from "./AccountOrders";
 import AccountResetPass from "./AccountResetPass";
 import AccountAllOrders from "./AccountAllOrders";
+import AccountAllProducts from "./AccountAllProducts";
 
 function AccountContent() {
   const username = useSelector((state) => state.auth.username);
@@ -32,6 +33,9 @@ function AccountContent() {
       break;
     case 4:
       activeTabContent = <AccountAllOrders />;
+      break;
+    case 5:
+      activeTabContent = <AccountAllProducts />;
       break;
   }
 

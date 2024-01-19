@@ -4,7 +4,7 @@ const tokenLocalStorage = localStorage.getItem(`token`);
 const tokenExpirationDateLocalStorage = localStorage.getItem(
   "tokenExpirationDate"
 );
-const roleLocalStorage = localStorage.getItem(`token`);
+const roleLocalStorage = localStorage.getItem(`role`);
 const emailLocalStorage = localStorage.getItem(`email`);
 const usernameLocalStorage = localStorage.getItem("username");
 const addressLocalStorage = localStorage.getItem("address");
