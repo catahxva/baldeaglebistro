@@ -5,7 +5,9 @@ import { useSelector } from "react-redux";
 import { useMutation } from "@tanstack/react-query";
 import { deleteProduct } from "../../../util/requests";
 
-function AccountProductCard({ product }) {
+import { queryClient } from "../../../util/queryClient";
+
+function AccountProductCard({ product, queryString, onDelete }) {
   const userToken = useSelector((state) => state.auth.token);
 
   const [submitting, setSubmitting] = useState();
@@ -15,18 +17,23 @@ function AccountProductCard({ product }) {
 
   const helperArray = new Array(5).fill(0);
 
-  const selectHandler = function () {};
+  const selectHandler = function (e) {};
 
   const { mutate } = useMutation({
     mutationFn: deleteProduct,
     onMutate: () => {
       setSubmitting(true);
     },
+    onError: (error) => {
+      console.log(error);
+    },
     onSuccess: () => {
       setActiveModal(false);
-    },
-    onSettled: () => {
       setSubmitting(false);
+
+      onDelete((prevState) => prevState + 1);
+
+      queryClient.invalidateQueries(["adminProducts", queryString]);
     },
   });
 
@@ -49,7 +56,9 @@ function AccountProductCard({ product }) {
               Cancel
             </button>
             <button
-              onClick={() => mutate({ id: product._id, token: userToken })}
+              onClick={() => {
+                mutate({ id: product._id, token: userToken });
+              }}
               className={`${classes.delete__modal__button} ${classes.delete__modal__button__delete}`}
             >
               {btnText}

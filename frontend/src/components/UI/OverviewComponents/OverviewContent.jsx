@@ -238,7 +238,15 @@ function OverviewContent() {
       <Placeholder type="error" message={productsError.message} />
     );
 
-  if (products) {
+  if (products && products.data.data.length <= 0) {
+    productsContent = (
+      <span className={classes.overview__content__span__no__results}>
+        There are no results for your query!
+      </span>
+    );
+  }
+
+  if (products && products.data.data.length > 0) {
     productsContent = (
       <>
         <OverviewGrid products={products.data.data} />

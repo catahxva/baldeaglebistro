@@ -10,3 +10,9 @@
   text-transform: uppercase;
   margin-bottom: 1rem;
 }
+
+.account__all__products__no__results {
+  font-size: 2.6rem;
+  font-weight: 500;
+  display: block;
+}

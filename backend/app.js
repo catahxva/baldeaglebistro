@@ -27,7 +27,7 @@ app.use(xss());
 
 app.options("*", (req, res) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Methods", "GET, POST");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, DELETE");
   res.setHeader(
     "Access-Control-Allow-Headers",
     "X-Requested-With,content-type,authorization"
@@ -37,7 +37,7 @@ app.options("*", (req, res) => {
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Methods", "GET, POST");
+  res.setHeader("Access-Control-Allow-Methods", "GET, POST, DELETE");
   res.setHeader(
     "Access-Control-Allow-Headers",
     "X-Requested-With,content-type,authorization"

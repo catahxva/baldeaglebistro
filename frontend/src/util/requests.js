@@ -3,9 +3,10 @@ import CustomError from "./customError";
 export const baseUrl = `http://localhost:3000/api/`;
 
 export const fetchProducts = async function (signal, queryString) {
-  const url = queryString
-    ? `${baseUrl}products${queryString}`
-    : `${baseUrl}products`;
+  const url =
+    queryString && queryString !== "?"
+      ? `${baseUrl}products${queryString}`
+      : `${baseUrl}products`;
 
   const response = await fetch(url, {
     signal,
@@ -48,12 +49,15 @@ export const fetchProduct = async function (signal, id) {
 
 export const deleteProduct = async function ({ id, token }) {
   const response = await fetch(`${baseUrl}products/delete-product/${id}`, {
-    signal,
+    method: "DELETE",
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
     },
   });
+
+  if (response.status === 204)
+    return { status: "success", message: "Product deleted successfully" };
 
   const data = await response.json();
 

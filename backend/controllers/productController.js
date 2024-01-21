@@ -23,8 +23,12 @@ exports.getAllProducts = async function (req, res, next) {
       .skip(skip)
       .limit(limit);
 
-    if (products.length <= 0 || !products) {
-      return sendError(res, 404, "No products found for your query");
+    if (!products) {
+      return sendError(
+        res,
+        404,
+        "There was a problem with getting the products"
+      );
     }
 
     res.status(200).json({
@@ -181,6 +185,31 @@ exports.createProduct = async function (req, res, next) {
     });
   } catch (err) {
     sendError(res, 400, "There was a problem with creating your product");
+  }
+};
+
+exports.updateProduct = async function (req, res, next) {
+  try {
+    const product = await Product.findById(req.params.id);
+
+    if (!product) {
+      return sendError(res, 404, "No product found with this ID");
+    }
+
+    if (req.body.availability === "available") product.available = true;
+
+    if (req.body.availability === "unavailable") product.available = false;
+
+    await product.save({ validateBeforeSave: false });
+
+    res.status(200).json({
+      status: "success",
+      data: {
+        availability: product.available,
+      },
+    });
+  } catch (err) {
+    sendError(res, 400, "There was a problem with updating this product");
   }
 };
 

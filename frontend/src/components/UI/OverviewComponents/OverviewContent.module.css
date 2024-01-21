@@ -7,3 +7,9 @@
 .overview__content__grid__container {
   width: 100%;
 }
+
+.overview__content__span__no__results {
+  font-size: 2.6rem;
+  font-weight: 500;
+  display: block;
+}

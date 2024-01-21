@@ -4,9 +4,6 @@ function Pagination({ maxPage, currentPage, paginationHandler }) {
   const currentPageNumber = Number(currentPage);
   const multiplePages = maxPage > 1;
 
-  console.log("MAX PAGE:", maxPage);
-  console.log("CURRENT PAGE", currentPage);
-
   let buttons;
 
   // case 1: currently on page one, only 2 pages
