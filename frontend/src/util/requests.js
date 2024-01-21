@@ -66,6 +66,23 @@ export const deleteProduct = async function ({ id, token }) {
   return data;
 };
 
+export const updateProduct = async function ({ id, availability, token }) {
+  const response = await fetch(`${baseUrl}products/update-product/${id}`, {
+    method: "POST",
+    body: JSON.stringify({ availability }),
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  const data = await response.json();
+
+  if (data.status === "fail") throw new Error(data.message);
+
+  return data;
+};
+
 export const obtainCartProducts = async function (cartItems) {
   const response = await fetch(`${baseUrl}products/cart-items`, {
     method: "POST",

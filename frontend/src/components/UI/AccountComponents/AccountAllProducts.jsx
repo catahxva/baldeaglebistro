@@ -115,10 +115,10 @@ function AccountAllProducts() {
           {data.data.data.map((product) => {
             return (
               <AccountProductCard
+                key={product._id}
                 product={product}
                 queryString={queryString}
                 onDelete={setDeletedProductsCount}
-                key={product.id}
               />
             );
           })}

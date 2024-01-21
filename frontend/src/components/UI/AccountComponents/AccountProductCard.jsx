@@ -1,14 +1,29 @@
 import classes from "./AccountProductCard.module.css";
 
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { uiActions } from "../../../store/uiSlice";
 import { useMutation } from "@tanstack/react-query";
-import { deleteProduct } from "../../../util/requests";
+import { deleteProduct, updateProduct } from "../../../util/requests";
 
 import { queryClient } from "../../../util/queryClient";
 
 function AccountProductCard({ product, queryString, onDelete }) {
+  const dispatch = useDispatch();
   const userToken = useSelector((state) => state.auth.token);
+
+  const [updatingProduct, setUpdatingProduct] = useState();
+  const [updatedProduct, setUpdatedProduct] = useState();
+
+  let productAvailability;
+
+  if (updatedProduct === undefined) {
+    productAvailability = product.available ? "Available" : "Unavailable";
+  }
+
+  if (updatedProduct !== undefined) {
+    productAvailability = updatedProduct ? "Available" : "Unavailable";
+  }
 
   const [submitting, setSubmitting] = useState();
   const btnText = submitting ? "Deleting..." : "Delete";
@@ -17,9 +32,42 @@ function AccountProductCard({ product, queryString, onDelete }) {
 
   const helperArray = new Array(5).fill(0);
 
-  const selectHandler = function (e) {};
+  const { mutate: updateProd } = useMutation({
+    mutationFn: updateProduct,
+    onMutate: () => {
+      setUpdatingProduct(true);
+    },
+    onError: (error) => {
+      setEdit(false);
 
-  const { mutate } = useMutation({
+      dispatch(
+        uiActions.showNotification({
+          status: "error",
+          message: error.message,
+        })
+      );
+    },
+    onSuccess: (data) => {
+      setUpdatedProduct(data.data.data);
+      setEdit(false);
+
+      dispatch(
+        uiActions.showNotification({
+          status: "success",
+          message: data.message,
+        })
+      );
+    },
+    onSettled: () => {
+      setUpdatingProduct(false);
+
+      setTimeout(() => {
+        dispatch(uiActions.hideNotification());
+      }, 4000);
+    },
+  });
+
+  const { mutate: deleteProd } = useMutation({
     mutationFn: deleteProduct,
     onMutate: () => {
       setSubmitting(true);
@@ -36,6 +84,16 @@ function AccountProductCard({ product, queryString, onDelete }) {
       queryClient.invalidateQueries(["adminProducts", queryString]);
     },
   });
+
+  const selectHandler = function (e) {
+    const value = e.target.value;
+
+    updateProd({
+      id: product._id,
+      availability: value,
+      token: userToken,
+    });
+  };
 
   return (
     <>
@@ -57,7 +115,7 @@ function AccountProductCard({ product, queryString, onDelete }) {
             </button>
             <button
               onClick={() => {
-                mutate({ id: product._id, token: userToken });
+                deleteProd({ id: product._id, token: userToken });
               }}
               className={`${classes.delete__modal__button} ${classes.delete__modal__button__delete}`}
             >
@@ -118,9 +176,10 @@ function AccountProductCard({ product, queryString, onDelete }) {
             </div>
             <p>{product.description}</p>
             <div className={classes.account__product__card__nutrition}>
-              {Object.entries(product.nutrition).map((entry) => {
+              {Object.entries(product.nutrition).map((entry, i) => {
                 return (
                   <div
+                    key={i}
                     className={classes.account__product__card__nutrition__row}
                   >
                     <span
@@ -152,27 +211,49 @@ function AccountProductCard({ product, queryString, onDelete }) {
             <div className={classes.account__product__card__helper__container}>
               {!edit && (
                 <span className={classes.account__product__card__available}>
-                  {product.available ? "Available" : "Unavailable"}
+                  {productAvailability}
                 </span>
               )}
               {edit && (
-                <select className={classes.account__product__card__select}>
-                  <option value="true">Available</option>
-                  <option value="false">Unavailable</option>
+                <select
+                  onChange={selectHandler}
+                  className={classes.account__product__card__select}
+                >
+                  <option>Select</option>
+                  <option value="available">Available</option>
+                  <option value="unavailable">Unavailable</option>
                 </select>
               )}
               <button
                 onClick={() => setEdit((prevState) => !prevState)}
                 className={classes.account__product__card__btn__edit}
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  viewBox="0 0 24 24"
-                  fill="currentColor"
-                  className={`w-6 h-6 ${classes.account__product__card__svg__edit}`}
-                >
-                  <path d="M21.731 2.269a2.625 2.625 0 0 0-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 0 0 0-3.712ZM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 0 0-1.32 2.214l-.8 2.685a.75.75 0 0 0 .933.933l2.685-.8a5.25 5.25 0 0 0 2.214-1.32L19.513 8.2Z" />
-                </svg>
+                {!updatingProduct && (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    className={`w-6 h-6 ${classes.account__product__card__svg__edit}`}
+                  >
+                    <path d="M21.731 2.269a2.625 2.625 0 0 0-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 0 0 0-3.712ZM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 0 0-1.32 2.214l-.8 2.685a.75.75 0 0 0 .933.933l2.685-.8a5.25 5.25 0 0 0 2.214-1.32L19.513 8.2Z" />
+                  </svg>
+                )}
+                {updatingProduct && (
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className={`w-6 h-6 ${classes.account__product__card__svg__edit} ${classes.account__product__card__svg__edit__animated}`}
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99"
+                    />
+                  </svg>
+                )}
               </button>
             </div>
           </div>

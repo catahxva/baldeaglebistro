@@ -27,8 +27,6 @@ function AccountData() {
   const username = useSelector((state) => state.auth.username);
   const address = useSelector((state) => state.auth.address);
 
-  console.log(address);
-
   const emailDefaultValue = address?.email ?? "";
   const nameDefaultValue = address?.name ?? "";
   const phoneDefaultValue = address?.phone ?? "";

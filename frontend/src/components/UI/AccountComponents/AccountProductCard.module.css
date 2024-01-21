@@ -2,6 +2,15 @@ span {
   display: block;
 }
 
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .delete__modal {
   position: fixed;
   top: 0;
@@ -163,6 +172,10 @@ span {
   width: 1.5rem;
   height: 1.5rem;
   color: #ff8c00;
+}
+
+.account__product__card__svg__edit__animated {
+  animation: spin infinite 2s linear;
 }
 
 .account__product__card__button__delete {
