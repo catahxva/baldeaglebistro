@@ -1,0 +1,83 @@
+.account__new__product__container {
+  width: 100%;
+}
+
+.account__new__product__form {
+  width: 55%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.account__new__product__form__big__group {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  margin-bottom: 2rem;
+}
+
+.account__new__product__form__big__group__title {
+  font-size: 3rem;
+  font-weight: 700;
+  font-family: "Oswald", sans-serif;
+  color: #ff8c00;
+  margin-bottom: 1.2rem;
+  text-decoration: underline;
+  text-decoration-color: #ff8c00;
+}
+
+.account__new__product__group {
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.account__new__product__label {
+  display: block;
+  font-size: 2.2rem;
+  font-family: "Oswald", sans-serif;
+  color: #ff8c00;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.account__new__product__category__select {
+  width: 65%;
+  font-family: "Oswald", sans-serif;
+  padding: 0.8rem 1.2rem;
+  color: #ff8c00;
+  background-color: #222;
+  border: 1px solid #ff8c00;
+  border-radius: 1rem;
+  font-size: 2.2rem;
+}
+
+.account__new__product__helper__file {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.account__new__product__container__file {
+  cursor: pointer;
+  font-size: 1.8rem;
+  padding: 0.8rem 1.2rem;
+  background-color: #ff8c00;
+  color: #222;
+  font-family: "Oswald", sans-serif;
+  font-weight: 700;
+  border-radius: 1rem;
+  display: block;
+  width: 30%;
+  text-align: center;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.account__new__product__file__name {
+  display: block;
+  font-size: 1.6rem;
+  font-weight: 500;
+}

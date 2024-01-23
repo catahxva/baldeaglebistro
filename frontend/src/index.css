@@ -101,3 +101,12 @@ p {
   column-gap: 5rem;
   row-gap: 5rem;
 }
+
+.account__general__title {
+  font-size: 3.2rem;
+  font-weight: 700;
+  font-family: "Oswald", sans-serif;
+  color: #ff8c00;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}

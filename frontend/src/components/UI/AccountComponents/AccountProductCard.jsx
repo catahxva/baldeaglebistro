@@ -27,6 +27,9 @@ function AccountProductCard({ product, queryString, onDelete }) {
 
   const [submitting, setSubmitting] = useState();
   const btnText = submitting ? "Deleting..." : "Delete";
+
+  const [deleteError, setDeleteError] = useState();
+
   const [edit, setEdit] = useState(false);
   const [activeModal, setActiveModal] = useState(false);
 
@@ -73,15 +76,17 @@ function AccountProductCard({ product, queryString, onDelete }) {
       setSubmitting(true);
     },
     onError: (error) => {
-      console.log(error);
+      setDeleteError(error.message);
     },
     onSuccess: () => {
       setActiveModal(false);
-      setSubmitting(false);
 
       onDelete((prevState) => prevState + 1);
 
       queryClient.invalidateQueries(["adminProducts", queryString]);
+    },
+    onSettled: () => {
+      setSubmitting(false);
     },
   });
 
@@ -104,7 +109,7 @@ function AccountProductCard({ product, queryString, onDelete }) {
       >
         <div className={classes.delete__modal__card}>
           <span className={classes.delete__modal__span}>
-            Are you sure you want to delete this product?
+            {deleteError || "Are you sure you want to delete this product?"}
           </span>
           <div className={classes.delete__modal__container__buttons}>
             <button

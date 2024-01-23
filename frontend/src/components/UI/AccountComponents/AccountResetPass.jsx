@@ -111,7 +111,7 @@ function AccountResetPass() {
 
   return (
     <div className={classes.account__reset__container}>
-      <h3 className={classes.account__reset__title}>Reset Your Password</h3>
+      <h3 className="account__general__title">Reset Your Password</h3>
       <form onSubmit={submitHandler} className={classes.account__reset__form}>
         <FormGroup
           nameProp="currentPassword"

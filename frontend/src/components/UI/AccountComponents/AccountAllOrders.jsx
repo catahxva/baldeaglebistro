@@ -83,7 +83,7 @@ function AccountAllOrders() {
 
   return (
     <div className={classes.account__all__orders__container}>
-      <h3 className={classes.account__all__orders__title}>All Orders</h3>
+      <h3 className="account__general__title">All Orders</h3>
       {content}
     </div>
   );

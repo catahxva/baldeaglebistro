@@ -38,7 +38,7 @@ function AccountOrders() {
 
   return (
     <div className={classes.account__orders}>
-      <h3 className={classes.account__orders__title}>Your orders</h3>
+      <h3 className="account__general__title">Your orders</h3>
       {content}
     </div>
   );

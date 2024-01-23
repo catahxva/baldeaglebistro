@@ -153,7 +153,7 @@ function AccountData() {
 
   return (
     <div className={classes.account__data}>
-      <h3 className={classes.account__data__title}>Account Data</h3>
+      <h3 className="account__general__title">Account Data</h3>
       <p>
         Welcome to your account! Here you can manage your account data, see
         previous orders and re-do your orders in a faster and better way and

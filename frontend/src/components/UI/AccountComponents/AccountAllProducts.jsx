@@ -134,7 +134,7 @@ function AccountAllProducts() {
 
   return (
     <div className={classes.account__all__products__container}>
-      <h3 className={classes.account__all__products__title}>All Products</h3>
+      <h3 className="account__general__title">All Products</h3>
       {content}
     </div>
   );
