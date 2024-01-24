@@ -169,6 +169,7 @@ function AccountProductCard({ product, queryString, onDelete }) {
                         ? classes.account__product__card__star__active
                         : ""
                     }`}
+                    key={i}
                   >
                     <path
                       fillRule="evenodd"

@@ -1,8 +1,13 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export const useInput = function (defaultValue, validationFn, backendError) {
-  const [enteredValue, setEnteredValue] = useState(defaultValue || "");
+  const [enteredValue, setEnteredValue] = useState("");
   const [didEdit, setDidEdit] = useState(false);
+
+  useEffect(() => {
+    setEnteredValue(defaultValue || "");
+    setDidEdit(false);
+  }, [defaultValue]);
 
   const errorMessage = backendError || validationFn(enteredValue);
 

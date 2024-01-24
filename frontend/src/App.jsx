@@ -1,26 +1,30 @@
+import { lazy, Suspense } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { QueryClientProvider } from "@tanstack/react-query";
+import { queryClient } from "./util/queryClient";
 
 import Root from "./components/pages/Root";
 import RootAuth from "./components/pages/RootAuth";
-import Home from "./components/pages/Home";
-import Categories from "./components/pages/Categories";
-import Product from "./components/pages/Product";
-import Cart from "./components/pages/Cart";
-import Checkout from "./components/pages/Checkout";
-import Payment from "./components/pages/Payment";
-import OrderSuccess from "./components/pages/OrderSuccess";
-import Overview from "./components/pages/Overview";
-import Search from "./components/pages/Search";
-import Signup from "./components/pages/Signup";
-import VerifyAccount from "./components/pages/VerifyAccount";
-import Login from "./components/pages/Login";
-import Logout from "./components/pages/Logout";
-import ForgotPassword from "./components/pages/ForgotPassword";
-import ResetForgotPass from "./components/pages/ResetForgotPass";
-import Account from "./components/pages/Account";
+import Placeholder from "./components/UI/Others/Placeholder";
 
-import { queryClient } from "./util/queryClient";
+const Home = lazy(() => import("./components/pages/Home"));
+const Categories = lazy(() => import("./components/pages/Categories"));
+const Product = lazy(() => import("./components/pages/Product"));
+const Cart = lazy(() => import("./components/pages/Cart"));
+const Checkout = lazy(() => import("./components/pages/Checkout"));
+const Payment = lazy(() => import("./components/pages/Payment"));
+const OrderSuccess = lazy(() => import("./components/pages/OrderSuccess"));
+const Overview = lazy(() => import("./components/pages/Overview"));
+const Search = lazy(() => import("./components/pages/Search"));
+const Signup = lazy(() => import("./components/pages/Signup"));
+const VerifyAccount = lazy(() => import("./components/pages/VerifyAccount"));
+const Login = lazy(() => import("./components/pages/Login"));
+const Logout = lazy(() => import("./components/pages/Logout"));
+const ForgotPassword = lazy(() => import("./components/pages/ForgotPassword"));
+const ResetForgotPass = lazy(() =>
+  import("./components/pages/ResetForgotPass")
+);
+const Account = lazy(() => import("./components/pages/Account"));
 
 const router = createBrowserRouter([
   {
@@ -29,43 +33,83 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Home />,
+        element: (
+          <Suspense fallback={<Placeholder type="loading" />}>
+            <Home />
+          </Suspense>
+        ),
       },
       {
         path: "/categories",
-        element: <Categories />,
+        element: (
+          <Suspense fallback={<Placeholder type="loading" />}>
+            <Categories />
+          </Suspense>
+        ),
       },
       {
         path: "/product/:id",
-        element: <Product />,
+        element: (
+          <Suspense fallback={<Placeholder type="loading" />}>
+            <Product />
+          </Suspense>
+        ),
       },
       {
         path: "/cart",
-        element: <Cart />,
+        element: (
+          <Suspense fallback={<Placeholder type="loading" />}>
+            <Cart />
+          </Suspense>
+        ),
       },
       {
         path: "/checkout",
-        element: <Checkout />,
+        element: (
+          <Suspense fallback={<Placeholder type="loading" />}>
+            <Checkout />
+          </Suspense>
+        ),
       },
       {
         path: "/payment",
-        element: <Payment />,
+        element: (
+          <Suspense fallback={<Placeholder type="loading" />}>
+            <Payment />
+          </Suspense>
+        ),
       },
       {
         path: "/order-success",
-        element: <OrderSuccess />,
+        element: (
+          <Suspense fallback={<Placeholder type="loading" />}>
+            <OrderSuccess />
+          </Suspense>
+        ),
       },
       {
         path: "/products/:category?",
-        element: <Overview />,
+        element: (
+          <Suspense fallback={<Placeholder type="loading" />}>
+            <Overview />
+          </Suspense>
+        ),
       },
       {
         path: "/search",
-        element: <Search />,
+        element: (
+          <Suspense fallback={<Placeholder type="loading" />}>
+            <Search />
+          </Suspense>
+        ),
       },
       {
         path: "/account",
-        element: <Account />,
+        element: (
+          <Suspense fallback={<Placeholder type="loading" />}>
+            <Account />
+          </Suspense>
+        ),
       },
     ],
   },
@@ -75,29 +119,53 @@ const router = createBrowserRouter([
     children: [
       {
         path: "signup",
-        element: <Signup />,
+        element: (
+          <Suspense fallback={<Placeholder type="loading" />}>
+            <Signup />
+          </Suspense>
+        ),
       },
       {
         path: "verify/:token",
-        element: <VerifyAccount />,
+        element: (
+          <Suspense fallback={<Placeholder type="loading" />}>
+            <VerifyAccount />
+          </Suspense>
+        ),
       },
       {
         path: "login",
-        element: <Login />,
+        element: (
+          <Suspense fallback={<Placeholder type="loading" />}>
+            <Login />
+          </Suspense>
+        ),
       },
       {
         path: "forgot",
-        element: <ForgotPassword />,
+        element: (
+          <Suspense fallback={<Placeholder type="loading" />}>
+            <ForgotPassword />
+          </Suspense>
+        ),
       },
       {
         path: "reset-forgot/:token",
-        element: <ResetForgotPass />,
+        element: (
+          <Suspense fallback={<Placeholder type="loading" />}>
+            <ResetForgotPass />
+          </Suspense>
+        ),
       },
     ],
   },
   {
     path: "/logout",
-    element: <Logout />,
+    element: (
+      <Suspense fallback={<Placeholder type="loading" />}>
+        <Logout />
+      </Suspense>
+    ),
   },
 ]);
 

@@ -47,6 +47,24 @@ export const fetchProduct = async function (signal, id) {
   return data;
 };
 
+export const uploadProduct = async function ({ productData, token }) {
+  console.log(productData);
+
+  const response = await fetch(`${baseUrl}products`, {
+    method: "POST",
+    body: productData,
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  const data = await response.json();
+
+  if (data.status === "fail") throw new Error(data.message);
+
+  return data;
+};
+
 export const deleteProduct = async function ({ id, token }) {
   const response = await fetch(`${baseUrl}products/delete-product/${id}`, {
     method: "DELETE",

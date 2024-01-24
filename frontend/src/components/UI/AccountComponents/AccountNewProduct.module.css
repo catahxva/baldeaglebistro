@@ -41,7 +41,7 @@
   font-weight: 700;
 }
 
-.account__new__product__category__select {
+.account__new__product__select {
   width: 65%;
   font-family: "Oswald", sans-serif;
   padding: 0.8rem 1.2rem;
@@ -80,4 +80,24 @@ input[type="file"] {
   display: block;
   font-size: 1.6rem;
   font-weight: 500;
+}
+
+.account__new__product__form__button {
+  background-color: #ff8c00;
+  color: #fff;
+  font-family: "Oswald", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 0.8rem 1.2rem;
+  font-size: 2rem;
+  border-radius: 0.5rem;
+  border: none;
+  cursor: pointer;
+  margin-top: -3rem;
+  transition: all 0.5s;
+}
+
+.account__new__product__form__button:disabled {
+  background-color: #777;
+  cursor: default;
 }

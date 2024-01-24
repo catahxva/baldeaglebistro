@@ -1,5 +1,8 @@
 const express = require("express");
 
+const multer = require("multer");
+const upload = multer({ dest: "uploads/" });
+
 const productsController = require("../controllers/productController");
 const authController = require("../controllers/authController");
 
@@ -31,6 +34,7 @@ router
   .route("/")
   .get(productsController.getAllProducts)
   .post(
+    upload.single("file"),
     authController.protect,
     authController.protectRole,
     productsController.createProduct

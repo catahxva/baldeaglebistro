@@ -6,13 +6,20 @@ const {
 const Product = require("../models/productModel");
 const sendError = require("../utils/sendError");
 
+const cloudinary = require("cloudinary").v2;
+
+cloudinary.config({
+  cloud_name: "dgwygf5i3",
+  api_key: "116492218238529",
+  api_secret: "ygk_brRvWEc8dS2X1lKwwZN0f8M",
+  secure: true,
+});
+
 exports.getAllProducts = async function (req, res, next) {
   try {
     const filters = createFilters(req.query);
     const sortCriteria = createSort(req.query);
     const [skip, limit] = createPagination(req.query);
-
-    // if (req.query.limit) limit = req.query.limit;
 
     const totalProducts = (await Product.find(filters)).length;
 
@@ -175,7 +182,23 @@ exports.obtainCartProducts = async function (req, res, next) {
 
 exports.createProduct = async function (req, res, next) {
   try {
-    const newProduct = await Product.create(req.body);
+    const cloudinaryResult = await cloudinary.uploader.upload(req.file.path);
+
+    const newProduct = await Product.create({
+      name: req.body.name,
+      price: Number(req.body.price),
+      image: cloudinaryResult.url,
+      serving: Number(req.body.serving),
+      category: req.body.category,
+      nutrition: {
+        calories: Number(req.body.calories),
+        protein: Number(req.body.protein),
+        carbs: Number(req.body.carbs),
+        fats: Number(req.body.fats),
+      },
+      description: req.body.description,
+      available: req.body.availability === "true" ? true : false,
+    });
 
     res.status(201).json({
       status: "success",
@@ -184,6 +207,8 @@ exports.createProduct = async function (req, res, next) {
       },
     });
   } catch (err) {
+    console.log(err);
+
     sendError(res, 400, "There was a problem with creating your product");
   }
 };

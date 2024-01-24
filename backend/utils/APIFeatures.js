@@ -35,7 +35,7 @@ exports.createSort = (query) => {
     sortCriteria = { price: -1 };
   }
 
-  if (query.sort === "latest") {
+  if (query.sort === "latest" || !query.sort) {
     sortCriteria = { createdAt: -1 };
   }
 

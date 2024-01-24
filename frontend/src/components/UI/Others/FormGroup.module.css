@@ -67,6 +67,16 @@
   min-height: 12rem;
 }
 
+.form__textarea__active {
+  color: #222;
+  background-color: #fff;
+}
+
+.form__textarea:focus {
+  outline: none;
+  border: 1px solid #fff;
+}
+
 .form__password__button {
   position: absolute;
   top: 50%;
