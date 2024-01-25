@@ -14,6 +14,7 @@ const Cart = lazy(() => import("./components/pages/Cart"));
 const Checkout = lazy(() => import("./components/pages/Checkout"));
 const Payment = lazy(() => import("./components/pages/Payment"));
 const OrderSuccess = lazy(() => import("./components/pages/OrderSuccess"));
+const Order = lazy(() => import("./components/pages/Order"));
 const Overview = lazy(() => import("./components/pages/Overview"));
 const Search = lazy(() => import("./components/pages/Search"));
 const Signup = lazy(() => import("./components/pages/Signup"));
@@ -84,6 +85,14 @@ const router = createBrowserRouter([
         element: (
           <Suspense fallback={<Placeholder type="loading" />}>
             <OrderSuccess />
+          </Suspense>
+        ),
+      },
+      {
+        path: "/order/:id",
+        element: (
+          <Suspense fallback={<Placeholder type="loading" />}>
+            <Order />
           </Suspense>
         ),
       },

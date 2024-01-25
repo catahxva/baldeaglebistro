@@ -1,0 +1,10 @@
+.order__grid__container {
+  width: 100%;
+}
+
+.order__grid__title {
+  font-size: 2.6rem;
+  font-family: "Oswald", sans-serif;
+  font-weight: 700;
+  margin-bottom: 1.6rem;
+}

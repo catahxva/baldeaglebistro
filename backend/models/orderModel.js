@@ -29,6 +29,10 @@ const orderSchema = new mongoose.Schema(
       },
     ],
     address: {
+      email: {
+        type: String,
+        required: [true, "Email address is required"],
+      },
       name: {
         type: String,
         required: [true, "Name is required"],
@@ -64,13 +68,11 @@ const orderSchema = new mongoose.Schema(
 orderSchema.pre(/^find/, function (next) {
   this.populate({
     path: "products.productId",
-    select: "name price image rating",
+    select: "name price image serving category nutrition available",
   });
 
   next();
 });
-
-orderSchema.statics.increaseOrderCount = async function (productId) {};
 
 orderSchema.post("save", function () {
   const products = this.products;

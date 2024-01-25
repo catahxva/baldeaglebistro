@@ -1,0 +1,17 @@
+.order__content__container {
+  margin-top: 4.5rem;
+}
+
+.order__content__redo {
+  display: block;
+  font-weight: 700;
+  font-size: 2.2rem;
+  font-family: "Oswald", sans-serif;
+  padding: 0.8rem 1.2rem;
+  border-radius: 1rem;
+  color: #fff;
+  border: none;
+  background-color: #ff8c00;
+  cursor: pointer;
+  text-transform: uppercase;
+}

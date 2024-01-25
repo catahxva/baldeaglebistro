@@ -1,0 +1,65 @@
+span {
+  display: block;
+}
+
+.order__info {
+  width: 100%;
+  margin-bottom: 3rem;
+}
+
+.order__info__title {
+  font-size: 2.6rem;
+  font-family: "Oswald", sans-serif;
+  font-weight: 700;
+  margin-bottom: 1.6rem;
+}
+
+.order__info__flex {
+  display: flex;
+  align-items: flex-start;
+  gap: 20rem;
+  flex-wrap: wrap;
+}
+
+.order__info__container {
+  margin-bottom: 1.6rem;
+}
+
+.order__info__span__big {
+  font-size: 2.4rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.order__info__span__small {
+  font-size: 1.6rem;
+  margin-bottom: 0.4rem;
+}
+
+.order__info__container__products {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.order__info__product {
+  display: flex;
+  align-items: center;
+  gap: 20rem;
+}
+
+.order__info__product__name {
+  font-size: 1.6rem;
+  margin-bottom: 0.4rem;
+}
+
+.order__info__product__quantity {
+  font-size: 1.4rem;
+  font-style: italic;
+}
+
+.order__info__product__price {
+  font-size: 1.6rem;
+  font-weight: 500;
+}

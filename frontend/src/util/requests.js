@@ -338,3 +338,18 @@ export const getAllOrders = async function (signal, token, queryString) {
 
   return data;
 };
+
+export const fetchOrder = async function (signal, id) {
+  const response = await fetch(`${baseUrl}orders/one-order/${id}`, {
+    signal,
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  const data = await response.json();
+
+  if (data.status === "fail") throw new Error(data.message);
+
+  return data;
+};
