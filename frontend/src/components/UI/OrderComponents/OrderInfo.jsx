@@ -3,6 +3,10 @@ import classes from "./OrderInfo.module.css";
 function OrderInfo({ order }) {
   console.log(order.products);
 
+  const filteredProducts = order.products.filter(
+    (product) => product.productId !== null
+  );
+
   return (
     <div className={classes.order__info}>
       <h3 className={classes.order__info__title}>Order Information</h3>
@@ -54,30 +58,31 @@ function OrderInfo({ order }) {
           <span className={classes.order__info__span__big}>
             Product Quantities
           </span>
-          <div className={classes.order__info__container__products}>
-            {order.products.map((product) => {
-              console.log(product);
-
-              return (
-                <div
-                  className={classes.order__info__product}
-                  key={product.productId._id}
-                >
-                  <div>
-                    <span className={classes.order__info__product__name}>
-                      {product.productId.name}
-                    </span>
-                    <span className={classes.order__info__product__quantity}>
-                      Quantity: {product.productQuantity}
+          {filteredProducts.length > 0 && (
+            <div className={classes.order__info__container__products}>
+              {filteredProducts.map((product) => {
+                return (
+                  <div
+                    className={classes.order__info__product}
+                    key={product.productId._id}
+                  >
+                    <div>
+                      <span className={classes.order__info__product__name}>
+                        {product.productId.name}
+                      </span>
+                      <span className={classes.order__info__product__quantity}>
+                        Quantity: {product.productQuantity}
+                      </span>
+                    </div>
+                    <span className={classes.order__info__product__price}>
+                      {product.productId.price * product.productQuantity}$
                     </span>
                   </div>
-                  <span className={classes.order__info__product__price}>
-                    {product.productId.price * product.productQuantity}$
-                  </span>
-                </div>
-              );
-            })}
-          </div>
+                );
+              })}
+            </div>
+          )}
+          {filteredProducts.length <= 0 && <p>No products to be displayed</p>}
         </div>
       </div>
     </div>

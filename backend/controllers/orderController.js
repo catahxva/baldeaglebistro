@@ -114,6 +114,8 @@ exports.createPaymentIntent = async function (req, res, next) {
       },
     });
 
+    console.log(finalPaymentItems);
+
     const newOrder = await Order.create({
       user: req.user?.id,
       products: finalPaymentItems,
@@ -207,6 +209,8 @@ exports.getOrders = async function (req, res, next) {
 exports.getOrder = async function (req, res, next) {
   try {
     const order = await Order.findById(req.params.id);
+
+    console.log(order);
 
     if (!order) {
       return sendError(res, 404, "There was no order found with this ID.");

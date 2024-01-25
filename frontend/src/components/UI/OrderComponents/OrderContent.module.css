@@ -2,6 +2,27 @@
   margin-top: 4.5rem;
 }
 
+.order__content__container__select {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.order__content__label {
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+.order__content__select {
+  font-size: 2rem;
+  padding: 0.8rem 1.2rem;
+  border: 1px solid #ff8c00;
+  background-color: #222;
+  color: #ff8c00;
+  border-radius: 0.5rem;
+}
+
 .order__content__redo {
   display: block;
   font-weight: 700;

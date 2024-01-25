@@ -8,6 +8,8 @@ import { deleteProduct, updateProduct } from "../../../util/requests";
 
 import { queryClient } from "../../../util/queryClient";
 
+import AccountProductModal from "./AccountProductModal";
+
 function AccountProductCard({ product, queryString, onDelete }) {
   const dispatch = useDispatch();
   const userToken = useSelector((state) => state.auth.token);
@@ -102,33 +104,15 @@ function AccountProductCard({ product, queryString, onDelete }) {
 
   return (
     <>
-      <div
-        className={`${classes.delete__modal} ${
-          activeModal && classes.delete__modal__active
-        }`}
-      >
-        <div className={classes.delete__modal__card}>
-          <span className={classes.delete__modal__span}>
-            {deleteError || "Are you sure you want to delete this product?"}
-          </span>
-          <div className={classes.delete__modal__container__buttons}>
-            <button
-              onClick={() => setActiveModal(false)}
-              className={`${classes.delete__modal__button} ${classes.delete__modal__button__cancel}`}
-            >
-              Cancel
-            </button>
-            <button
-              onClick={() => {
-                deleteProd({ id: product._id, token: userToken });
-              }}
-              className={`${classes.delete__modal__button} ${classes.delete__modal__button__delete}`}
-            >
-              {btnText}
-            </button>
-          </div>
-        </div>
-      </div>
+      {activeModal && (
+        <AccountProductModal
+          closeModal={setActiveModal}
+          deleteProduct={deleteProd}
+          id={product._id}
+          error={deleteError}
+          btnText={btnText}
+        />
+      )}
       <div className={classes.account__product__card}>
         <div className={classes.account__product__card__grid}>
           <div className={classes.account__product__card__container}>

@@ -1,5 +1,6 @@
 import classes from "./OrderContent.module.css";
 
+import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { redoOrder } from "../../../store/cartActions";
@@ -16,6 +17,8 @@ function OrderContent() {
   const dispatch = useDispatch();
   const { id } = useParams();
 
+  const [edit, setEdit] = useState();
+
   const { data, isPending, isError, error } = useQuery({
     queryKey: ["order", id],
     queryFn: ({ signal }) => fetchOrder(signal, id),
@@ -31,15 +34,34 @@ function OrderContent() {
     const order = data.data.data;
     const products = order.products;
 
+    console.log(order);
+    console.log(products);
+
     content = (
       <>
         <OrderInfo order={order} />
         <OrderGrid products={products} />
         <div className={classes.order__content__container}>
           {userRole === "admin" && (
-            <select className={classes.order__content__select}>
-              <option value="">Select</option>
-            </select>
+            <div className={classes.order__content__container__select}>
+              <label className={classes.order__content__label}>
+                Order Status:
+              </label>
+              {!edit && (
+                <>
+                  <span className={classes.order__content__span}>
+                    {order.status}
+                  </span>
+                </>
+              )}
+              {edit && (
+                <select className={classes.order__content__select}>
+                  <option value="">Select</option>
+                  <option value="pending">Pending</option>
+                  <option value="delivered">Delivered</option>
+                </select>
+              )}
+            </div>
           )}
           <button
             onClick={() => {
@@ -57,6 +79,10 @@ function OrderContent() {
   return (
     <section className="first__section section__min__height">
       <h2>Order #{id.slice(-6).toUpperCase()}</h2>
+      <p>
+        Please note that only products which still exist inside of our database
+        will be displayed inside of your order.
+      </p>
       {content}
     </section>
   );
