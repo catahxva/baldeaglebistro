@@ -176,7 +176,7 @@ function OverviewContent() {
     isError: isErrorFilters,
     error: filtersError,
   } = useQuery({
-    queryKey: ["filters"],
+    queryKey: ["filters", category],
     queryFn: ({ signal }) => fetchFilters(signal, category),
   });
 

@@ -48,6 +48,8 @@ export const addProductToCart = function (id, quantity) {
 
 export const redoOrder = function (products) {
   return async function (dispatch) {
+    console.log(products);
+
     dispatch(
       uiActions.showNotification({
         status: "pending",
@@ -70,6 +72,8 @@ export const redoOrder = function (products) {
 
           const productDB = data.data.data;
 
+          if (productDB === undefined) throw new Error();
+
           if (!productDB.available) throw new Error();
 
           return {
@@ -82,10 +86,17 @@ export const redoOrder = function (products) {
       })
     );
 
-    if (productsDB.length > 0 && unavailableItems.length <= 0) {
-      productsDB.forEach((product) =>
-        dispatch(cartActions.addProduct(product))
-      );
+    console.log("productsDB", productsDB);
+    console.log("unavailable items:", unavailableItems);
+
+    const filteredProductsDB = productsDB.filter(
+      (product) => product !== undefined
+    );
+
+    if (filteredProductsDB.length > 0 && unavailableItems.length <= 0) {
+      productsDB.forEach((product) => {
+        dispatch(cartActions.addProduct(product));
+      });
 
       dispatch(
         uiActions.showNotification({
@@ -95,8 +106,8 @@ export const redoOrder = function (products) {
       );
     }
 
-    if (productsDB.length > 0 && unavailableItems.length > 0) {
-      productsDB.forEach((product) =>
+    if (filteredProductsDB.length > 0 && unavailableItems.length > 0) {
+      filteredProductsDB.forEach((product) =>
         dispatch(cartActions.addProduct(product))
       );
 
@@ -108,7 +119,7 @@ export const redoOrder = function (products) {
       );
     }
 
-    if (productsDB.length === 0) {
+    if (filteredProductsDB.length === 0) {
       dispatch(
         uiActions.showNotification({
           status: "error",

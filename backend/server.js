@@ -20,6 +20,23 @@ const connectToDB = async function () {
 
 connectToDB();
 
+const isPalindrome = function (string) {
+  const arrString = string.split("");
+
+  const reversedArray = [...arrString].reverse();
+
+  const reduceNumber = arrString.reduce((acc, el, i) => {
+    if (el === reversedArray[i]) acc++;
+
+    return acc;
+  }, 0);
+
+  if (reduceNumber === arrString.length) return true;
+  else return false;
+};
+
+console.log(isPalindrome("level"));
+
 // const insertData = function () {
 //   data.forEach(async (product, i) => {
 //     const newProduct = await Product.create(product);
