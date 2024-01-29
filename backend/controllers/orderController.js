@@ -230,3 +230,27 @@ exports.getOrder = async function (req, res, next) {
     );
   }
 };
+
+exports.updateOrder = async function (req, res, next) {
+  try {
+    const order = await Order.findById(req.params.id);
+
+    if (!order) {
+      return sendError(res, 404, "No order could be found with this ID");
+    }
+
+    order.status = req.body.status[0].toUpperCase() + req.body.status.slice(1);
+
+    await order.save({ validateBeforeSave: false });
+
+    res.status(200).json({
+      status: "success",
+      message: "Order was updated successfully!",
+      data: {
+        data: order.status,
+      },
+    });
+  } catch (err) {
+    sendError(res, 400, "Order could not be updated");
+  }
+};

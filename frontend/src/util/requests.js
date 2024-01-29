@@ -353,3 +353,20 @@ export const fetchOrder = async function (signal, id) {
 
   return data;
 };
+
+export const updateOrder = async function ({ token, id, status }) {
+  const response = await fetch(`${baseUrl}orders/update-order/${id}`, {
+    method: "POST",
+    body: JSON.stringify({ status }),
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${token}`,
+    },
+  });
+
+  const data = await response.json();
+
+  if (data.status === "fail") throw new Error(data.message);
+
+  return data;
+};

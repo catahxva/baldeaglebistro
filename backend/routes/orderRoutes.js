@@ -15,6 +15,14 @@ router.get(
 
 router.get("/one-order/:id", orderController.getOrder);
 
+router
+  .route("/update-order/:id")
+  .post(
+    authController.protect,
+    authController.protectRole,
+    orderController.updateOrder
+  );
+
 router.post(
   `/create-payment`,
   authController.isLoggedIn,

@@ -1,3 +1,12 @@
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .order__content__container {
   margin-top: 4.5rem;
 }
@@ -14,6 +23,16 @@
   font-weight: 500;
 }
 
+.order__content__helper__container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.order__content__span {
+  font-size: 2rem;
+}
+
 .order__content__select {
   font-size: 2rem;
   padding: 0.8rem 1.2rem;
@@ -21,6 +40,24 @@
   background-color: #222;
   color: #ff8c00;
   border-radius: 0.5rem;
+}
+
+.order__content__edit__btn {
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+}
+
+.order__content__edit__btn__svg {
+  width: 1.8rem;
+  height: 1.8rem;
+  color: #ff8c00;
+}
+.order__content__edit__btn__svg__spinning {
+  animation: spin infinite 2s linear;
 }
 
 .order__content__redo {
