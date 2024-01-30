@@ -104,7 +104,17 @@
   cursor: pointer;
   display: none;
   visibility: hidden;
-  /* display: flex;
-  align-items: center;
-  justify-content: center; */
+}
+
+@media screen and (max-width: 650px) {
+  .nav__group {
+    display: none;
+  }
+
+  .nav__mobile__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: visible;
+  }
 }

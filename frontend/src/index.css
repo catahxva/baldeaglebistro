@@ -110,3 +110,46 @@ p {
   text-transform: uppercase;
   margin-bottom: 1rem;
 }
+
+@media screen and (max-width: 1256px) {
+  html {
+    font-size: 50%;
+  }
+}
+
+@media screen and (max-width: 971px) {
+  section {
+    max-width: 110rem;
+  }
+}
+
+@media screen and (max-width: 890px) {
+  section {
+    max-width: 90rem;
+  }
+}
+
+@media screen and (max-width: 780px) {
+  section {
+    max-width: 75rem;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  section {
+    max-width: 60rem;
+    padding-bottom: 7rem;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  section {
+    max-width: 50rem;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  section {
+    max-width: 40rem;
+  }
+}

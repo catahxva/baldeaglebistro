@@ -38,7 +38,9 @@ function Story() {
             ingredients to ensure an authentic dining experience.
           </p>
         </div>
-        <div className={classes.story__container}>
+        <div
+          className={`${classes.story__container__mobile} ${classes.story__container}`}
+        >
           <img src="/img/story-2.jpg" className={classes.story__img} />
         </div>
       </div>

@@ -2,6 +2,42 @@
   width: 100rem;
 }
 
+@media screen and (max-width: 971px) {
+  .latest__content {
+    width: 90rem;
+  }
+}
+
+@media screen and (max-width: 890px) {
+  .latest__content {
+    width: 70rem;
+  }
+}
+
+@media screen and (max-width: 780px) {
+  .latest__content {
+    width: 75rem;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .latest__content {
+    width: 60rem;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .latest__content {
+    width: 45rem;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .latest__content {
+    width: 35rem;
+  }
+}
+
 .latest__content__title {
   font-size: 3.6rem;
   font-family: "Oswald", sans-serif;

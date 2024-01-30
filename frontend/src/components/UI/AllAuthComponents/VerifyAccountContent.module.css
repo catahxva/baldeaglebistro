@@ -18,3 +18,17 @@
   font-weight: 700;
   color: #222;
 }
+
+@media screen and (max-width: 500px) {
+  .verify__account {
+    max-width: 70rem;
+  }
+
+  .verify__account__span {
+    font-size: 2.6rem;
+  }
+
+  .verify__account__link {
+    font-size: 1.8rem;
+  }
+}

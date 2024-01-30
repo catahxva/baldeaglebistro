@@ -76,6 +76,28 @@
   text-decoration: none;
 }
 
+@media screen and (max-width: 465px) {
+  .auth__box {
+    width: 40rem;
+  }
+
+  .auth__link {
+    font-size: 1.8rem;
+  }
+
+  .auth__span__error {
+    font-size: 1.8rem;
+  }
+
+  .auth__form__button {
+    font-size: 1.8rem;
+  }
+
+  .auth__form__link {
+    font-size: 1.8rem;
+  }
+}
+
 .auth__container__message {
   width: 100%;
   display: flex;

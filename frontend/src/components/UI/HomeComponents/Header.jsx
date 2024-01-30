@@ -5,7 +5,7 @@ import ButtonLink from "../Others/ButtonLink";
 function Header() {
   return (
     <header>
-      <div className={classes.header__container}>
+      <div>
         <h1 className={classes.header__title}>
           Welcome to the Bald Eagle Bistro
         </h1>

@@ -105,3 +105,17 @@
   font-size: 1.6rem;
   font-weight: 500;
 }
+
+@media screen and (max-width: 465px) {
+  .form__group {
+    margin-bottom: 1.8rem;
+  }
+
+  .form__label {
+    font-size: 1.8rem;
+  }
+
+  .form__span__error {
+    font-size: 1.4rem;
+  }
+}

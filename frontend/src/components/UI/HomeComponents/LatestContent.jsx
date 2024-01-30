@@ -38,6 +38,17 @@ function LatestContent({ enabledQuery, products }) {
         keyboard
         spaceBetween={30}
         slidesPerView={3}
+        breakpoints={{
+          971: {
+            slidesPerView: 3,
+          },
+          650: {
+            slidesPerView: 2,
+          },
+          350: {
+            slidesPerView: 1,
+          },
+        }}
       >
         {products.map((product) => {
           return (

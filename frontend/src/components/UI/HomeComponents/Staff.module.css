@@ -12,6 +12,17 @@
   gap: 5rem;
 }
 
+@media screen and (max-width: 780px) {
+  .staff__grid {
+    grid-template-columns: 1fr;
+    row-gap: 5rem;
+  }
+
+  .staff__container__members {
+    grid-row: 2 / 3;
+  }
+}
+
 .staff__member {
   width: 100%;
   display: flex;
@@ -43,4 +54,34 @@
 .staff__member__name {
   font-size: 1.6rem;
   font-weight: 500;
+}
+
+@media screen and (max-width: 520px) {
+  .staff__member__container__img {
+    width: 16rem;
+    height: 16rem;
+  }
+
+  .staff__member__container__text {
+    width: calc(100% - 18rem);
+  }
+
+  .staff__member__text {
+    font-size: 1.2rem;
+  }
+
+  .staff__member__name {
+    font-size: 1.4rem;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .staff__member__container__img {
+    width: 10rem;
+    height: 10rem;
+  }
+
+  .staff__member__container__text {
+    width: calc(100% - 12rem);
+  }
 }
