@@ -4,8 +4,6 @@ import ProductCard from "../Others/ProductCard";
 import Placeholder from "../Others/Placeholder";
 
 function OrderGrid({ products }) {
-  console.log(products);
-
   const filteredProducts = products.filter(
     (product) => product.productId !== null
   );
@@ -18,8 +16,6 @@ function OrderGrid({ products }) {
           {products
             .filter((product) => product.productId !== null)
             .map((product) => {
-              console.log(product);
-
               return (
                 <ProductCard
                   product={product.productId}

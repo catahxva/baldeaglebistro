@@ -1,5 +1,6 @@
 const Order = require("../models/orderModel");
 const Product = require("../models/productModel");
+const { itemsFromDB } = require("../utils/itemsFromDB");
 const { createPagination } = require("../utils/APIFeatures");
 const stripe = require("stripe")(
   `sk_test_51OOl2QJARixY9PYyhHDU37eMphdq2DFnNj0N6UZA7HPVZ5Wvt34D9aYrVQ8smzlOOmtwUvOb0FpVfh7ERbtYvzrl008q7hGqRi`
@@ -36,34 +37,7 @@ exports.createPaymentIntent = async function (req, res, next) {
       );
     }
 
-    const itemsPromises = products.map(async (product) => {
-      try {
-        const itemDB = await Product.findById(product.id);
-
-        if (!itemDB) {
-          return {
-            notFound: true,
-            itemId: product.id,
-          };
-        }
-
-        if (!itemDB.available) {
-          return {
-            notAvailable: true,
-            itemId: product.id,
-          };
-        }
-
-        return itemDB;
-      } catch (err) {
-        return {
-          error: true,
-          itemId: item.id,
-        };
-      }
-    });
-
-    const itemsDB = await Promise.all(itemsPromises);
+    const itemsDB = await itemsFromDB(products, Product);
 
     const availableItems = itemsDB.filter((item) => {
       return (
@@ -114,8 +88,6 @@ exports.createPaymentIntent = async function (req, res, next) {
       },
     });
 
-    console.log(finalPaymentItems);
-
     const newOrder = await Order.create({
       user: req.user?.id,
       products: finalPaymentItems,
@@ -127,7 +99,7 @@ exports.createPaymentIntent = async function (req, res, next) {
     const message =
       "Your order has been registered and we are going to deliver it to you as soon as possible. Click on the button below to see your order!";
     const ctaText = "See order";
-    const ctaLink = ``;
+    const ctaLink = `http://localhost:5173/order/${newOrder._id}`;
 
     const emailHTML = emailTemplate(preheaderText, message, ctaText, ctaLink);
 
@@ -209,8 +181,6 @@ exports.getOrders = async function (req, res, next) {
 exports.getOrder = async function (req, res, next) {
   try {
     const order = await Order.findById(req.params.id);
-
-    console.log(order);
 
     if (!order) {
       return sendError(res, 404, "There was no order found with this ID.");

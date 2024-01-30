@@ -48,8 +48,6 @@ export const fetchProduct = async function (signal, id) {
 };
 
 export const uploadProduct = async function ({ productData, token }) {
-  console.log(productData);
-
   const response = await fetch(`${baseUrl}products`, {
     method: "POST",
     body: productData,
@@ -203,8 +201,6 @@ export const verifyAccount = async function ({ token }) {
   const data = await response.json();
 
   if (data.status === "fail") throw new Error(data.message);
-
-  console.log(data);
 
   return data;
 };

@@ -12,6 +12,8 @@ export const addProductToCart = function (id, quantity) {
       })
     );
 
+    dispatch(cartActions.clearUnavailableItems());
+
     try {
       const response = await fetch(`${baseUrl}products/one-product/${id}`);
 
@@ -48,14 +50,14 @@ export const addProductToCart = function (id, quantity) {
 
 export const redoOrder = function (products) {
   return async function (dispatch) {
-    console.log(products);
-
     dispatch(
       uiActions.showNotification({
         status: "pending",
         message: "Pending",
       })
     );
+
+    dispatch(cartActions.clearUnavailableItems());
 
     const unavailableItems = [];
 
@@ -85,9 +87,6 @@ export const redoOrder = function (products) {
         }
       })
     );
-
-    console.log("productsDB", productsDB);
-    console.log("unavailable items:", unavailableItems);
 
     const filteredProductsDB = productsDB.filter(
       (product) => product !== undefined

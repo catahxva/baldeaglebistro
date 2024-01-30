@@ -242,7 +242,6 @@ exports.resetPassword = async function (req, res, next) {
 
     createSendToken(user, 200, res);
   } catch (err) {
-    console.log(err);
     sendError(
       res,
       400,
@@ -330,7 +329,6 @@ exports.protect = async function (req, res, next) {
 
     return next();
   } catch (err) {
-    console.log(err);
     return sendError(
       res,
       400,

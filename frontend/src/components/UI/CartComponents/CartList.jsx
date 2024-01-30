@@ -30,11 +30,22 @@ function CartList() {
   if (isError)
     content = <Placeholder type="error" message={error.message} size="big" />;
 
-  if (data && data.data.data.length <= 0) {
+  if (data && data.data.data.length <= 0 && unavailableItems.length <= 0) {
     content = (
       <div>
         <span className={classes.cart__list__message}>
           You have no items in your shopping cart.
+        </span>
+      </div>
+    );
+  }
+
+  if (data && data.data.data.length <= 0 && unavailableItems.length > 0) {
+    content = (
+      <div>
+        <span className={classes.cart__list__message}>
+          The items inside your cart have been removed because they are
+          currently unavailable.
         </span>
       </div>
     );
@@ -52,7 +63,7 @@ function CartList() {
     content = (
       <div className={classes.cart__list__grid}>
         <div>
-          {unavailableItemsMessage && (
+          {unavailableItemsMessage && unavailableItems.length > 0 && (
             <span className={classes.cart__list__message}>
               {unavailableItemsMessage}
             </span>

@@ -1,192 +1,5 @@
 const products = [
   {
-    name: "Crispy Fried Mushroom Burger",
-    price: 18,
-    image:
-      "https://res.cloudinary.com/dgwygf5i3/image/upload/v1703094823/nuqcla6oedqpeqfm281r.jpg",
-    serving: 342,
-    category: "main dish",
-    nutrition: {
-      calories: 668,
-      protein: 45,
-      carbs: 52,
-      fats: 30,
-    },
-    description:
-      "Indulge in the rich umami flavors of our Crispy Mushroom Burger, where savory mushrooms are expertly seasoned and crisped to perfection. Nestled within a soft bun, this burger offers a delightful combination of textures and earthy notes.",
-    available: true,
-  },
-  {
-    name: "Million Dollar Chicken Casserole",
-    price: 35,
-    image:
-      "https://res.cloudinary.com/dgwygf5i3/image/upload/v1703094891/inreoed8twufooq2llkn.jpg",
-    serving: 500,
-    category: "main dish",
-    nutrition: {
-      calories: 890,
-      protein: 52,
-      carbs: 67,
-      fats: 34,
-    },
-    description:
-      "Elevate your dining experience with our Million Dollar Chicken Casserole. Succulent chicken pieces are bathed in a luxurious creamy sauce, topped with a golden layer of cheese and crispy breadcrumbs. A comforting and decadent dish that lives up to its name.",
-    available: true,
-  },
-  {
-    name: "Cast Iron Steak",
-    price: 42,
-    image:
-      "https://res.cloudinary.com/dgwygf5i3/image/upload/v1703094941/ltqjeuhhdtcuwzwf1i09.jpg",
-    serving: 320,
-    category: "main dish",
-    nutrition: {
-      calories: 389,
-      protein: 52,
-      carbs: 12,
-      fats: 31,
-    },
-    description:
-      "Savor the bold and robust taste of our Cast Iron Steak. Cooked to your preference, this premium cut is seared in a cast iron pan to lock in juices and create a mouthwatering crust. Each bite delivers a perfect balance of tenderness and flavor.",
-    available: true,
-  },
-  {
-    name: "BBQ Country Style Ribs",
-    price: 48,
-    image:
-      "https://res.cloudinary.com/dgwygf5i3/image/upload/v1703095074/hv0e33mwujooxmu6kklc.jpg",
-    serving: 600,
-    category: "main dish",
-    nutrition: {
-      calories: 1278,
-      protein: 72,
-      carbs: 30,
-      fats: 54,
-    },
-    description:
-      "Dive into a feast of BBQ Country Style Ribs, where tender pork ribs are slow-cooked to perfection and generously glazed with our signature barbecue sauce. The result is a harmonious blend of smoky, sweet, and savory flavors that will leave your taste buds dancing.",
-    available: true,
-  },
-  {
-    name: "Instant Pot Pulled Pork",
-    price: 34,
-    image:
-      "https://res.cloudinary.com/dgwygf5i3/image/upload/v1703095353/vys3f0khnr347twvxz1l.avif",
-    serving: 415,
-    category: "main dish",
-    nutrition: {
-      calories: 845,
-      protein: 65,
-      carbs: 37,
-      fats: 26,
-    },
-    description:
-      "Experience the convenience and flavor explosion of our Instant Pot Pulled Pork. Slow-cooked for hours, the succulent pork is expertly shredded and infused with a smoky barbecue essence. Perfectly tender, this dish is a go-to for those who appreciate quick yet delicious meals.",
-    available: true,
-  },
-  {
-    name: "Philly Cheesesteak",
-    price: 29,
-    image:
-      "https://res.cloudinary.com/dgwygf5i3/image/upload/v1703095441/adfacoy23zbwfuzkks5j.jpg",
-    serving: 430,
-    category: "main dish",
-    nutrition: {
-      calories: 678,
-      protein: 48,
-      carbs: 30,
-      fats: 29,
-    },
-    description:
-      "Transport your taste buds to Philadelphia with our iconic Philly Cheesesteak. Thinly sliced beefsteak meets sautéed onions and melted cheese, all nestled in a soft roll. A classic combination that captures the essence of this beloved sandwich.",
-    available: true,
-  },
-  {
-    name: "Louisiana Creole Gumbo",
-    price: 72,
-    image:
-      "https://res.cloudinary.com/dgwygf5i3/image/upload/v1703095481/gyhv6qzcvj38bofc3zjc.jpg",
-    serving: 540,
-    category: "main dish",
-    nutrition: {
-      calories: 890,
-      protein: 67,
-      carbs: 34,
-      fats: 39,
-    },
-    description:
-      "Take a culinary journey to the heart of Louisiana with our Creole Gumbo. A soul-warming stew featuring a medley of seafood or meats, aromatic spices, and the holy trinity of Cajun cuisine—bell peppers, onions, and celery. A true taste of the Bayou.",
-    available: true,
-  },
-  {
-    name: "Juicy Beef and Bacon Burgers",
-    price: 89,
-    image:
-      "https://res.cloudinary.com/dgwygf5i3/image/upload/v1703095538/g9za4umaansl8icgcbsm.jpg",
-    serving: 700,
-    category: "main dish",
-    nutrition: {
-      calories: 1344,
-      protein: 89,
-      carbs: 45,
-      fats: 62,
-    },
-    description:
-      "Sink your teeth into our Juicy Beef and Bacon Burgers, where premium ground beef meets crispy bacon to create a flavor-packed patty. Grilled to perfection, these burgers are a carnivore's delight, offering a burst of smoky and savory goodness in every bite.",
-    available: true,
-  },
-  {
-    name: "Pastrami Burgers",
-    price: 79,
-    image:
-      "https://res.cloudinary.com/dgwygf5i3/image/upload/v1703095601/pkugvpwkmrprchq1gopx.webp",
-    serving: 650,
-    category: "main dish",
-    nutrition: {
-      calories: 934,
-      protein: 55,
-      carbs: 43,
-      fats: 49,
-    },
-    description:
-      "Experience a twist on the classic burger with our Pastrami Burgers. Succulent ground beef is complemented by layers of thinly sliced pastrami, creating a delightful combination of textures and flavors. A hearty choice for those craving a unique and satisfying meal.",
-    available: true,
-  },
-  {
-    name: "Grilled Beef and Turkey Burgers With Basil",
-    price: 56,
-    image:
-      "https://res.cloudinary.com/dgwygf5i3/image/upload/v1703095642/srdv86v7exx5whvksjil.jpg",
-    serving: 678,
-    category: "main dish",
-    nutrition: {
-      calories: 1400,
-      protein: 90,
-      carbs: 34,
-      fats: 29,
-    },
-    description:
-      "Delight in the freshness of our Grilled Beef and Turkey Burgers infused with aromatic basil. The lean turkey complements the richness of the beef, while the herbal notes add a refreshing twist. A healthier option without compromising on flavor.",
-    available: true,
-  },
-  {
-    name: "Air Fryer Mac and Cheese Balls",
-    price: 18,
-    image:
-      "https://res.cloudinary.com/dgwygf5i3/image/upload/v1703095691/lonnm4tkpjdj5zyvqnhi.jpg",
-    serving: 285,
-    category: "appetizer",
-    nutrition: {
-      calories: 367,
-      protein: 20,
-      carbs: 19,
-      fats: 34,
-    },
-    description:
-      "Bite into the golden perfection of our Air Fryer Mac and Cheese Balls, where creamy macaroni and cheese is molded into bite-sized orbs and air-fried to a crispy exterior. The result is a delightful blend of cheesy goodness encased in a crunchy shell.",
-    available: true,
-  },
-  {
     name: "Fried Pickles",
     price: 21,
     image:
@@ -541,6 +354,193 @@ const products = [
     },
     description:
       "Experience the ultimate crunch with our Air Fryer Onion Rings. Each ring boasts a golden, crispy coating achieved through the magic of air frying, revealing the sweet and savory essence of the onion inside. A guilt-free, flavorful indulgence that will have you reaching for more.",
+    available: true,
+  },
+  {
+    name: "Crispy Fried Mushroom Burger",
+    price: 18,
+    image:
+      "https://res.cloudinary.com/dgwygf5i3/image/upload/v1703094823/nuqcla6oedqpeqfm281r.jpg",
+    serving: 342,
+    category: "main dish",
+    nutrition: {
+      calories: 668,
+      protein: 45,
+      carbs: 52,
+      fats: 30,
+    },
+    description:
+      "Indulge in the rich umami flavors of our Crispy Mushroom Burger, where savory mushrooms are expertly seasoned and crisped to perfection. Nestled within a soft bun, this burger offers a delightful combination of textures and earthy notes.",
+    available: true,
+  },
+  {
+    name: "Million Dollar Chicken Casserole",
+    price: 35,
+    image:
+      "https://res.cloudinary.com/dgwygf5i3/image/upload/v1703094891/inreoed8twufooq2llkn.jpg",
+    serving: 500,
+    category: "main dish",
+    nutrition: {
+      calories: 890,
+      protein: 52,
+      carbs: 67,
+      fats: 34,
+    },
+    description:
+      "Elevate your dining experience with our Million Dollar Chicken Casserole. Succulent chicken pieces are bathed in a luxurious creamy sauce, topped with a golden layer of cheese and crispy breadcrumbs. A comforting and decadent dish that lives up to its name.",
+    available: true,
+  },
+  {
+    name: "Cast Iron Steak",
+    price: 42,
+    image:
+      "https://res.cloudinary.com/dgwygf5i3/image/upload/v1703094941/ltqjeuhhdtcuwzwf1i09.jpg",
+    serving: 320,
+    category: "main dish",
+    nutrition: {
+      calories: 389,
+      protein: 52,
+      carbs: 12,
+      fats: 31,
+    },
+    description:
+      "Savor the bold and robust taste of our Cast Iron Steak. Cooked to your preference, this premium cut is seared in a cast iron pan to lock in juices and create a mouthwatering crust. Each bite delivers a perfect balance of tenderness and flavor.",
+    available: true,
+  },
+  {
+    name: "BBQ Country Style Ribs",
+    price: 48,
+    image:
+      "https://res.cloudinary.com/dgwygf5i3/image/upload/v1703095074/hv0e33mwujooxmu6kklc.jpg",
+    serving: 600,
+    category: "main dish",
+    nutrition: {
+      calories: 1278,
+      protein: 72,
+      carbs: 30,
+      fats: 54,
+    },
+    description:
+      "Dive into a feast of BBQ Country Style Ribs, where tender pork ribs are slow-cooked to perfection and generously glazed with our signature barbecue sauce. The result is a harmonious blend of smoky, sweet, and savory flavors that will leave your taste buds dancing.",
+    available: true,
+  },
+  {
+    name: "Instant Pot Pulled Pork",
+    price: 34,
+    image:
+      "https://res.cloudinary.com/dgwygf5i3/image/upload/v1703095353/vys3f0khnr347twvxz1l.avif",
+    serving: 415,
+    category: "main dish",
+    nutrition: {
+      calories: 845,
+      protein: 65,
+      carbs: 37,
+      fats: 26,
+    },
+    description:
+      "Experience the convenience and flavor explosion of our Instant Pot Pulled Pork. Slow-cooked for hours, the succulent pork is expertly shredded and infused with a smoky barbecue essence. Perfectly tender, this dish is a go-to for those who appreciate quick yet delicious meals.",
+    available: true,
+  },
+  {
+    name: "Philly Cheesesteak",
+    price: 29,
+    image:
+      "https://res.cloudinary.com/dgwygf5i3/image/upload/v1703095441/adfacoy23zbwfuzkks5j.jpg",
+    serving: 430,
+    category: "main dish",
+    nutrition: {
+      calories: 678,
+      protein: 48,
+      carbs: 30,
+      fats: 29,
+    },
+    description:
+      "Transport your taste buds to Philadelphia with our iconic Philly Cheesesteak. Thinly sliced beefsteak meets sautéed onions and melted cheese, all nestled in a soft roll. A classic combination that captures the essence of this beloved sandwich.",
+    available: true,
+  },
+  {
+    name: "Louisiana Creole Gumbo",
+    price: 72,
+    image:
+      "https://res.cloudinary.com/dgwygf5i3/image/upload/v1703095481/gyhv6qzcvj38bofc3zjc.jpg",
+    serving: 540,
+    category: "main dish",
+    nutrition: {
+      calories: 890,
+      protein: 67,
+      carbs: 34,
+      fats: 39,
+    },
+    description:
+      "Take a culinary journey to the heart of Louisiana with our Creole Gumbo. A soul-warming stew featuring a medley of seafood or meats, aromatic spices, and the holy trinity of Cajun cuisine—bell peppers, onions, and celery. A true taste of the Bayou.",
+    available: true,
+  },
+  {
+    name: "Juicy Beef and Bacon Burgers",
+    price: 89,
+    image:
+      "https://res.cloudinary.com/dgwygf5i3/image/upload/v1703095538/g9za4umaansl8icgcbsm.jpg",
+    serving: 700,
+    category: "main dish",
+    nutrition: {
+      calories: 1344,
+      protein: 89,
+      carbs: 45,
+      fats: 62,
+    },
+    description:
+      "Sink your teeth into our Juicy Beef and Bacon Burgers, where premium ground beef meets crispy bacon to create a flavor-packed patty. Grilled to perfection, these burgers are a carnivore's delight, offering a burst of smoky and savory goodness in every bite.",
+    available: true,
+  },
+  {
+    name: "Pastrami Burgers",
+    price: 79,
+    image:
+      "https://res.cloudinary.com/dgwygf5i3/image/upload/v1703095601/pkugvpwkmrprchq1gopx.webp",
+    serving: 650,
+    category: "main dish",
+    nutrition: {
+      calories: 934,
+      protein: 55,
+      carbs: 43,
+      fats: 49,
+    },
+    description:
+      "Experience a twist on the classic burger with our Pastrami Burgers. Succulent ground beef is complemented by layers of thinly sliced pastrami, creating a delightful combination of textures and flavors. A hearty choice for those craving a unique and satisfying meal.",
+    available: true,
+  },
+  {
+    name: "Grilled Beef and Turkey Burgers With Basil",
+    price: 56,
+    image:
+      "https://res.cloudinary.com/dgwygf5i3/image/upload/v1703095642/srdv86v7exx5whvksjil.jpg",
+    serving: 678,
+    category: "main dish",
+    nutrition: {
+      calories: 1400,
+      protein: 90,
+      carbs: 34,
+      fats: 29,
+    },
+    description:
+      "Delight in the freshness of our Grilled Beef and Turkey Burgers infused with aromatic basil. The lean turkey complements the richness of the beef, while the herbal notes add a refreshing twist. A healthier option without compromising on flavor.",
+    available: true,
+  },
+  {
+    name: "Air Fryer Mac and Cheese Balls",
+    price: 18,
+    image:
+      "https://res.cloudinary.com/dgwygf5i3/image/upload/v1703095691/lonnm4tkpjdj5zyvqnhi.jpg",
+    serving: 285,
+    category: "appetizer",
+    nutrition: {
+      calories: 367,
+      protein: 20,
+      carbs: 19,
+      fats: 34,
+    },
+    description:
+      "Bite into the golden perfection of our Air Fryer Mac and Cheese Balls, where creamy macaroni and cheese is molded into bite-sized orbs and air-fried to a crispy exterior. The result is a delightful blend of cheesy goodness encased in a crunchy shell.",
     available: true,
   },
 ];

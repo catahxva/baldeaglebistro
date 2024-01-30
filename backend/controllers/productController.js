@@ -3,6 +3,7 @@ const {
   createSort,
   createPagination,
 } = require("../utils/APIFeatures");
+const { itemsFromDB } = require("../utils/itemsFromDB");
 const Product = require("../models/productModel");
 const sendError = require("../utils/sendError");
 
@@ -118,34 +119,7 @@ exports.obtainCartProducts = async function (req, res, next) {
   try {
     const cartItems = req.body.products;
 
-    const cartPromises = cartItems.map(async (item) => {
-      try {
-        const foundItem = await Product.findById(item.id);
-
-        if (!foundItem) {
-          return {
-            notFound: true,
-            itemId: item.id,
-          };
-        }
-
-        if (!foundItem.available) {
-          return {
-            notAvailable: true,
-            itemId: item.id,
-          };
-        }
-
-        return foundItem;
-      } catch (err) {
-        return {
-          error: true,
-          itemId: item.id,
-        };
-      }
-    });
-
-    const cartItemsDB = await Promise.all(cartPromises);
+    const cartItemsDB = await itemsFromDB(cartItems, Product);
 
     const finalCartItems = cartItemsDB.map((cartItem, i) => {
       if (
@@ -207,8 +181,6 @@ exports.createProduct = async function (req, res, next) {
       },
     });
   } catch (err) {
-    console.log(err);
-
     sendError(res, 400, "There was a problem with creating your product");
   }
 };

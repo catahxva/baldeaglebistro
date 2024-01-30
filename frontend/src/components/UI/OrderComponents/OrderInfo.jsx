@@ -1,8 +1,6 @@
 import classes from "./OrderInfo.module.css";
 
 function OrderInfo({ order }) {
-  console.log(order.products);
-
   const filteredProducts = order.products.filter(
     (product) => product.productId !== null
   );

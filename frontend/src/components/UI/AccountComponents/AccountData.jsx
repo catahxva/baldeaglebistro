@@ -83,15 +83,11 @@ function AccountData() {
     },
     onError: (error) => {
       setGeneralError(error.message);
-      console.log(error);
     },
     onSuccess: (data) => {
       setSubmitting(false);
-      console.log(data);
 
       const addressDB = data.data.data;
-
-      console.log(addressDB);
 
       dispatch(
         authActions.updateUserAddress({
@@ -171,8 +167,6 @@ function AccountData() {
           <span className={classes.account__data__span}>Address Info</span>
           <ul className={classes.account__data__address__list}>
             {Object.entries(address).map((entry, i) => {
-              console.log(entry[0].split(/(?=[A-Z])/));
-
               return (
                 <li
                   key={i}

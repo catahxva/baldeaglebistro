@@ -1,5 +1,7 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import { authActions } from "./store/authSlice";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { queryClient } from "./util/queryClient";
 
@@ -179,6 +181,29 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
+  const dispatch = useDispatch();
+
+  const expirationDate = useSelector((state) => state.auth.expirationDate);
+
+  useEffect(() => {
+    const expirationTime = new Date(expirationDate);
+    const currentTime = new Date();
+
+    let timer;
+
+    if (currentTime > expirationTime) dispatch(authActions.deauthenticate());
+
+    if (expirationTime > currentTime) {
+      const timeDifference = expirationTime - currentTime;
+
+      timer = setTimeout(() => {
+        dispatch(authActions.deauthenticate());
+      }, timeDifference);
+    }
+
+    return () => clearTimeout(timer);
+  }, [expirationDate]);
+
   return (
     <QueryClientProvider client={queryClient}>
       <RouterProvider router={router} />

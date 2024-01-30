@@ -2,15 +2,6 @@ span {
   display: block;
 }
 
-@keyframes spin {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
 .account__product__card {
   width: 100%;
   margin-bottom: 5rem;
@@ -66,47 +57,6 @@ span {
 
 .account__product__card__span {
   font-size: 1.8rem;
-}
-
-.account__product__card__helper__container {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-
-.account__product__card__available {
-  font-size: 2rem;
-  color: #ff8c00;
-}
-
-.account__product__card__select {
-  font-family: inherit;
-  padding: 0.6rem 0.4rem;
-  border: 1px solid #ff8c00;
-  background-color: #222;
-  border-radius: 0.5rem;
-  font-size: 1.6rem;
-  color: #ff8c00;
-}
-
-.account__product__card__btn__edit {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0.5rem;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-}
-
-.account__product__card__svg__edit {
-  width: 1.5rem;
-  height: 1.5rem;
-  color: #ff8c00;
-}
-
-.account__product__card__svg__edit__animated {
-  animation: spin infinite 2s linear;
 }
 
 .account__product__card__button__delete {

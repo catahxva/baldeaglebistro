@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
-const data = require("./utils/data");
-const Product = require("./models/productModel");
+// const data = require("./utils/data");
+// const Product = require("./models/productModel");
 
 dotenv.config({ path: "./config.env" });
 
@@ -19,23 +19,6 @@ const connectToDB = async function () {
 };
 
 connectToDB();
-
-const isPalindrome = function (string) {
-  const arrString = string.split("");
-
-  const reversedArray = [...arrString].reverse();
-
-  const reduceNumber = arrString.reduce((acc, el, i) => {
-    if (el === reversedArray[i]) acc++;
-
-    return acc;
-  }, 0);
-
-  if (reduceNumber === arrString.length) return true;
-  else return false;
-};
-
-console.log(isPalindrome("level"));
 
 // const insertData = function () {
 //   data.forEach(async (product, i) => {

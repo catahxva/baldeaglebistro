@@ -19,7 +19,7 @@ function AccountOrders() {
 
   if (isPending) content = <Placeholder type="loading" />;
 
-  if (data) console.log(data);
+  if (isError) content = <Placeholder type="error" message={error.message} />;
 
   if (data && data.data.data.length <= 0)
     content = (
@@ -27,8 +27,6 @@ function AccountOrders() {
         You don't have any orders yet
       </span>
     );
-
-  if (isError) content = <Placeholder type="error" message={error.message} />;
 
   if (data && data.data.data.length > 0) {
     const orders = data.data.data;

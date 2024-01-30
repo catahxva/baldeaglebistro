@@ -28,8 +28,6 @@ function AccountResetPass() {
       setError(error.message);
     },
     onSuccess: (data) => {
-      console.log(data);
-
       dispatch(
         authActions.authenticate({
           token: data.token,

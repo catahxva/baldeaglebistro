@@ -13,16 +13,18 @@ import OverviewGrid from "./OverviewGrid";
 import Pagination from "../Others/Pagination";
 
 function OverviewContent() {
-  // get category param
+  // get current category (if there is one)
   const { category } = useParams();
 
-  // get search params.
+  // get search params
   const [searchParams, setSearchParams] = useSearchParams();
 
+  // scroll back to top when search params change
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [searchParams]);
 
+  // derive data from the search params
   const searchParamsObject = Object.fromEntries(searchParams);
   const searchParamsValues = Object.values(searchParamsObject)
     .map((value) => value.split(","))
@@ -39,7 +41,7 @@ function OverviewContent() {
     page: pageQuery,
   } = searchParamsObject;
 
-  // filtering/sorting/pagination handlers.
+  // handler for filtering
   const filterHandler = function (filter, value) {
     setSearchParams((prevParams) => {
       const prevParamsObject = Object.fromEntries(prevParams);
@@ -98,6 +100,7 @@ function OverviewContent() {
     });
   };
 
+  // special handler for price
   const priceFilterHandler = function (priceValues) {
     setSearchParams((prevParams) => {
       const prevParamsObject = Object.fromEntries(prevParams);
@@ -112,6 +115,7 @@ function OverviewContent() {
     });
   };
 
+  // special handler for removing price
   const priceFilterRemoveHandler = function () {
     setSearchParams((prevParams) => {
       const prevParamsObject = Object.fromEntries(prevParams);
@@ -126,6 +130,7 @@ function OverviewContent() {
     });
   };
 
+  // handler for sorting products
   const sortHandler = function (e) {
     const value = e.target.value;
 
@@ -149,6 +154,7 @@ function OverviewContent() {
     });
   };
 
+  // handler for pagination
   const paginationHandler = function (page) {
     setSearchParams((prevParams) => {
       const prevParamsObject = Object.fromEntries(prevParams);
@@ -168,8 +174,7 @@ function OverviewContent() {
     });
   };
 
-  // get dynamic filters from db and render filters content based on
-  // fetching state.
+  // get dynamic filters from the backend
   const {
     data: filters,
     isPending: isPendingFilters,
@@ -210,8 +215,7 @@ function OverviewContent() {
       <Placeholder type="error" message={filtersError.message} />
     );
 
-  // get products based on a query string which is based on the search
-  // params
+  // create query string
   const queryString = !category
     ? `?${searchParamsEntriesAll.map((entry) => entry.join("=")).join("&")}`
     : `?category=${category}&${searchParamsEntriesAll
@@ -219,6 +223,7 @@ function OverviewContent() {
         .join("&")}
     `;
 
+  // get products
   const {
     data: products,
     isPending: isPendingProducts,
