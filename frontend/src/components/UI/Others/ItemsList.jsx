@@ -65,7 +65,7 @@ function ItemsList() {
     );
   }
 
-  return <div>{content}</div>;
+  return <div className={classes.items__list}>{content}</div>;
 }
 
 export default ItemsList;

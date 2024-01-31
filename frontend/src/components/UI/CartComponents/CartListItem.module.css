@@ -76,3 +76,48 @@
   height: 1.6rem;
   color: #fff;
 }
+
+@media screen and (max-width: 521px) {
+  .cart__item__name {
+    font-size: 1.5rem;
+  }
+
+  .cart__item__category {
+    font-size: 1.2rem;
+  }
+
+  .cart__item__container {
+    width: 3rem;
+  }
+
+  .cart__item__span {
+    font-size: 1.4rem;
+  }
+
+  .cart__item__container__big {
+    gap: 2rem;
+  }
+
+  .cart__item__container__quantity__controller {
+    width: 8rem;
+  }
+
+  .cart__item__btn {
+    padding: 0.4rem;
+  }
+
+  .cart__item__svg {
+    width: 1.4rem;
+    height: 1.4rem;
+  }
+}
+
+@media screen and (max-width: 421px) {
+  .cart__item {
+    flex-wrap: wrap;
+  }
+
+  .cart__item__container__big {
+    margin-top: 1.2rem;
+  }
+}

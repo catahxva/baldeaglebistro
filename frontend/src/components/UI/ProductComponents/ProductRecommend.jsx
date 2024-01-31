@@ -47,56 +47,64 @@ function ProductRecommend({ category }) {
   let descriptionOne;
   let descriptionTwo;
 
-  if (category === "main dish") {
-    queryStringOne = "?category=side&limit=5";
-    queryStringTwo = "?category=dessert&limit=5";
+  switch (category) {
+    case "main dish":
+      queryStringOne = "?category=side&limit=5";
+      queryStringTwo = "?category=dessert&limit=5";
 
-    subTitleOne = DATA["side"].title;
-    descriptionOne = DATA["side"].description;
+      subTitleOne = DATA["side"].title;
+      descriptionOne = DATA["side"].description;
 
-    subTitleTwo = DATA["dessert"].title;
-    descriptionTwo = DATA["dessert"].description;
-  }
-  if (category === "dessert") {
-    queryStringOne = "?category=appetizer&limit=5";
-    queryStringTwo = "?category=main dish&limit=5";
+      subTitleTwo = DATA["dessert"].title;
+      descriptionTwo = DATA["dessert"].description;
+      break;
 
-    subTitleOne = DATA["appetizer"].title;
-    descriptionOne = DATA["appetizer"].description;
+    case "dessert":
+      queryStringOne = "?category=appetizer&limit=5";
+      queryStringTwo = "?category=main dish&limit=5";
 
-    subTitleTwo = DATA["main dish"].title;
-    descriptionTwo = DATA["main dish"].description;
-  }
+      subTitleOne = DATA["appetizer"].title;
+      descriptionOne = DATA["appetizer"].description;
 
-  if (category === "side") {
-    queryStringOne = "?category=main dish&limit=5";
-    queryStringTwo = "?category=beverage&limit=5";
+      subTitleTwo = DATA["main dish"].title;
+      descriptionTwo = DATA["main dish"].description;
+      break;
 
-    subTitleOne = DATA["main dish"].title;
-    descriptionOne = DATA["main dish"].description;
+    case "side":
+      queryStringOne = "?category=main dish&limit=5";
+      queryStringTwo = "?category=beverage&limit=5";
 
-    subTitleTwo = DATA["beverage"].title;
-    descriptionTwo = DATA["beverage"].description;
-  }
-  if (category === "beverage") {
-    queryStringOne = "?category=appetizer&limit=5";
-    queryStringTwo = "?category=side&limit=5";
+      subTitleOne = DATA["main dish"].title;
+      descriptionOne = DATA["main dish"].description;
 
-    subTitleOne = DATA["appetizer"].title;
-    descriptionOne = DATA["appetizer"].description;
+      subTitleTwo = DATA["beverage"].title;
+      descriptionTwo = DATA["beverage"].description;
+      break;
 
-    subTitleTwo = DATA["side"].title;
-    descriptionTwo = DATA["side"].description;
-  }
-  if (category === "appetizer") {
-    queryStringOne = "?category=beverage&limit=5";
-    queryStringTwo = "?category=dessert&limit=5";
+    case "beverage":
+      queryStringOne = "?category=appetizer&limit=5";
+      queryStringTwo = "?category=side&limit=5";
 
-    subTitleOne = DATA["beverage"].title;
-    descriptionOne = DATA["beverage"].description;
+      subTitleOne = DATA["appetizer"].title;
+      descriptionOne = DATA["appetizer"].description;
 
-    subTitleTwo = DATA["dessert"].title;
-    descriptionTwo = DATA["dessert"].description;
+      subTitleTwo = DATA["side"].title;
+      descriptionTwo = DATA["side"].description;
+      break;
+
+    case "appetizer":
+      queryStringOne = "?category=beverage&limit=5";
+      queryStringTwo = "?category=dessert&limit=5";
+
+      subTitleOne = DATA["beverage"].title;
+      descriptionOne = DATA["beverage"].description;
+
+      subTitleTwo = DATA["dessert"].title;
+      descriptionTwo = DATA["dessert"].description;
+      break;
+
+    default:
+      break;
   }
 
   const {
@@ -150,6 +158,14 @@ function ProductRecommend({ category }) {
             modules={[Navigation, A11y]}
             navigation
             slidesPerView={2}
+            breakpoints={{
+              650: {
+                slidesPerView: 2,
+              },
+              350: {
+                slidesPerView: 1,
+              },
+            }}
           >
             {queryOneProducts.map((product) => {
               return (
@@ -170,6 +186,14 @@ function ProductRecommend({ category }) {
             modules={[Navigation, A11y]}
             navigation
             slidesPerView={2}
+            breakpoints={{
+              650: {
+                slidesPerView: 2,
+              },
+              350: {
+                slidesPerView: 1,
+              },
+            }}
           >
             {queryTwoProducts.map((product) => {
               return (

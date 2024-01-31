@@ -114,3 +114,14 @@
   font-weight: 500;
   font-family: "Oswald", sans-serif;
 }
+
+@media screen and (max-width: 521px) {
+  .auth__message {
+    font-size: 1.8rem;
+    font-weight: 400;
+  }
+
+  .auth__span__error {
+    font-size: 1.8rem;
+  }
+}

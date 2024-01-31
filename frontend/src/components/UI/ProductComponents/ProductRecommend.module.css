@@ -17,3 +17,31 @@
 .product__recommend__swiper {
   width: 70rem;
 }
+
+@media screen and (max-width: 890px) {
+  .product__recommend__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .product__recommend__swiper {
+    max-width: 110rem;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .product__recommend__swiper {
+    width: 55rem;
+  }
+}
+
+@media screen and (max-width: 521px) {
+  .product__recommend__swiper {
+    width: 45rem;
+  }
+}
+
+@media screen and (max-width: 421px) {
+  .product__recommend__swiper {
+    width: 36rem;
+  }
+}

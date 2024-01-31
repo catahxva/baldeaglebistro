@@ -37,18 +37,14 @@ function PaymentContent() {
     <section className="section__min__height">
       <h2>Payment</h2>
       <div className={classes.payment__content__grid}>
-        <div className={classes.payment__content__grid__container}>
-          {isPending && <Placeholder type="loading" />}
-          {isError && <Placeholder type="error" message={error.message} />}
-          {stripePromise && clientSecret && data && (
-            <Elements stripe={stripePromise} options={{ clientSecret }}>
-              <PaymentForm total={data.totalAmount} />
-            </Elements>
-          )}
-        </div>
-        <div className={classes.payment__content__grid__container}>
-          <ItemsList />
-        </div>
+        {isPending && <Placeholder type="loading" />}
+        {isError && <Placeholder type="error" message={error.message} />}
+        {stripePromise && clientSecret && data && (
+          <Elements stripe={stripePromise} options={{ clientSecret }}>
+            <PaymentForm total={data.totalAmount} />
+          </Elements>
+        )}
+        <ItemsList />
       </div>
     </section>
   );

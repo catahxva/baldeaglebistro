@@ -35,6 +35,17 @@ function PopularProducts() {
         navigation
         keyboard
         slidesPerView={3}
+        breakpoints={{
+          890: {
+            slidesPerView: 3,
+          },
+          650: {
+            slidesPerView: 2,
+          },
+          350: {
+            slidesPerView: 1,
+          },
+        }}
       >
         {products.map((product) => {
           return (

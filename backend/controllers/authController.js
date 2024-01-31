@@ -157,7 +157,8 @@ exports.forgotPassword = async function (req, res, next) {
     const user = await User.findOne({ email: req.body.email });
 
     if (!user) {
-      return sendError(res, 404, "No account found for this email address");
+      console.log("NO USER");
+      return sendError(res, 400, "No account found for this email address");
     }
 
     const resetToken = user.createPasswordResetToken();
@@ -181,6 +182,7 @@ exports.forgotPassword = async function (req, res, next) {
       status: "success",
     });
   } catch (err) {
+    console.log(err);
     sendError(res, 400, "There has been an error. Please try again later");
   }
 };

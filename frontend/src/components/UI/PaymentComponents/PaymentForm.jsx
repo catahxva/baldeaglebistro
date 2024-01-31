@@ -34,6 +34,10 @@ function PaymentForm({ total }) {
 
   return (
     <form className={classes.payment__form} onSubmit={submitHandler}>
+      <p className={classes.payment__p}>
+        Please remember this is a project website, use the card number of 4242
+        4242 4242 4242, with expiration date 04/24 and CVC of 424.
+      </p>
       <PaymentElement />
       <div className={classes.payment__form__container}>
         <span className={classes.payment__form__total}>Amount: {total}$</span>

@@ -82,10 +82,12 @@ function CartList() {
             </ButtonLink>
           </div>
         </div>
-        <div>
-          {noDrink && <CartRecommendations typeOfProduct="beverage" />}
-          {noDessert && <CartRecommendations typeOfProduct="dessert" />}
-        </div>
+        {(noDrink || noDessert) && (
+          <div className={classes.cart__list__items__cell}>
+            {noDrink && <CartRecommendations typeOfProduct="beverage" />}
+            {noDessert && <CartRecommendations typeOfProduct="dessert" />}
+          </div>
+        )}
       </div>
     );
   }

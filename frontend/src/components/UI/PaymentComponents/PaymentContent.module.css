@@ -7,3 +7,10 @@
 .payment__content__grid__container {
   width: 100%;
 }
+
+@media screen and (max-width: 781px) {
+  .payment__content__grid {
+    grid-template-columns: 1fr;
+    row-gap: 4rem;
+  }
+}

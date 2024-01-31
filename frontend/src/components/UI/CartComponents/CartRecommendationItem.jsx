@@ -23,12 +23,19 @@ function CartRecommendationItem({ item }) {
             {item.nutrition.calories} cal
           </span>
           <span className={classes.cart__rec__item__price}>{item.price}$</span>
+          <button
+            onClick={() => dispatch(addProductToCart(item._id, 1))}
+            disabled={!item.available}
+            className={`${classes.cart__rec__item__btn} ${classes.cart__rec__item__btn__mobile}`}
+          >
+            {item.available ? "Add to cart" : "Unavailable"}
+          </button>
         </div>
       </div>
       <button
         onClick={() => dispatch(addProductToCart(item._id, 1))}
         disabled={!item.available}
-        className={classes.cart__rec__item__btn}
+        className={`${classes.cart__rec__item__btn} ${classes.cart__rec__item__btn__desktop}`}
       >
         {item.available ? "Add to cart" : "Unavailable"}
       </button>

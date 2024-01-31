@@ -22,3 +22,17 @@
 .item__span {
   font-size: 1.6rem;
 }
+
+@media screen and (max-width: 521px) {
+  .item__name {
+    font-size: 1.6rem;
+  }
+
+  .item__category {
+    font-size: 1.4rem;
+  }
+
+  .item__span {
+    font-size: 1.5rem;
+  }
+}

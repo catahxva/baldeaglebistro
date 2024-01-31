@@ -73,6 +73,13 @@ p {
   font-weight: 700;
 }
 
+@media screen and (max-width: 521px) {
+  .big__button {
+    font-size: 1.6rem;
+    padding: 0.6rem 1rem;
+  }
+}
+
 .small__button {
   color: #ff8c00;
   text-decoration: none;

@@ -45,3 +45,18 @@
 .progress__filler__active {
   background-color: #ff8c00;
 }
+
+@media screen and (max-width: 521px) {
+  .progress__step {
+    width: 4rem;
+    height: 4rem;
+  }
+
+  .progress__step__span {
+    font-size: 2.2rem;
+  }
+
+  .progress__filler {
+    width: calc((100% - (4rem * 3)) / 2);
+  }
+}

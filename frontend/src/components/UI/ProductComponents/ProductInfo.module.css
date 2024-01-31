@@ -77,6 +77,25 @@
   width: 10rem;
 }
 
+@media screen and (max-width: 1256px) {
+  .product__info__quantity__controller {
+    width: 15rem;
+  }
+}
+
+@media screen and (max-width: 890px) {
+  .product__info__grid {
+    grid-template-columns: 1fr;
+    row-gap: 4rem;
+  }
+}
+
+@media screen and (max-width: 421px) {
+  .product__info__container__img {
+    height: 30rem;
+  }
+}
+
 .product__info__quantity__controller__buttons {
   width: 100%;
   display: flex;

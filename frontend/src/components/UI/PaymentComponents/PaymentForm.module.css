@@ -6,6 +6,17 @@
   border-radius: 1rem;
 }
 
+.payment__p {
+  color: #222;
+  font-weight: 500;
+}
+
+@media screen and (max-width: 781px) {
+  .payment__form {
+    grid-row: 2 / 3;
+  }
+}
+
 .payment__form__container {
   width: 100%;
   margin-top: 2rem;

@@ -4,3 +4,10 @@
   grid-template-columns: repeat(2, 1fr);
   column-gap: 6rem;
 }
+
+@media screen and (max-width: 781px) {
+  .checkout__content__grid {
+    grid-template-columns: 1fr;
+    row-gap: 4rem;
+  }
+}

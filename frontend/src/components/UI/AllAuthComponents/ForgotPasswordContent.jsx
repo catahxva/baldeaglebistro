@@ -84,6 +84,11 @@ function ForgotPasswordContent() {
               onBlur={emailBlurHandler}
               error={emailError}
             />
+            {generalError && (
+              <span className={generalClasses.auth__span__error}>
+                {generalError}
+              </span>
+            )}
             <div className={generalClasses.auth__form__container__buttons}>
               <button
                 disabled={!emailValue || emailError || submitting}

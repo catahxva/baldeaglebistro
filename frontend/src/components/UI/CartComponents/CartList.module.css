@@ -5,6 +5,23 @@
   gap: 6rem;
 }
 
+@media screen and (max-width: 971px) {
+  .cart__list__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (max-width: 890px) {
+  .cart__list__grid {
+    grid-template-columns: 1fr;
+    row-gap: 3rem;
+  }
+
+  .cart__list__items__cell {
+    grid-row: 1 / 2;
+  }
+}
+
 .cart__list__message {
   font-size: 2rem;
   font-weight: 500;
@@ -26,4 +43,14 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+@media screen and (max-width: 521px) {
+  .cart__list__total {
+    font-size: 1.8rem;
+  }
+
+  .cart__list__message {
+    font-size: 1.8rem;
+  }
 }
