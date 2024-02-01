@@ -61,3 +61,40 @@
   color: #ff8c00;
   cursor: pointer;
 }
+
+@media screen and (max-width: 650px) {
+  .order__big__width__container {
+    width: 14rem;
+  }
+
+  .order__title {
+    font-size: 1.6rem;
+  }
+
+  .order__date {
+    font-size: 1.4rem;
+  }
+
+  .order__span {
+    font-size: 1.4rem;
+  }
+
+  .order {
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .order__container__btns {
+    flex-basis: 100%;
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 2rem;
+  }
+}
+
+@media screen and (max-width: 521px) {
+  .order__btn {
+    font-size: 1.6rem;
+    padding: 0.6rem 1rem;
+  }
+}

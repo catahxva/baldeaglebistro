@@ -59,6 +59,12 @@
   width: 55%;
 }
 
+@media screen and (max-width: 781px) {
+  .account__data__form {
+    width: 90%;
+  }
+}
+
 .account__data__form__button {
   font-size: 1.8rem;
   text-transform: uppercase;

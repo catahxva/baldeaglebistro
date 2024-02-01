@@ -42,3 +42,13 @@
   font-size: 1.6rem;
   font-weight: 500;
 }
+
+@media screen and (max-width: 650px) {
+  .overview__applied__button {
+    padding: 0.6rem 1rem;
+  }
+
+  .overview__applied__container {
+    gap: 1.2rem;
+  }
+}

@@ -9,6 +9,12 @@
   align-items: flex-start;
 }
 
+@media screen and (max-width: 781px) {
+  .account__new__product__form {
+    width: 90%;
+  }
+}
+
 .account__new__product__form__big__group {
   width: 100%;
   display: flex;

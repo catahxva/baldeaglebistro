@@ -14,11 +14,19 @@ span {
   margin-bottom: 1.6rem;
 }
 
-.order__info__flex {
-  display: flex;
-  align-items: flex-start;
-  gap: 20rem;
-  flex-wrap: wrap;
+.order__info__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 20rem;
+  align-items: start;
+  /* flex-wrap: wrap;/ */
+}
+
+@media screen and (max-width: 650px) {
+  .order__info__grid {
+    grid-template-columns: 1fr;
+    row-gap: 4rem;
+  }
 }
 
 .order__info__container {

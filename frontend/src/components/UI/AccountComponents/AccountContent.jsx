@@ -11,8 +11,12 @@ import AccountAllOrders from "./AccountAllOrders";
 import AccountAllProducts from "./AccountAllProducts";
 import AccountNewProduct from "./AccountNewProduct";
 
+import MobileMenu from "../Others/MobileMenu";
+
 function AccountContent() {
   const username = useSelector((state) => state.auth.username);
+
+  const [mobileMenu, setMobileMenu] = useState();
 
   const [activeTab, setActiveTab] = useState(1);
 
@@ -46,8 +50,24 @@ function AccountContent() {
   return (
     <section className="first__section section__min__height">
       <h2>Welcome {username}</h2>
+      <button
+        onClick={() => setMobileMenu(true)}
+        className={classes.account__mobile__btn}
+      >
+        Menu
+      </button>
       <div className={classes.account__grid}>
-        <AccountNavigation activeTab={activeTab} onClick={tabClickHandler} />
+        <MobileMenu openMobileMenu={mobileMenu} closeMobileMenu={setMobileMenu}>
+          <AccountNavigation
+            mobile={true}
+            activeTab={activeTab}
+            onClick={tabClickHandler}
+            closeMobileNav={setMobileMenu}
+          />
+        </MobileMenu>
+        <div className={classes.account__special__wrapper}>
+          <AccountNavigation activeTab={activeTab} onClick={tabClickHandler} />
+        </div>
         {activeTabContent}
       </div>
     </section>

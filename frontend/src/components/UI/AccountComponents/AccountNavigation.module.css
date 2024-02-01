@@ -6,6 +6,10 @@
   gap: 2.5rem;
 }
 
+.account__navigation__mobile {
+  width: 85% !important;
+}
+
 .account__navigation__button {
   width: 100%;
   background-color: transparent;

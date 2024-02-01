@@ -1,6 +1,6 @@
 import classes from "./OverviewContent.module.css";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { fetchFilters, fetchProducts } from "../../../util/requests";
@@ -11,10 +11,13 @@ import OverviewAppliedFilters from "./OverviewAppliedFilters";
 import OverviewSort from "./OverviewSort";
 import OverviewGrid from "./OverviewGrid";
 import Pagination from "../Others/Pagination";
+import MobileMenu from "../Others/MobileMenu";
 
 function OverviewContent() {
   // get current category (if there is one)
   const { category } = useParams();
+
+  const [mobileMenu, setMobileMenu] = useState(false);
 
   // get search params
   const [searchParams, setSearchParams] = useSearchParams();
@@ -22,6 +25,8 @@ function OverviewContent() {
   // scroll back to top when search params change
   useEffect(() => {
     window.scrollTo(0, 0);
+
+    setMobileMenu(false);
   }, [searchParams]);
 
   // derive data from the search params
@@ -197,16 +202,32 @@ function OverviewContent() {
     );
 
     filtersContent = (
-      <OverviewFilters
-        filterHandler={filterHandler}
-        priceFilterHandler={priceFilterHandler}
-        filtersDB={otherFilters}
-        filtersActive={searchParamsValues}
-        minPriceDB={minPrice}
-        maxPriceDB={maxPrice}
-        existingMinPrice={minPriceQuery}
-        existingMaxPrice={maxPriceQuery}
-      />
+      <>
+        <MobileMenu openMobileMenu={mobileMenu} closeMobileMenu={setMobileMenu}>
+          <OverviewFilters
+            filterHandler={filterHandler}
+            priceFilterHandler={priceFilterHandler}
+            filtersDB={otherFilters}
+            filtersActive={searchParamsValues}
+            minPriceDB={minPrice}
+            maxPriceDB={maxPrice}
+            existingMinPrice={minPriceQuery}
+            existingMaxPrice={maxPriceQuery}
+          />
+        </MobileMenu>
+        <div className={classes.overview__content__special__wrapper}>
+          <OverviewFilters
+            filterHandler={filterHandler}
+            priceFilterHandler={priceFilterHandler}
+            filtersDB={otherFilters}
+            filtersActive={searchParamsValues}
+            minPriceDB={minPrice}
+            maxPriceDB={maxPrice}
+            existingMinPrice={minPriceQuery}
+            existingMaxPrice={maxPriceQuery}
+          />
+        </div>
+      </>
     );
   }
 
@@ -272,6 +293,12 @@ function OverviewContent() {
           {filtersContent}
         </div>
         <div className={classes.overview__content__grid__container}>
+          <button
+            onClick={() => setMobileMenu(true)}
+            className={classes.overview__content__mobile__btn}
+          >
+            Show Filters
+          </button>
           {searchParamsEntriesBasicAndPrice.length > 0 && (
             <OverviewAppliedFilters
               activeFiltersEntries={searchParamsEntriesBasicAndPrice}

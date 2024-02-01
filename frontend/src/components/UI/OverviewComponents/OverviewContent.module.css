@@ -13,3 +13,32 @@
   font-weight: 500;
   display: block;
 }
+
+.overview__content__mobile__btn {
+  font-family: inherit;
+  font-size: 1.8rem;
+  background-color: transparent;
+  border: 1px solid #ff8c00;
+  padding: 0.8rem 1.2rem;
+  color: #fff;
+  border-radius: 0.5rem;
+  margin-bottom: 2rem;
+  display: none;
+  visibility: hidden;
+}
+
+@media screen and (max-width: 650px) {
+  .overview__content__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .overview__content__mobile__btn {
+    display: block;
+    visibility: visible;
+  }
+
+  .overview__content__special__wrapper {
+    display: none;
+    visibility: hidden;
+  }
+}

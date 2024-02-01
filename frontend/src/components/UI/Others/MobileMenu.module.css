@@ -1,0 +1,51 @@
+.mobile__menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 60%;
+  height: 100vh;
+  background-color: #222;
+  z-index: 99999;
+  transform: translateX(-150%);
+  transition: all 0.5s;
+}
+
+.mobile__menu__active {
+  transform: translateX(0%);
+}
+
+.mobile__menu__interior {
+  width: 100%;
+  padding: 3rem;
+  position: relative;
+}
+
+.mobile__menu__btn {
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  position: absolute;
+  top: 3rem;
+  right: 3rem;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.mobile__menu__svg {
+  width: 3rem;
+  height: 3rem;
+  color: #ff8c00;
+}
+
+@media screen and (max-width: 510px) {
+  .mobile__menu {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 381px) {
+  .mobile__menu {
+    width: 95%;
+  }
+}

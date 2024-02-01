@@ -6,6 +6,12 @@
   width: 55%;
 }
 
+@media screen and (max-width: 781px) {
+  .account__reset__form {
+    width: 90%;
+  }
+}
+
 .account__reset__form__btn {
   font-size: 1.8rem;
   font-weight: 700;

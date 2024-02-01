@@ -122,7 +122,7 @@ const BUTTONS_DATA_LIST = [
   </>,
 ];
 
-function AccountNavigation({ activeTab, onClick }) {
+function AccountNavigation({ activeTab, onClick, mobile, closeMobileNav }) {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const userRole = useSelector((state) => state.auth.role);
@@ -130,7 +130,11 @@ function AccountNavigation({ activeTab, onClick }) {
   const helperArray = new Array(userRole === "admin" ? 6 : 3).fill(0);
 
   return (
-    <div className={classes.account__navigation}>
+    <div
+      className={`${classes.account__navigation} ${
+        mobile && classes.account__navigation__mobile
+      }`}
+    >
       {helperArray.map((el, i) => {
         return (
           <AccountButton
@@ -138,6 +142,7 @@ function AccountNavigation({ activeTab, onClick }) {
             onClick={() => {
               onClick(i + 1);
               setSearchParams({});
+              closeMobileNav(false);
             }}
             className={`${classes.account__navigation__button} ${
               activeTab === i + 1

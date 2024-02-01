@@ -8,7 +8,7 @@ function OrderInfo({ order }) {
   return (
     <div className={classes.order__info}>
       <h3 className={classes.order__info__title}>Order Information</h3>
-      <div className={classes.order__info__flex}>
+      <div className={classes.order__info__grid}>
         <div>
           <div className={classes.order__info__container}>
             <span className={classes.order__info__span__big}>General</span>
