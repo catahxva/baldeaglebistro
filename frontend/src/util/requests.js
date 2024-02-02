@@ -144,6 +144,7 @@ export const obtainPaymentIntent = async function (
 };
 
 export const sendRating = async function ({ token, id, rating }) {
+  if (!token) throw new Error("You must be logged in to post a rating");
   if (!id) throw new Error("An ID must be provided to perform this action");
   if (!rating)
     throw new Error("You must provide a rating to perform this action");

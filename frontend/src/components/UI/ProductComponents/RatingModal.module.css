@@ -75,9 +75,6 @@
   font-size: 2.6rem;
   font-weight: 700;
   font-family: "Oswald", sans-serif;
-}
-
-.rating__modal__message {
   color: #ff8c00;
 }
 
@@ -122,4 +119,34 @@
   text-decoration: underline;
   color: #fff;
   cursor: pointer;
+}
+
+@media screen and (max-width: 521px) {
+  .rating__modal__interior {
+    gap: 2.8rem;
+  }
+
+  .rating__modal__star {
+    width: 7rem;
+    height: 7rem;
+  }
+
+  .rating__modal__big__btn {
+    font-size: 1.8rem;
+    padding: 0.6rem 1rem;
+  }
+
+  .rating__modal__message {
+    font-size: 2.2rem;
+  }
+}
+
+@media screen and (max-width: 421px) {
+  .rating__modal__interior {
+    gap: 1.8rem;
+  }
+
+  .rating__modal__message {
+    font-size: 1.8rem;
+  }
 }
