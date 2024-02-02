@@ -7,6 +7,8 @@ function Placeholder({ message, type, size }) {
 
   if (size === "big") additionalClass = classes.placeholder__bigger__height;
 
+  if (size === "page") additionalClass = classes.placeholder__page__height;
+
   return (
     <div className={`${classes.placeholder} ${additionalClass}`}>
       {type === "error" ? (

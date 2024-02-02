@@ -79,7 +79,7 @@
 
 @media screen and (max-width: 521px) {
   .cart__item__name {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
   }
 
   .cart__item__category {
@@ -107,8 +107,8 @@
   }
 
   .cart__item__svg {
-    width: 1.4rem;
-    height: 1.4rem;
+    width: 1.5rem;
+    height: 1.5rem;
   }
 }
 

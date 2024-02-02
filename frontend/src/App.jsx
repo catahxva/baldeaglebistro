@@ -9,6 +9,7 @@ import Root from "./components/pages/Root";
 import RootAuth from "./components/pages/RootAuth";
 import Placeholder from "./components/UI/Others/Placeholder";
 
+const Error = lazy(() => import("./components/pages/Error"));
 const Home = lazy(() => import("./components/pages/Home"));
 const Categories = lazy(() => import("./components/pages/Categories"));
 const Product = lazy(() => import("./components/pages/Product"));
@@ -33,11 +34,12 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
+    errorElement: <Error />,
     children: [
       {
         index: true,
         element: (
-          <Suspense fallback={<Placeholder type="loading" />}>
+          <Suspense fallback={<Placeholder type="loading" size="page" />}>
             <Home />
           </Suspense>
         ),
@@ -45,7 +47,7 @@ const router = createBrowserRouter([
       {
         path: "/categories",
         element: (
-          <Suspense fallback={<Placeholder type="loading" />}>
+          <Suspense fallback={<Placeholder type="loading" size="page" />}>
             <Categories />
           </Suspense>
         ),
@@ -53,7 +55,7 @@ const router = createBrowserRouter([
       {
         path: "/product/:id",
         element: (
-          <Suspense fallback={<Placeholder type="loading" />}>
+          <Suspense fallback={<Placeholder type="loading" size="page" />}>
             <Product />
           </Suspense>
         ),
@@ -61,7 +63,7 @@ const router = createBrowserRouter([
       {
         path: "/cart",
         element: (
-          <Suspense fallback={<Placeholder type="loading" />}>
+          <Suspense fallback={<Placeholder type="loading" size="page" />}>
             <Cart />
           </Suspense>
         ),
@@ -69,7 +71,7 @@ const router = createBrowserRouter([
       {
         path: "/checkout",
         element: (
-          <Suspense fallback={<Placeholder type="loading" />}>
+          <Suspense fallback={<Placeholder type="loading" size="page" />}>
             <Checkout />
           </Suspense>
         ),
@@ -77,7 +79,7 @@ const router = createBrowserRouter([
       {
         path: "/payment",
         element: (
-          <Suspense fallback={<Placeholder type="loading" />}>
+          <Suspense fallback={<Placeholder type="loading" size="page" />}>
             <Payment />
           </Suspense>
         ),
@@ -85,7 +87,7 @@ const router = createBrowserRouter([
       {
         path: "/order-success",
         element: (
-          <Suspense fallback={<Placeholder type="loading" />}>
+          <Suspense fallback={<Placeholder type="loading" size="page" />}>
             <OrderSuccess />
           </Suspense>
         ),
@@ -93,7 +95,7 @@ const router = createBrowserRouter([
       {
         path: "/order/:id",
         element: (
-          <Suspense fallback={<Placeholder type="loading" />}>
+          <Suspense fallback={<Placeholder type="loading" size="page" />}>
             <Order />
           </Suspense>
         ),
@@ -101,7 +103,7 @@ const router = createBrowserRouter([
       {
         path: "/products/:category?",
         element: (
-          <Suspense fallback={<Placeholder type="loading" />}>
+          <Suspense fallback={<Placeholder type="loading" size="page" />}>
             <Overview />
           </Suspense>
         ),
@@ -109,7 +111,7 @@ const router = createBrowserRouter([
       {
         path: "/search",
         element: (
-          <Suspense fallback={<Placeholder type="loading" />}>
+          <Suspense fallback={<Placeholder type="loading" size="page" />}>
             <Search />
           </Suspense>
         ),
@@ -117,7 +119,7 @@ const router = createBrowserRouter([
       {
         path: "/account",
         element: (
-          <Suspense fallback={<Placeholder type="loading" />}>
+          <Suspense fallback={<Placeholder type="loading" size="page" />}>
             <Account />
           </Suspense>
         ),
@@ -131,7 +133,7 @@ const router = createBrowserRouter([
       {
         path: "signup",
         element: (
-          <Suspense fallback={<Placeholder type="loading" />}>
+          <Suspense fallback={<Placeholder type="loading" size="page" />}>
             <Signup />
           </Suspense>
         ),
@@ -139,7 +141,7 @@ const router = createBrowserRouter([
       {
         path: "verify/:token",
         element: (
-          <Suspense fallback={<Placeholder type="loading" />}>
+          <Suspense fallback={<Placeholder type="loading" size="page" />}>
             <VerifyAccount />
           </Suspense>
         ),
@@ -147,7 +149,7 @@ const router = createBrowserRouter([
       {
         path: "login",
         element: (
-          <Suspense fallback={<Placeholder type="loading" />}>
+          <Suspense fallback={<Placeholder type="loading" size="page" />}>
             <Login />
           </Suspense>
         ),
@@ -155,7 +157,7 @@ const router = createBrowserRouter([
       {
         path: "forgot",
         element: (
-          <Suspense fallback={<Placeholder type="loading" />}>
+          <Suspense fallback={<Placeholder type="loading" size="page" />}>
             <ForgotPassword />
           </Suspense>
         ),
@@ -163,7 +165,7 @@ const router = createBrowserRouter([
       {
         path: "reset-forgot/:token",
         element: (
-          <Suspense fallback={<Placeholder type="loading" />}>
+          <Suspense fallback={<Placeholder type="loading" size="page" />}>
             <ResetForgotPass />
           </Suspense>
         ),
