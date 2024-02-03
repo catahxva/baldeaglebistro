@@ -1,7 +1,6 @@
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
-// const data = require("./utils/data");
-// const Product = require("./models/productModel");
+const Order = require("./models/orderModel");
 
 dotenv.config({ path: "./config.env" });
 
@@ -20,17 +19,7 @@ const connectToDB = async function () {
 
 connectToDB();
 
-// const insertData = function () {
-//   data.forEach(async (product, i) => {
-//     const newProduct = await Product.create(product);
-
-//     console.log("SUCCESS", i);
-//   });
-// };
-
-// insertData();
-
-const port = 3000;
+const port = 443;
 
 app.listen(port, () => {
   console.log(`App running on ${port}`);
