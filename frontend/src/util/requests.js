@@ -1,6 +1,6 @@
 import CustomError from "./customError";
 
-export const baseUrl = `http://localhost:443/api/`;
+export const baseUrl = `http://baldeaglebistro.online:3000/api/`;
 
 export const fetchProducts = async function (signal, queryString) {
   const url =

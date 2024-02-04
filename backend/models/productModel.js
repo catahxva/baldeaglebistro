@@ -8,10 +8,12 @@ const productSchema = new mongoose.Schema({
   createdAt: {
     type: Date,
     default: Date.now,
+    index: true,
   },
   price: {
     type: Number,
     required: [true, "Product requires a price"],
+    index: true,
   },
   image: {
     type: String,
@@ -25,6 +27,7 @@ const productSchema = new mongoose.Schema({
     type: String,
     required: [true, "Product must belong to a category"],
     enum: ["main dish", "dessert", "side", "beverage", "appetizer"],
+    index: true,
   },
   nutrition: {
     calories: {

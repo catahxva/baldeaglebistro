@@ -110,14 +110,16 @@ function OrderContent() {
               />
             </div>
           )}
-          <button
-            onClick={() => {
-              dispatch(redoOrder(products));
-            }}
-            className={classes.order__content__redo}
-          >
-            Re-do order
-          </button>
+          {userToken && (
+            <button
+              onClick={() => {
+                dispatch(redoOrder(products));
+              }}
+              className={classes.order__content__redo}
+            >
+              Re-do order
+            </button>
+          )}
         </div>
       </>
     );

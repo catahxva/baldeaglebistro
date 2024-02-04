@@ -22,14 +22,26 @@ exports.getAllProducts = async function (req, res, next) {
     const sortCriteria = createSort(req.query);
     const [skip, limit] = createPagination(req.query);
 
-    const totalProducts = (await Product.find(filters)).length;
+    const [totalProducts, products] = await Promise.all([
+      Product.countDocuments(filters),
+      Product.find(filters)
+        .sort(sortCriteria)
+        .skip(skip)
+        .limit(limit)
+        .select({
+          _id: 1,
+          name: 1,
+          price: 1,
+          image: 1,
+          serving: 1,
+          category: 1,
+          nutrition: { calories: 1 },
+          available: 1,
+        })
+        .lean(),
+    ]);
 
-    const maxPages = Math.ceil(totalProducts / 8);
-
-    const products = await Product.find(filters)
-      .sort(sortCriteria)
-      .skip(skip)
-      .limit(limit);
+    const maxPages = Math.ceil(totalProducts / limit);
 
     if (!products) {
       return sendError(
