@@ -1,6 +1,6 @@
 import CustomError from "./customError";
 
-export const baseUrl = `http://baldeaglebistro.online:3000/api/`;
+export const baseUrl = `http://localhost:3000/mainapi/bald-eagle/`;
 
 export const fetchProducts = async function (signal, queryString) {
   const url =
@@ -13,6 +13,8 @@ export const fetchProducts = async function (signal, queryString) {
   });
 
   const data = await response.json();
+
+  console.log(data);
 
   if (data.status === "fail") throw new Error(data.message);
 
@@ -138,7 +140,10 @@ export const obtainPaymentIntent = async function (
 
   const data = await response.json();
 
-  if (data.status === "fail") throw new Error(data.message);
+  if (data.status === "fail") {
+    console.log(data);
+    throw new Error(data.message);
+  }
 
   return data;
 };

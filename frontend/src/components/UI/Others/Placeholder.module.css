@@ -4,6 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
 }
 
 .placeholder__bigger__height {
