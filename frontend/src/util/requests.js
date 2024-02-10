@@ -1,6 +1,6 @@
 import CustomError from "./customError";
 
-export const baseUrl = `http://localhost:3000/mainapi/bald-eagle/`;
+export const baseUrl = `http://localhost:3000/`;
 
 export const fetchProducts = async function (signal, queryString) {
   const url =

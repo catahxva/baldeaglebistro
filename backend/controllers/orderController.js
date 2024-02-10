@@ -2,9 +2,7 @@ const Order = require("../models/orderModel");
 const Product = require("../models/productModel");
 const { itemsFromDB } = require("../utils/itemsFromDB");
 const { createPagination } = require("../utils/APIFeatures");
-const stripe = require("stripe")(
-  `sk_test_51OOl2QJARixY9PYyhHDU37eMphdq2DFnNj0N6UZA7HPVZ5Wvt34D9aYrVQ8smzlOOmtwUvOb0FpVfh7ERbtYvzrl008q7hGqRi`
-);
+const stripe = require("stripe")(process.env.STRIPE_KEY);
 const sendError = require("../utils/sendError");
 const sendEmail = require("../utils/email");
 const emailTemplate = require("../utils/emailTemplate");
