@@ -14,7 +14,7 @@ function Payment() {
   useEffect(() => {
     if (cartItems.length === 0) navigate("/cart");
     if (cartItems.length > 0 && !currentAddress) navigate("/checkout");
-  }, []);
+  }, [cartItems]);
 
   useEffect(() => {
     window.scrollTo(0, 0);

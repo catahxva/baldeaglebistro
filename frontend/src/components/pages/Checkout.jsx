@@ -11,7 +11,7 @@ function Checkout() {
 
   useEffect(() => {
     if (cartItems.length <= 0) navigate("/cart");
-  }, []);
+  }, [cartItems]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
