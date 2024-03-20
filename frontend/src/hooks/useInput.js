@@ -23,8 +23,8 @@ export const useInput = function (defaultValue, validationFn, backendError) {
 
   return {
     value: enteredValue,
-    inputChangeHandler,
-    inputBlurHandler,
+    onChange: inputChangeHandler,
+    onBlur: inputBlurHandler,
     error: (didEdit || backendError) && errorMessage,
   };
 };

@@ -47,3 +47,10 @@ export const processCartData = function (items, unavailableItems, dispatchFn) {
     unavailableItemsMessage,
   };
 };
+
+export const generateFalseValuesTrueErrors = function (arr) {
+  const falseValues = arr.map((el) => el.value).some((val) => !val);
+  const trueErrors = arr.map((el) => el.error).some((err) => err);
+
+  return { falseValues, trueErrors };
+};

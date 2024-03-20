@@ -1,6 +1,6 @@
 import CustomError from "./customError";
 
-export const baseUrl = `http://localhost:3000/`;
+export const baseUrl = `http://localhost:3000/api/`;
 
 export const fetchProducts = async function (signal, queryString) {
   const url =
@@ -13,8 +13,6 @@ export const fetchProducts = async function (signal, queryString) {
   });
 
   const data = await response.json();
-
-  console.log(data);
 
   if (data.status === "fail") throw new Error(data.message);
 

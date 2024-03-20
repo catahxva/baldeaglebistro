@@ -9,7 +9,9 @@ import { login } from "../../../util/requests";
 
 import { useInput } from "../../../hooks/useInput";
 
-import FormGroup from "../Others/FormGroup";
+import { generateFalseValuesTrueErrors } from "../../../util/otherFunctions";
+
+import AuthForm from "./AuthForm";
 
 function LoginContent() {
   const navigate = useNavigate();
@@ -18,38 +20,45 @@ function LoginContent() {
   const [generalError, setGeneralError] = useState();
 
   const [submitting, setSubmitting] = useState();
-  const [buttonText, setButtonText] = useState("Login");
 
-  const {
-    value: emailValue,
-    inputChangeHandler: emailChangeHandler,
-    inputBlurHandler: emailBlurHandler,
-    error: emailError,
-  } = useInput("", (value) => {
+  const emailInput = useInput("", (value) => {
     if (!value) return "Email is required";
     if (!value.includes("@")) return "Please provide a valid email";
   });
 
-  const {
-    value: passwordValue,
-    inputChangeHandler: passwordChangeHandler,
-    inputBlurHandler: passwordBlurHandler,
-    error: passwordError,
-  } = useInput("", (value) => {
+  const passwordInput = useInput("", (value) => {
     if (!value) return "Password is required";
     if (value.length < 8) return "Password must be at least 8 characters long";
   });
+
+  const inputObjects = [
+    {
+      nameProp: "email",
+      labelText: "Email",
+      type: "email",
+      placeholderText: "Your account email",
+      ...emailInput,
+    },
+    {
+      nameProp: "password",
+      labelText: "Password",
+      type: "password",
+      placeholderText: "Your account password",
+      ...passwordInput,
+    },
+  ];
+
+  const { falseValues, trueErrors } =
+    generateFalseValuesTrueErrors(inputObjects);
 
   const { mutate } = useMutation({
     mutationFn: login,
     onMutate: () => {
       setSubmitting(true);
-      setButtonText("Submitting...");
       setGeneralError("");
     },
     onSuccess: (data) => {
       setSubmitting(false);
-      setButtonText("Success");
 
       dispatch(
         authActions.authenticate({
@@ -65,7 +74,6 @@ function LoginContent() {
     },
     onError: (error) => {
       setSubmitting(false);
-      setButtonText("Login");
 
       setGeneralError(error.message);
     },
@@ -74,11 +82,11 @@ function LoginContent() {
   const submitHandler = function (e) {
     e.preventDefault();
 
-    if (!emailValue || !passwordValue || emailError || passwordError) return;
+    if (falseValues || trueErrors) return;
 
     mutate({
-      email: emailValue,
-      password: passwordValue,
+      email: emailInput.value,
+      password: passwordInput.value,
     });
   };
 
@@ -90,50 +98,15 @@ function LoginContent() {
           Home Page
         </Link>
       </div>
-      <form onSubmit={submitHandler}>
-        <FormGroup
-          nameProp="email"
-          labelText="Email"
-          type="email"
-          placeholderText="Your account email"
-          value={emailValue}
-          onChange={emailChangeHandler}
-          onBlur={emailBlurHandler}
-          error={emailError}
-        />
-        <FormGroup
-          nameProp="password"
-          labelText="Password"
-          type="password"
-          placeholderText="Your account password"
-          value={passwordValue}
-          onChange={passwordChangeHandler}
-          onBlur={passwordBlurHandler}
-          error={passwordError}
-        />
-        {generalError && (
-          <span className={generalClasses.auth__span__error}>
-            {generalError}
-          </span>
-        )}
-        <div className={generalClasses.auth__form__container__buttons}>
-          <button
-            disabled={
-              !emailValue ||
-              !passwordValue ||
-              emailError ||
-              passwordError ||
-              submitting
-            }
-            className={generalClasses.auth__form__button}
-          >
-            {buttonText}
-          </button>
-          <Link to="/auth/forgot" className={generalClasses.auth__form__link}>
-            Forgot password
-          </Link>
-        </div>
-      </form>
+      <AuthForm
+        submitHandler={submitHandler}
+        inputObjects={inputObjects}
+        falseValues={falseValues}
+        trueErrors={trueErrors}
+        generalError={generalError}
+        submitting={submitting}
+        page={"login"}
+      />
     </div>
   );
 }
