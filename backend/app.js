@@ -50,7 +50,7 @@ app.use("/api/users", userRouter);
 app.use("/api/orders", ordersRouter);
 app.use("/api/ratings", ratingsRouter);
 
-app.all("*", (req, res, next) => {
+app.all("*", (req, res) => {
   res.status(404).json({
     status: "fail",
     message: `Can't find ${req.originalUrl} on this server`,

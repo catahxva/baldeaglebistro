@@ -25,8 +25,10 @@ const createSendToken = (user, statusCode, res) => {
 };
 
 exports.signup = async function (req, res, next) {
+  let newUser;
+
   try {
-    const newUser = await User.create({
+    newUser = await User.create({
       username: req.body.username,
       email: req.body.email,
       password: req.body.password,
@@ -54,6 +56,10 @@ exports.signup = async function (req, res, next) {
       status: "success",
     });
   } catch (err) {
+    if (newUser) {
+      await User.deleteOne({ _id: newUser._id });
+    }
+
     if (err.name === "MongoServerError") {
       const errorObject = err;
 
