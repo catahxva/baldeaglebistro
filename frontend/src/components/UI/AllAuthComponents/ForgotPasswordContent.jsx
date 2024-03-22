@@ -5,7 +5,9 @@ import { Link } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
 import { forgotPassword } from "../../../util/requests";
 
-import { useInput } from "../../../hooks/useInput";
+import { useForgotPassInputs } from "../../../hooks/useForgotPassInputs";
+
+import { generateFalseValuesTrueErrors } from "../../../util/otherFunctions";
 
 import AuthForm from "./AuthForm";
 import AuthSucccessMessage from "./AuthSuccessMessage";
@@ -17,20 +19,10 @@ function ForgotPasswordContent() {
 
   const [successfulSubmit, setSuccessfulSubmit] = useState(false);
 
-  const emailInput = useInput("", (value) => {
-    if (!value) return "Email is required";
-    if (!value.includes("@")) return "Please provide a valid email address";
-  });
+  const { inputObjects, values } = useForgotPassInputs();
 
-  const inputObjects = [
-    {
-      nameProp: "email",
-      labelText: "Email",
-      type: "email",
-      placeholderText: "Your account email",
-      ...emailInput,
-    },
-  ];
+  const { falseValues, trueErrors } =
+    generateFalseValuesTrueErrors(inputObjects);
 
   const { mutate } = useMutation({
     mutationFn: forgotPassword,
@@ -53,11 +45,9 @@ function ForgotPasswordContent() {
   const submitHandler = function (e) {
     e.preventDefault();
 
-    if (!emailInput.value || emailInput.error) return;
+    if (falseValues || trueErrors || submitting) return;
 
-    mutate({
-      email: emailInput.value,
-    });
+    mutate(values);
   };
 
   return (
@@ -78,8 +68,8 @@ function ForgotPasswordContent() {
           <AuthForm
             submitHandler={submitHandler}
             inputObjects={inputObjects}
-            falseValues={!emailInput.value}
-            trueErrors={emailInput.error}
+            falseValues={falseValues}
+            trueErrors={trueErrors}
             generalError={generalError}
             submitting={submitting}
           />

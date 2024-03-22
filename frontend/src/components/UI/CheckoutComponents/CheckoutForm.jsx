@@ -6,6 +6,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { addressActions } from "../../../store/addressSlice";
 
 import { useInput } from "../../../hooks/useInput";
+import { useAddressInputs } from "../../../hooks/useAddressInputs";
+
+import { generateFalseValuesTrueErrors } from "../../../util/otherFunctions";
 
 import FormGroup from "../Others/FormGroup";
 
@@ -49,128 +52,39 @@ function CheckoutForm() {
     deliveryDefaultValue = "";
   }
 
-  const {
-    value: emailValue,
-    inputChangeHandler: emailChangeHandler,
-    inputBlurHandler: emailBlurHandler,
-    error: emailError,
-  } = useInput(emailDefaultValue, (value) => {
-    if (!value) return "Email is required";
+  const { inputObjects, values } = useAddressInputs(
+    emailDefaultValue,
+    nameDefaultValue,
+    phoneDefaultValue,
+    streetNameDefaultValue,
+    streetNumberDefaultValue
+  );
 
-    if (!value.includes("@")) return "Please use a valid email address";
-  });
-
-  const {
-    value: nameValue,
-    inputChangeHandler: nameChangeHandler,
-    inputBlurHandler: nameBlurHandler,
-    error: nameError,
-  } = useInput(nameDefaultValue, (value) => {
-    if (!value) return "Name is required";
-
-    if (value.length < 6) return "Name must be at least 6 characters long";
-  });
-  const {
-    value: phoneValue,
-    inputChangeHandler: phoneChangeHandler,
-    inputBlurHandler: phoneBlurHandler,
-    error: phoneError,
-  } = useInput(phoneDefaultValue, (value) => {
-    if (!value) return "Phone number is required";
-  });
-  const {
-    value: streetNameValue,
-    inputChangeHandler: streetNameChangeHandler,
-    inputBlurHandler: streetNameBlurHandler,
-    error: streetNameError,
-  } = useInput(streetNameDefaultValue, (value) => {
-    if (!value) return "Street name is required";
-  });
-  const {
-    value: streetNumberValue,
-    inputChangeHandler: streetNumberChangeHandler,
-    inputBlurHandler: streetNumberBlurHandler,
-    error: streetNumberError,
-  } = useInput(streetNumberDefaultValue, (value) => {
-    if (!value) return "Street number is required";
-  });
+  const { falseValues, trueErrors } =
+    generateFalseValuesTrueErrors(inputObjects);
 
   const [deliveryValue, setDeliveryValue] = useState(deliveryDefaultValue);
 
   const submitHandler = function (e) {
     e.preventDefault();
 
-    if (
-      !emailError &&
-      !nameError &&
-      !phoneError &&
-      !streetNameError &&
-      !streetNumberError &&
-      deliveryValue
-    ) {
-      dispatch(
-        addressActions.setAddress({
-          email: emailValue,
-          name: nameValue,
-          phone: phoneValue,
-          street: streetNameValue,
-          streetNumber: streetNumberValue,
-          carrier: deliveryValue,
-        })
-      );
+    if (trueErrors && !deliveryValue) return;
 
-      navigate("/payment");
-    }
+    dispatch(
+      addressActions.setAddress({
+        carrier: deliveryValue,
+        ...values,
+      })
+    );
+
+    navigate("/payment");
   };
 
   return (
     <form className={classes.checkout__form} onSubmit={submitHandler}>
-      <FormGroup
-        nameProp="email"
-        type="email"
-        labelText="Email"
-        placeholderText="Your email"
-        value={emailValue}
-        onChange={emailChangeHandler}
-        onBlur={emailBlurHandler}
-        error={emailError}
-      />
-      <FormGroup
-        nameProp="name"
-        labelText="Name"
-        placeholderText="Your full name"
-        value={nameValue}
-        onChange={nameChangeHandler}
-        onBlur={nameBlurHandler}
-        error={nameError}
-      />
-      <FormGroup
-        nameProp="phone"
-        labelText="Phone Number"
-        placeholderText="Your phone number"
-        value={phoneValue}
-        onChange={phoneChangeHandler}
-        onBlur={phoneBlurHandler}
-        error={phoneError}
-      />
-      <FormGroup
-        nameProp="street"
-        labelText="Street Name"
-        placeholderText="Your street name"
-        value={streetNameValue}
-        onChange={streetNameChangeHandler}
-        onBlur={streetNameBlurHandler}
-        error={streetNameError}
-      />
-      <FormGroup
-        nameProp="streetNumber"
-        labelText="Street Number"
-        placeholderText="Your street number"
-        value={streetNumberValue}
-        onChange={streetNumberChangeHandler}
-        onBlur={streetNumberBlurHandler}
-        error={streetNumberError}
-      />
+      {inputObjects.map((inp) => {
+        return <FormGroup key={inp.nameProp} {...inp} />;
+      })}
       <div
         className={`${classes.checkout__form__group} ${classes.checkout__form__group__big__margin}`}
       >
@@ -251,17 +165,7 @@ function CheckoutForm() {
       <button
         type="submit"
         className={classes.checkout__form__button}
-        disabled={
-          !nameValue ||
-          !phoneValue ||
-          !streetNameValue ||
-          !streetNumberValue ||
-          !deliveryValue ||
-          nameError ||
-          phoneError ||
-          streetNameError ||
-          streetNumberError
-        }
+        disabled={falseValues || trueErrors || !deliveryValue}
       >
         Payment
       </button>

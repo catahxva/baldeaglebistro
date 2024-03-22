@@ -5,7 +5,7 @@ import { Link, useParams, useNavigate } from "react-router-dom";
 import { useMutation } from "@tanstack/react-query";
 import { resetForgotPassword } from "../../../util/requests";
 
-import { useInput } from "../../../hooks/useInput";
+import { useResetForgotInputs } from "../../../hooks/useResetForgotInputs";
 
 import { generateFalseValuesTrueErrors } from "../../../util/otherFunctions";
 
@@ -21,32 +21,7 @@ function ResetForgotPassContent() {
 
   const [submitting, setSubmitting] = useState();
 
-  const newPasswordInput = useInput("", (value) => {
-    if (!value) return "Password is required";
-    if (value.length < 8) return "Password must be at least 8 characters long";
-  });
-
-  const newPasswordConfirmInput = useInput("", (value) => {
-    if (!value) return "Confirming passwords is required";
-    if (value !== newPasswordInput.value) return "Passwords must match";
-  });
-
-  const inputObjects = [
-    {
-      nameProp: "newPassword",
-      labelText: "New Password",
-      type: "password",
-      placeholderText: "Your new password",
-      ...newPasswordInput,
-    },
-    {
-      nameProp: "newConfirmPassword",
-      labelText: "Confirm New Password",
-      type: "password",
-      placeholderText: "Confirm your password",
-      ...newPasswordConfirmInput,
-    },
-  ];
+  const { inputObjects, values } = useResetForgotInputs();
 
   const { falseValues, trueErrors } =
     generateFalseValuesTrueErrors(inputObjects);
@@ -75,12 +50,11 @@ function ResetForgotPassContent() {
   const submitHandler = function (e) {
     e.preventDefault();
 
-    if (!token || falseValues || trueErrors) return;
+    if (!token || falseValues || trueErrors || submitting) return;
 
     mutate({
       token,
-      newPassword: newPasswordInput.value,
-      newPasswordConfirm: newPasswordConfirmInput.value,
+      ...values,
     });
   };
 

@@ -1,13 +1,14 @@
-import { lazy, Suspense, useEffect } from "react";
+import { lazy, Suspense } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { useSelector, useDispatch } from "react-redux";
-import { authActions } from "./store/authSlice";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { queryClient } from "./util/queryClient";
 
 import Root from "./components/pages/Root";
 import RootAuth from "./components/pages/RootAuth";
 import Placeholder from "./components/UI/Others/Placeholder";
+
+import { useTokenExpiration } from "./hooks/useTokenExpiration";
+import { useLatestAddress } from "./hooks/useLatestAddress";
 
 const Error = lazy(() => import("./components/pages/Error"));
 const Home = lazy(() => import("./components/pages/Home"));
@@ -183,28 +184,8 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-  const dispatch = useDispatch();
-
-  const expirationDate = useSelector((state) => state.auth.expirationDate);
-
-  useEffect(() => {
-    const expirationTime = new Date(expirationDate);
-    const currentTime = new Date();
-
-    let timer;
-
-    if (currentTime > expirationTime) dispatch(authActions.deauthenticate());
-
-    if (expirationTime > currentTime) {
-      const timeDifference = expirationTime - currentTime;
-
-      timer = setTimeout(() => {
-        dispatch(authActions.deauthenticate());
-      }, timeDifference);
-    }
-
-    return () => clearTimeout(timer);
-  }, [expirationDate]);
+  useTokenExpiration();
+  useLatestAddress();
 
   return (
     <QueryClientProvider client={queryClient}>
