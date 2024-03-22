@@ -10,6 +10,12 @@ router.post(
   authController.updateUserAddress
 );
 
+router.get(
+  "/user-address",
+  authController.protect,
+  authController.getUserAddress
+);
+
 router.post("/signup", authController.signup);
 router.post("/login", authController.login);
 router.post("/verify-account", authController.verifyEmail);

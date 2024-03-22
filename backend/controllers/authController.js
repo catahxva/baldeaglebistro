@@ -390,3 +390,20 @@ exports.updateUserAddress = async function (req, res, next) {
     sendError(res, 400, "There has been an error. Please try again later");
   }
 };
+
+exports.getUserAddress = async function (req, res) {
+  try {
+    const user = req.user;
+
+    res.status(200).json({
+      status: "success",
+      data: {
+        data: user.address,
+      },
+    });
+  } catch (err) {
+    console.log(err);
+
+    sendError(res, 400, "There has been an error. Please try again later");
+  }
+};
