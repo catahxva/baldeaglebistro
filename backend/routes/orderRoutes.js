@@ -5,13 +5,8 @@ const authController = require("../controllers/authController");
 
 const router = express.Router();
 
-router.get("/", authController.protect, orderController.getOrders);
-router.get(
-  "/all",
-  authController.protect,
-  authController.protectRole,
-  orderController.getAllOrders
-);
+router.get("/", authController.protect, orderController.getAllOrders);
+router.get("/all", authController.protect, orderController.getAllOrders);
 
 router.get("/one-order/:id", orderController.getOrder);
 

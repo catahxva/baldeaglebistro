@@ -119,16 +119,23 @@ exports.createPaymentIntent = async function (req, res, next) {
 
 exports.getAllOrders = async function (req, res, next) {
   try {
-    const [skip, limit] = createPagination(req.query);
+    const [skip, limit] = createPagination(req.query, 10);
 
-    const numberOfOrders = (await Order.find()).length;
+    const filterObj = {};
+
+    const endpoint = req.url.split("?")[0];
+
+    if (endpoint !== "/all") filterObj.user = req.user._id;
+
+    const [numberOfOrders, orders] = await Promise.all([
+      OrderEagle.countDocuments(filterObj),
+      OrderEagle.find(filterObj)
+        .sort({ timeStamp: -1 })
+        .skip(skip)
+        .limit(limit),
+    ]);
 
     const maxPages = Math.ceil(numberOfOrders / limit);
-
-    const orders = await Order.find()
-      .sort({ timeStamp: -1 })
-      .skip(skip)
-      .limit(limit);
 
     if (!orders || orders.length <= 0) {
       return sendError(res, 404, "No orders found");
@@ -146,32 +153,7 @@ exports.getAllOrders = async function (req, res, next) {
     sendError(
       res,
       400,
-      "There has been an error with getting your data. Please try again later."
-    );
-  }
-};
-
-exports.getOrders = async function (req, res, next) {
-  try {
-    const orders = await Order.find({
-      user: req.user._id,
-    }).sort({ timeStamp: -1 });
-
-    if (!orders) {
-      return sendError(res, 404, "No orders found for this user.");
-    }
-
-    res.status(200).json({
-      status: "success",
-      data: {
-        data: orders,
-      },
-    });
-  } catch (err) {
-    sendError(
-      res,
-      400,
-      "There has been an error with getting your data. Please try again later."
+      "There has been an error with getting your data. Please try again later"
     );
   }
 };
