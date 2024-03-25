@@ -1,6 +1,13 @@
 import classes from "./OverviewSort.module.css";
 
-function OverviewSort({ onChange, existingSort }) {
+import { useSortHandler } from "../../../hooks/useSortHandler";
+import { useParamsData } from "../../../hooks/useParamsData";
+
+function OverviewSort() {
+  const sortHandler = useSortHandler();
+
+  const { sortQuery } = useParamsData();
+
   return (
     <form className={classes.overview__sort}>
       <label htmlFor="sort" className={classes.overview__sort__label}>
@@ -8,8 +15,8 @@ function OverviewSort({ onChange, existingSort }) {
       </label>
       <select
         name="sort"
-        defaultValue={existingSort}
-        onChange={onChange}
+        defaultValue={sortQuery}
+        onChange={sortHandler}
         className={classes.overview__sort__select}
       >
         <option value="default">Default</option>

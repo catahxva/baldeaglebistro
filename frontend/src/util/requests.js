@@ -303,26 +303,18 @@ export const updateAddress = async function ({
   return data;
 };
 
-export const getUserOrders = async function (signal, token) {
-  const response = await fetch(`${baseUrl}orders`, {
-    signal,
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: `Bearer ${token}`,
-    },
-  });
+export const getAllOrders = async function (
+  signal,
+  token,
+  queryString,
+  endpoint
+) {
+  let urlString;
 
-  const data = await response.json();
-
-  if (data.status === "fail") throw new Error(data.message);
-
-  return data;
-};
-
-export const getAllOrders = async function (signal, token, queryString) {
-  const urlString = queryString
-    ? `${baseUrl}orders/all${queryString}`
-    : `${baseUrl}orders/all`;
+  if (!endpoint && !queryString) urlString = `${baseUrl}orders`;
+  if (!endpoint && queryString) urlString = `${baseUrl}orders${queryString}`;
+  if (endpoint && !queryString) urlString = `${baseUrl}orders/all`;
+  if (endpoint && queryString) urlString = `${baseUrl}orders/all${queryString}`;
 
   const response = await fetch(urlString, {
     signal,
