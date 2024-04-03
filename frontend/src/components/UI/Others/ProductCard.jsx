@@ -3,7 +3,7 @@ import classes from "./ProductCard.module.css";
 import { Link } from "react-router-dom";
 
 import { useDispatch } from "react-redux";
-import { addProductToCart } from "../../../store/cartActions";
+import { addProductToCart } from "../../../store/customActions/cartActions";
 
 function ProductCard({ product, productType }) {
   const dispatch = useDispatch();

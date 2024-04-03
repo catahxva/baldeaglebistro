@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { authActions } from "../store/authSlice";
+import { authActions } from "../../store/slices/authSlice";
 
 export const useTokenExpiration = function () {
   const dispatch = useDispatch();

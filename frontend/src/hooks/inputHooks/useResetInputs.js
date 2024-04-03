@@ -1,4 +1,4 @@
-import { useInput } from "./useInput";
+import { useInput } from "./inputHooks/useInput";
 
 export const useResetInputs = function (defaultValue) {
   const currentPassInput = useInput(defaultValue, (value) => {

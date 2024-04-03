@@ -1,10 +1,10 @@
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { fetchFilters } from "../util/requests";
-import { useParamsData } from "./useParamsData";
+import { fetchFilters } from "../../util/requests";
+import { useParamsData } from "../generalHooks/useParamsData";
 
-import Placeholder from "../components/UI/Others/Placeholder";
-import OverviewFilters from "../components/UI/OverviewComponents/OverviewFilters";
+import Placeholder from "../../components/UI/Others/Placeholder";
+import OverviewFilters from "../../components/UI/OverviewComponents/OverviewFilters";
 
 export const useFiltersContent = function () {
   const { category } = useParams();

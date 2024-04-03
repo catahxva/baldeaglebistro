@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialAddressSlice = {
-  address: undefined,
-  carrier: undefined,
+  address: null,
+  carrier: null,
 };
 
 export const addressSlice = createSlice({
@@ -16,7 +16,7 @@ export const addressSlice = createSlice({
       state.carrier = action.payload.delivery;
     },
     clearAddress(state) {
-      state.address = undefined;
+      state.address = null;
     },
   },
 });

@@ -1,7 +1,7 @@
-import { cartActions } from "./cartSlice";
-import { uiActions } from "./uiSlice";
+import { cartActions } from "../slices/cartSlice";
+import { uiActions } from "../slices/uiSlice";
 
-import { baseUrl } from "../util/requests";
+import { baseUrl } from "../../util/requests";
 
 export const addProductToCart = function (id, quantity) {
   return async function (dispatch) {

@@ -1,4 +1,4 @@
-import { useInput } from "./useInput";
+import { useInput } from "./inputHooks/useInput";
 
 export const useLoginInputs = function () {
   const emailInput = useInput("", (value) => {

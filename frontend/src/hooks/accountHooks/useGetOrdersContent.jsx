@@ -1,14 +1,14 @@
 import { useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { useSelector } from "react-redux";
-import { useParamsData } from "./useParamsData";
+import { useParamsData } from "../generalHooks/useParamsData";
 
-import { getAllOrders } from "../util/requests";
+import { getAllOrders } from "../../util/requests";
 
-import Placeholder from "../components/UI/Others/Placeholder";
-import OrdersList from "../components/UI/Others/OrdersList";
-import OrdersNoData from "../components/UI/Others/OrdersNoData";
-import Pagination from "../components/UI/Others/Pagination";
+import Placeholder from "../../components/UI/Others/Placeholder";
+import OrdersList from "../../components/UI/Others/OrdersList";
+import OrdersNoData from "../../components/UI/Others/OrdersNoData";
+import Pagination from "../../components/UI/Others/Pagination";
 
 export const useGetOrdersContent = function (type) {
   const userToken = useSelector((state) => state.auth.token);

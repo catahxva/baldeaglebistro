@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { authActions } from "../store/authSlice";
+import { authActions } from "../../store/slices/authSlice";
 
 export const useLatestAddress = function () {
   const dispatch = useDispatch();
